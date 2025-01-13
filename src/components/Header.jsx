@@ -12,8 +12,11 @@ import AdbIcon from "@mui/icons-material/Adb";
 import Typography from "@mui/material/Typography";
 import { FaUserTie } from "react-icons/fa";
 import { GiJumpingDog } from "react-icons/gi";
+import useAuth from "../hook/useAuth";
+import { Avatar } from "@mui/material";
 
 const Header = () => {
+  const { user, handelLogout } = useAuth();
   const links = (
     <>
       <div className="flex gap-5">
@@ -25,14 +28,16 @@ const Header = () => {
         >
           Home
         </NavLink>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? "border-b-white border-b" : ""
-          }
-          to={"/login"}
-        >
-          Login
-        </NavLink>
+        {!user && (
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? "border-b-white border-b" : ""
+            }
+            to={"/login"}
+          >
+            Login
+          </NavLink>
+        )}
       </div>
     </>
   );
@@ -51,18 +56,22 @@ const Header = () => {
     setAnchorElUser(null);
   };
 
+  const logOut = () => {
+    handelLogout();
+    setAnchorElUser(null);
+  };
+
   return (
     <AppBar
       className="py-2 bg-orange-500"
       position="static"
-      sx={{ backgroundColor: "#ed5b36" }}
+      sx={{ backgroundColor: "#e16f52" }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
             variant="h6"
             noWrap
-            component="a"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -80,7 +89,6 @@ const Header = () => {
               </span>
             </Link>
           </Typography>
-
           {/* mobile  */}
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -111,12 +119,10 @@ const Header = () => {
             >
               {links}
             </Menu>
-          </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          </Box>{" "}
           <Typography
             variant="h5"
             noWrap
-            component="a"
             href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
@@ -129,7 +135,12 @@ const Header = () => {
               textDecoration: "none",
             }}
           >
-            LOGO
+            <Link to={"/"} className="flex items-center gap-3 md:mr-5">
+              <GiJumpingDog className="text-5xl" />
+              <span className="text-2xl md:text-4xl tracking-normal font-extrabold">
+                Pet<span className="text-[#ffffff86] italic">care</span>
+              </span>
+            </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {links}
@@ -137,11 +148,22 @@ const Header = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <FaUserTie className="text-3xl text-white" />
+                {user ? (
+                  <Avatar alt="Profile photo" src={user?.photoURL} />
+                ) : (
+                  <FaUserTie className="text-3xl text-white" />
+                )}
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: "45px" }}
+              PaperProps={{
+                sx: {
+                  width: "200px",
+                  backgroundColor: "#e16f52",
+                  marginTop: "55px",
+                  padding: "10px",
+                },
+              }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -156,7 +178,33 @@ const Header = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {links}
+              {user ? (
+                <>
+                  <ul className="text-center text-white flex flex-col gap-3">
+                    <li>Profile</li>
+                    <li>
+                      <button onClick={logOut} className="cursor-pointer">
+                        Logout
+                      </button>
+                    </li>
+                  </ul>
+                </>
+              ) : (
+                <>
+                  <ul className="text-center text-white flex flex-col gap-3">
+                    <li>
+                      <Link to={"/login"} onClick={handleCloseUserMenu}>
+                        Login
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to={"/register"} onClick={handleCloseUserMenu}>
+                        Register
+                      </Link>
+                    </li>
+                  </ul>
+                </>
+              )}
             </Menu>
           </Box>
         </Toolbar>

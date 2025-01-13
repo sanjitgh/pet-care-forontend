@@ -5,7 +5,9 @@ import Footer from "../components/Footer";
 const Home = () => {
   return (
     <>
-    <Helmet><title>Home - Petcare</title></Helmet>
+      <Helmet>
+        <title>Home - Petcare</title>
+      </Helmet>
       <Banner></Banner>
       <Footer></Footer>
     </>

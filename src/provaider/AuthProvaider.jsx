@@ -46,20 +46,10 @@ const AuthProvaider = ({ children }) => {
     return signOut(auth);
   };
 
-  const userInfo = {
-    loading,
-    createUser,
-    handelLogin,
-    manageProfile,
-    handelGoogleLogin,
-    handelLogout,
-    user,
-    setUser,
-  };
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
+      console.log(currentUser);
       if (currentUser?.email) {
         const user = { email: currentUser.email };
         // generate token
@@ -84,6 +74,17 @@ const AuthProvaider = ({ children }) => {
       };
     });
   }, []);
+
+  const userInfo = {
+    loading,
+    createUser,
+    handelLogin,
+    manageProfile,
+    handelGoogleLogin,
+    handelLogout,
+    user,
+    setUser,
+  };
   return (
     <AuthContext.Provider value={userInfo}>{children}</AuthContext.Provider>
   );

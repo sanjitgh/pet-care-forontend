@@ -44,7 +44,7 @@ const Banner = () => {
                 }}
               >
                 <Button
-                  className="bg-[#ed5b36] py-4 hover:bg-[#ed5b36] rounded-none mt-6"
+                  className="bg-[#e16f52] py-4 hover:bg-[#e16f52] rounded-none mt-6"
                   variant="filled"
                 >
                   <span className="flex items-center gap-2">
@@ -84,7 +84,7 @@ const Banner = () => {
                 }}
               >
                 <Button
-                  className="bg-[#ed5b36] py-4 hover:bg-[#ed5b36] rounded-none mt-6"
+                  className="bg-[#e16f52] py-4 hover:bg-[#e16f52] rounded-none mt-6"
                   variant="filled"
                 >
                   <span className="flex items-center gap-2">Adopt Today</span>
@@ -123,7 +123,7 @@ const Banner = () => {
                 }}
               >
                 <Button
-                  className="bg-[#ed5b36] py-4 hover:bg-[#ed5b36] rounded-none mt-6"
+                  className="bg-[#e16f52] py-4 hover:bg-[#e16f52] rounded-none mt-6"
                   variant="filled"
                 >
                   <span className="flex items-center gap-2">Get Involved</span>
