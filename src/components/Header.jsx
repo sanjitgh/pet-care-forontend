@@ -7,11 +7,11 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import AdbIcon from "@mui/icons-material/Adb";
 import Typography from "@mui/material/Typography";
-import { MdOutlinePets } from "react-icons/md";
+import { FaUserTie } from "react-icons/fa";
+import { GiJumpingDog } from "react-icons/gi";
 
 const Header = () => {
   const links = (
@@ -19,7 +19,7 @@ const Header = () => {
       <div className="flex gap-5">
         <NavLink
           className={({ isActive }) =>
-            isActive ? "border-b-green-500 border-b" : ""
+            isActive ? "border-b-white border-b" : ""
           }
           to={"/"}
         >
@@ -27,7 +27,7 @@ const Header = () => {
         </NavLink>
         <NavLink
           className={({ isActive }) =>
-            isActive ? "border-b-green-500 border-b" : ""
+            isActive ? "border-b-white border-b" : ""
           }
           to={"/login"}
         >
@@ -38,26 +38,24 @@ const Header = () => {
   );
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
   };
-
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
   return (
     <AppBar
       className="py-2 bg-orange-500"
       position="static"
-      sx={{ backgroundColor: "#ED6436" }}
+      sx={{ backgroundColor: "#ed5b36" }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -76,9 +74,9 @@ const Header = () => {
             }}
           >
             <Link to={"/"} className="flex items-center gap-3 md:mr-5">
-              <MdOutlinePets className="text-4xl" />
-              <span className="text-2xl md:text-4xl tracking-normal">
-                Petcare
+              <GiJumpingDog className="text-5xl" />
+              <span className="text-2xl md:text-4xl tracking-normal font-extrabold">
+                Pet<span className="text-[#ffffff86] italic">care</span>
               </span>
             </Link>
           </Typography>
@@ -139,7 +137,7 @@ const Header = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              <FaUserTie className="text-3xl text-white" />
               </IconButton>
             </Tooltip>
             <Menu

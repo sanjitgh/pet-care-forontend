@@ -36,7 +36,7 @@ const Banner = () => {
                 initial={{ scale: 0.9 }}
                 animate={{ scale: 1 }}
                 transition={{
-                  duration: 1,
+                  duration: 1.5,
                   delay: 0,
                   repeat: Infinity,
                   repeatType: "reverse",
@@ -44,7 +44,7 @@ const Banner = () => {
                 }}
               >
                 <Button
-                  className="bg-[#ED6436] py-4 hover:bg-[#ED6436] rounded-none mt-6"
+                  className="bg-[#ed5b36] py-4 hover:bg-[#ed5b36] rounded-none mt-6"
                   variant="filled"
                 >
                   <span className="flex items-center gap-2">
@@ -76,7 +76,7 @@ const Banner = () => {
                 initial={{ scale: 0.9 }}
                 animate={{ scale: 1 }}
                 transition={{
-                  duration: 1,
+                  duration: 1.5,
                   delay: 0,
                   repeat: Infinity,
                   repeatType: "reverse",
@@ -84,7 +84,7 @@ const Banner = () => {
                 }}
               >
                 <Button
-                  className="bg-[#ED6436] py-4 hover:bg-[#ED6436] rounded-none mt-6"
+                  className="bg-[#ed5b36] py-4 hover:bg-[#ed5b36] rounded-none mt-6"
                   variant="filled"
                 >
                   <span className="flex items-center gap-2">Adopt Today</span>
@@ -115,7 +115,7 @@ const Banner = () => {
                 initial={{ scale: 0.9 }}
                 animate={{ scale: 1 }}
                 transition={{
-                  duration: 1,
+                  duration: 1.5,
                   delay: 0,
                   repeat: Infinity,
                   repeatType: "reverse",
@@ -123,7 +123,7 @@ const Banner = () => {
                 }}
               >
                 <Button
-                  className="bg-[#ED6436] py-4 hover:bg-[#ED6436] rounded-none mt-6"
+                  className="bg-[#ed5b36] py-4 hover:bg-[#ed5b36] rounded-none mt-6"
                   variant="filled"
                 >
                   <span className="flex items-center gap-2">Get Involved</span>

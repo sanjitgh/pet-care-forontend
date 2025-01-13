@@ -60,11 +60,10 @@ const AuthProvaider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-
       if (currentUser?.email) {
         const user = { email: currentUser.email };
         // generate token
-        await axios.post("https://backend-sigma-tawny.vercel.app/jwt", user, {
+        await axios.post("http://localhost:5000/jwt", user, {
           withCredentials: true,
         });
       } else {
@@ -72,7 +71,7 @@ const AuthProvaider = ({ children }) => {
         setLoading(false);
         // remove token
         await axios.post(
-          "https://backend-sigma-tawny.vercel.app/logout",
+          "http://localhost:5000/logout",
           {},
           {
             withCredentials: true,
