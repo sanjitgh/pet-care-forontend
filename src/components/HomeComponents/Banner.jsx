@@ -5,10 +5,9 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Button } from "@material-tailwind/react";
 import { motion } from "motion/react";
-import { MdOutlineKeyboardDoubleArrowDown } from "react-icons/md";
-import img1 from "../../src/assest/bannerImg/banner1.webp";
-import img2 from "../../src/assest/bannerImg/banner2.webp";
-import img3 from "../../src/assest/bannerImg/banner3.webp";
+import img1 from "../../../src/assest/bannerImg/banner1.webp";
+import img2 from "../../../src/assest/bannerImg/banner2.webp";
+import img3 from "../../../src/assest/bannerImg/banner3.webp";
 
 const Banner = () => {
   return (
