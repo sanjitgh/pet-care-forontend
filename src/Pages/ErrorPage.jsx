@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
   return (
-    <div className="bg-green-800 h-screen flex flex-col justify-center items-center">
+    <div className="bg-[#E16F52] h-screen flex flex-col justify-center items-center">
       <div>
         <h1 className="text-9xl text-white text-center flex justify-center">
           <TbError404 />
@@ -17,7 +17,7 @@ const ErrorPage = () => {
       <div>
         <Link
           to={"/"}
-          className="btn bg-transparent hover:bg-transparent text-white mt-10"
+          className="btn flex items-center gap-5 bg-transparent hover:bg-transparent text-white mt-10"
         >
           Back to Home <RiArrowGoBackFill />
         </Link>
