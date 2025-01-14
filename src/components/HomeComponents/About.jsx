@@ -3,7 +3,7 @@ import img from "../../assest/about.webp";
 const About = () => {
   return (
     <section className="py-20">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2  gap-10">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2  gap-10 px-2">
         <div>
           <h3 className="text-lg text-[#E16F52]">About PetCare</h3>
           <h1 className="text-3xl md:text-5xl italic my-2">
