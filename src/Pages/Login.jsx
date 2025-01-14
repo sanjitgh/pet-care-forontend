@@ -1,15 +1,20 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provaider/AuthProvaider";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
-import axios from "axios";
+import useAxiosPublic from "../hook/useAxiosPublic";
+import { LuFan } from "react-icons/lu";
+import { FaGithub } from "react-icons/fa6";
 
 const Login = () => {
-  const { handelLogin, handelGoogleLogin } = useContext(AuthContext);
+  const { handelLogin, handelGoogleLogin, handelGithubLogin } =
+    useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
+  const axiosPublic = useAxiosPublic();
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -19,38 +24,52 @@ const Login = () => {
 
   const onSubmit = (data) => {
     const { email, password } = data;
-
+    setLoading(true);
     handelLogin(email, password)
       .then((res) => {
-        if (from) {
-          navigate(from);
-        }
+        if (from) navigate(from);
+        toast.success("Login Successfull!");
       })
       .catch((error) => {
         toast.error("Invalid User!");
+        setLoading(false);
       });
   };
 
   //  google login
   const handelLoginWithGoogle = () => {
-    handelGoogleLogin().then((res) => {
-      const name = res.user.displayName;
-      const image = res.user.photoURL;
-      const email = res.user.email;
+    handelGoogleLogin().then(async (res) => {
+      // save user info to the database
       const newUser = {
-        name,
-        image,
-        email,
+        name: res.user.displayName,
+        image: res.user.photoURL,
+        email: res.user.email,
       };
 
-      // save user info to the database
-      axios.post("http://localhost:5000/user", newUser);
+      await axiosPublic.post("/users", {
+        ...newUser,
+        role: "user",
+      });
+      if (from) navigate(from);
+    });
+  };
 
-      if (location.state) {
-        navigate(location.state);
-      } else {
-        navigate("/");
-      }
+  //  github login
+  const handelLoginWithGithub = () => {
+    handelGithubLogin().then(async (res) => {
+      // save user info to the database
+      const newUser = {
+        name: res.user.displayName,
+        image: res.user.photoURL,
+        email: res.user.email,
+      };
+
+      await axiosPublic.post("/users", {
+        ...newUser,
+        role: "user",
+      });
+
+      if (from) navigate(from);
     });
   };
 
@@ -75,7 +94,18 @@ const Login = () => {
               Continue With Google
             </Link>
           </div>
-          <p className="text-center text-white mb-8">- - - - - - OR - - - - - -</p>
+          <div className="mb-8">
+            <Link
+              onClick={handelLoginWithGithub}
+              className="text-base flex items-center gap-3 w-full text-center border justify-center p-3 rounded-xl text-white"
+            >
+              <FaGithub className="h-6 w-6"></FaGithub>
+              Continue With Github
+            </Link>
+          </div>
+          <p className="text-center text-white mb-8">
+            - - - - - - OR - - - - - -
+          </p>
           {/* social login */}
           <input
             {...register("email", { required: true })}
@@ -100,18 +130,17 @@ const Login = () => {
           />
 
           {errors.password && (
-            <p className="text-green-500 mb-2 mt-3">
-              {errors.password.message}
-            </p>
+            <p className="text-white mb-2 mt-3">{errors.password.message}</p>
           )}
 
-          <div className="form-control">
-            <input
-              type="submit"
-              value="Login"
-              className="bg-white px-8 py-2 cursor-pointer text-[#E16F52] mt-6"
-            />
-          </div>
+          <button
+            className="bg-white text-center mx-auto py-2 px-8 cursor-pointer text-[#E16F52] mt-6"
+            type="submit"
+          >
+            <span className="flex gap-1 items-center">
+              Login{loading && <LuFan className="animate-spin" />}
+            </span>
+          </button>
           <div className="mt-4">
             <p className="text-white">
               Are you new here?

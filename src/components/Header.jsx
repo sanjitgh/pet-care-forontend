@@ -8,15 +8,14 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Tooltip from "@mui/material/Tooltip";
-import AdbIcon from "@mui/icons-material/Adb";
 import Typography from "@mui/material/Typography";
 import { FaUserTie } from "react-icons/fa";
 import { GiJumpingDog } from "react-icons/gi";
 import useAuth from "../hook/useAuth";
-import { Avatar } from "@mui/material";
 
 const Header = () => {
   const { user, handelLogout } = useAuth();
+  console.log(user);
   const links = (
     <>
       <div className="flex gap-5">
@@ -27,6 +26,22 @@ const Header = () => {
           to={"/"}
         >
           Home
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "border-b-white border-b" : ""
+          }
+          to={"/pet-listing"}
+        >
+          Pet Listing
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "border-b-white border-b" : ""
+          }
+          to={"/donation-campaigns"}
+        >
+          Donation Campaigns
         </NavLink>
         {!user && (
           <NavLink
@@ -149,7 +164,12 @@ const Header = () => {
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 {user ? (
-                  <Avatar alt="Profile photo" src={user?.photoURL} />
+                  <img
+                    src={user?.photoURL}
+                    referrerPolicy="no-referrer"
+                    alt="Profile"
+                    className="w-12 h-12 rounded-full"
+                  />
                 ) : (
                   <FaUserTie className="text-3xl text-white" />
                 )}
@@ -160,7 +180,7 @@ const Header = () => {
                 sx: {
                   width: "200px",
                   backgroundColor: "#e16f52",
-                  marginTop: "55px",
+                  marginTop: "65px",
                   padding: "10px",
                 },
               }}
@@ -181,7 +201,12 @@ const Header = () => {
               {user ? (
                 <>
                   <ul className="text-center text-white flex flex-col gap-3">
-                    <li>Profile</li>
+                    <li>
+                      <Link to="">Dashboard</Link>
+                    </li>
+                    <li>
+                      <Link to="">Profile</Link>
+                    </li>
                     <li>
                       <button onClick={logOut} className="cursor-pointer">
                         Logout

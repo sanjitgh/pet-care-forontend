@@ -1,5 +1,6 @@
 import {
   createUserWithEmailAndPassword,
+  GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
@@ -9,14 +10,16 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config";
-import axios from "axios";
+import useAxiosPublic from "../hook/useAxiosPublic";
 
 export const AuthContext = createContext(null);
 
 const AuthProvaider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const axiosPublic = useAxiosPublic();
   const googleProvaider = new GoogleAuthProvider();
+  const githubProvaider = new GithubAuthProvider();
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -31,6 +34,11 @@ const AuthProvaider = ({ children }) => {
   const handelGoogleLogin = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvaider);
+  };
+
+  const handelGithubLogin = () => {
+    setLoading(true);
+    return signInWithPopup(auth, githubProvaider);
   };
 
   const manageProfile = (name, image) => {
@@ -49,25 +57,25 @@ const AuthProvaider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-      console.log(currentUser);
       if (currentUser?.email) {
-        const user = { email: currentUser.email };
         // generate token
-        await axios.post("http://localhost:5000/jwt", user, {
+        const user = { email: currentUser.email };
+        await axiosPublic.post("/jwt", user, {
           withCredentials: true,
         });
       } else {
         setUser(null);
         setLoading(false);
         // remove token
-        await axios.post(
-          "http://localhost:5000/logout",
+        await axiosPublic.post(
+          "/logout",
           {},
           {
             withCredentials: true,
           }
         );
       }
+
       setLoading(false);
       return () => {
         unsubscribe();
@@ -81,6 +89,7 @@ const AuthProvaider = ({ children }) => {
     handelLogin,
     manageProfile,
     handelGoogleLogin,
+    handelGithubLogin,
     handelLogout,
     user,
     setUser,
