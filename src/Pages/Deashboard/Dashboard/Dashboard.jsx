@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { IoMdAddCircle } from "react-icons/io";
+import { CiSignpostDuo1, CiSquareQuestion } from "react-icons/ci";
+import { TbBrandCampaignmonitor } from "react-icons/tb";
+import { MdCampaign } from "react-icons/md";
+import { SiMyget } from "react-icons/si";
 
 const Deashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -20,7 +24,7 @@ const Deashboard = () => {
           to={"/dashboard/add-pet"}
           className={({ isActive }) =>
             isActive
-              ? "bg-[#ff260071] flex gap-1 p-2 items-center"
+              ? "bg-[#ff260071] text-white  flex gap-1 p-2 items-center"
               : "flex gap-1 items-center p-2"
           }
         >
@@ -33,11 +37,11 @@ const Deashboard = () => {
           to={"/dashboard/my-added-pet"}
           className={({ isActive }) =>
             isActive
-              ? "bg-[#ff260071] flex gap-1 p-2 items-center"
+              ? "bg-[#ff260071] text-white  flex gap-1 p-2 items-center"
               : "flex gap-1 items-center p-2"
           }
         >
-          <IoMdAddCircle />
+          <CiSignpostDuo1 />
           My added pets
         </NavLink>
       </li>
@@ -46,11 +50,11 @@ const Deashboard = () => {
           to={"/dashboard/adoption-request"}
           className={({ isActive }) =>
             isActive
-              ? "bg-[#ff260071] flex gap-1 p-2 items-center"
+              ? "bg-[#ff260071] text-white flex gap-1 p-2 items-center"
               : "flex gap-1 items-center p-2"
           }
         >
-          <IoMdAddCircle />
+          <CiSquareQuestion />
           Adoption Request
         </NavLink>
       </li>
@@ -59,11 +63,11 @@ const Deashboard = () => {
           to={"/dashboard/create-donation-campaign"}
           className={({ isActive }) =>
             isActive
-              ? "bg-[#ff260071] flex gap-1 p-2 items-center"
+              ? "bg-[#ff260071] text-white flex gap-1 p-2 items-center"
               : "flex gap-1 items-center p-2"
           }
         >
-          <IoMdAddCircle />
+          <TbBrandCampaignmonitor />
           Create Donation Campaign
         </NavLink>
       </li>
@@ -72,11 +76,11 @@ const Deashboard = () => {
           to={"/dashboard/my-donation-campaign"}
           className={({ isActive }) =>
             isActive
-              ? "bg-[#ff260071] flex gap-1 p-2 items-center"
+              ? "bg-[#ff260071] text-white flex gap-1 p-2 items-center"
               : "flex gap-1 items-center p-2"
           }
         >
-          <IoMdAddCircle />
+          <MdCampaign />
           My Donation Campaigns
         </NavLink>
       </li>
@@ -85,11 +89,11 @@ const Deashboard = () => {
           to={"/dashboard/my-donations"}
           className={({ isActive }) =>
             isActive
-              ? "bg-[#ff260071] flex gap-1 p-2 items-center"
+              ? "bg-[#ff260071] text-white flex gap-1 p-2 items-center"
               : "flex gap-1 items-center p-2"
           }
         >
-          <IoMdAddCircle />
+          <SiMyget />
           My Donations
         </NavLink>
       </li>

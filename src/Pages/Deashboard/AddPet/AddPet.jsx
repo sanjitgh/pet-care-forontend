@@ -163,7 +163,7 @@ const AddPet = () => {
                       padding: "10px",
                       cursor: "pointer",
                       ":hover": {
-                        backgroundColor: "black",
+                        backgroundColor: "#aaa",
                         color: "white",
                       },
                     }),
