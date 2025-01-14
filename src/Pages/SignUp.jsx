@@ -20,7 +20,6 @@ const SignUp = () => {
     const image = form.image.files[0];
     // send the image to imgbb server
     const imageUrl = await uploadImage(image);
-
     if (password.length < 6) {
       return toast.error("You need at least 6 character.");
     }

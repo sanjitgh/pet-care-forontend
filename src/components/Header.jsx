@@ -39,7 +39,7 @@ const Header = () => {
           className={({ isActive }) =>
             isActive ? "border-b-white border-b" : ""
           }
-          to={"/donation-campaigns"}
+          to={"/donation-campaign"}
         >
           Donation Campaigns
         </NavLink>
@@ -202,7 +202,7 @@ const Header = () => {
                 <>
                   <ul className="text-center text-white flex flex-col gap-3">
                     <li>
-                      <Link to="">Dashboard</Link>
+                      <Link to="/dashboard">Dashboard</Link>
                     </li>
                     <li>
                       <Link to="">Profile</Link>

@@ -1,20 +1,21 @@
-import { useContext } from "react";
-import { AuthContext } from "../provaider/AuthProvaider";
 import { Navigate, useLocation } from "react-router-dom";
-import { RingLoader } from "react-spinners";
+import { BeatLoader } from "react-spinners";
+import useAuth from "../hook/useAuth";
 
 const PrivetRoute = ({ children }) => {
-  const { user, loading } = useContext(AuthContext);
+  const { user, loading } = useAuth();
   const location = useLocation();
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-[95vh]">
-         <RingLoader color={"#4CAF50"} size={70} />
+        <BeatLoader color={"#E16F52"} size={10} />
       </div>
     );
   }
   if (!user) {
-    return <Navigate to={"/login"} state={{ from: location }} replace></Navigate>;
+    return (
+      <Navigate to={"/login"} state={{ from: location }} replace></Navigate>
+    );
   }
 
   return children;

@@ -1,15 +1,14 @@
-import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../provaider/AuthProvaider";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../hook/useAxiosPublic";
 import { LuFan } from "react-icons/lu";
 import { FaGithub } from "react-icons/fa6";
+import useAuth from "../hook/useAuth";
+import { useState } from "react";
 
 const Login = () => {
-  const { handelLogin, handelGoogleLogin, handelGithubLogin } =
-    useContext(AuthContext);
+  const { handelLogin, handelGoogleLogin, handelGithubLogin } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
@@ -51,6 +50,7 @@ const Login = () => {
         role: "user",
       });
       if (from) navigate(from);
+      toast.success("Login Successfull!");
     });
   };
 
