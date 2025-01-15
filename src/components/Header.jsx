@@ -96,10 +96,10 @@ const Header = () => {
               textDecoration: "none",
             }}
           >
-            <Link to={"/"} className="flex items-center gap-3 md:mr-5">
+            <Link to={"/"} className="flex items-center gap-1 md:mr-5">
               <GiJumpingDog className="text-5xl" />
               <span className="text-2xl md:text-4xl tracking-normal font-extrabold">
-                Pet<span className="text-[#ffffff86] italic">care</span>
+                Pet<span className="text-[#ffffff86] italic text-2xl">care</span>
               </span>
             </Link>
           </Typography>

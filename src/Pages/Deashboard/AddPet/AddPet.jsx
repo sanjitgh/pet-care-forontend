@@ -74,8 +74,8 @@ const AddPet = () => {
         <title>Add Pet - PetCare</title>
       </Helmet>
       <div>
-        <div className="border max-w-3xl mx-auto p-10">
-          <h1 className="text-3xl text-center mb-10">Add a Pet</h1>
+        <div className="border max-w-3xl mx-auto p-10 bg-gray-50">
+          <h1 className="md:text-5xl text-2xl text-center mb-14">Add a Pet</h1>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col gap-5"
@@ -186,7 +186,7 @@ const AddPet = () => {
             {/* Submit Button */}
             <div>
               <button
-                className="bg-white border text-center mx-auto py-2 px-8 cursor-pointer text-[#E16F52] mt-6"
+                className="text-white text-center mx-auto py-2 px-8 cursor-pointer bg-[#E16F52] mt-6"
                 type="submit"
               >
                 <span className="flex gap-1 items-center">
