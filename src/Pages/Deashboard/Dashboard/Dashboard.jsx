@@ -5,6 +5,7 @@ import { CiSignpostDuo1, CiSquareQuestion } from "react-icons/ci";
 import { TbBrandCampaignmonitor } from "react-icons/tb";
 import { MdCampaign } from "react-icons/md";
 import { SiMyget } from "react-icons/si";
+import { IoReturnDownBack } from "react-icons/io5";
 
 const Deashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -95,6 +96,20 @@ const Deashboard = () => {
         >
           <SiMyget />
           My Donations
+        </NavLink>
+      </li>
+      <div className="w-full h-[2px] bg-blue-gray-100 my-10"></div>
+      <li className="mb-2 cursor-pointer" onClick={handleMenuItemClick}>
+        <NavLink
+          to={"/"}
+          className={({ isActive }) =>
+            isActive
+              ? "bg-[#ff260071] text-white flex gap-1 p-2 items-center"
+              : "flex gap-1 items-center p-2"
+          }
+        >
+          <IoReturnDownBack />
+          Back Home
         </NavLink>
       </li>
     </>
