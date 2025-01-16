@@ -131,7 +131,7 @@ const PetListing = () => {
                   </Typography>
                 </CardContent>
                 <CardActions>
-                  <Link to={`pet-listing/${item._id}`}>
+                  <Link to={`/pet-listing/${item._id}`}>
                     <Button size="small" sx={{ color: "#E16F52" }}>
                       View Details <FaArrowRight></FaArrowRight>
                     </Button>

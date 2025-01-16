@@ -1,0 +1,98 @@
+.wrapper_des {
+    padding: 15px;
+    font-family: Arial, sans-serif;
+    line-height: 1.4;
+    color: white;
+}
+
+.wrapper_des h1,
+.wrapper_des h2,
+.wrapper_des h3,
+.wrapper_des h4,
+.wrapper_des h5,
+.wrapper_des h6,
+.wrapper_des p,
+.wrapper_des ul li,
+.wrapper_des ol li {
+    color: white;
+}
+
+.wrapper_des h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.8rem;
+}
+
+.wrapper_des h2 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin-bottom: 0.7rem;
+}
+
+.wrapper_des h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.6rem;
+}
+
+.wrapper_des h4 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.wrapper_des h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.4rem;
+}
+
+.wrapper_des h6 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.wrapper_des p {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.wrapper_des ul {
+    list-style-type: disc;
+    margin: 0.8rem 0 0.8rem 1.5rem;
+    padding: 0;
+}
+
+.wrapper_des ul li {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+}
+
+.wrapper_des ol {
+    list-style-type: decimal;
+    margin: 0.8rem 0 0.8rem 1.5rem;
+    padding: 0;
+}
+
+.wrapper_des ol li {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+}
+
+.wrapper_des strong {
+    font-weight: bold;
+}
+
+.wrapper_des em {
+    font-style: italic;
+}
+
+.wrapper_des a {
+    text-decoration: none;
+    color: white;
+}
+
+.wrapper_des a:hover {
+    text-decoration: underline;
+}

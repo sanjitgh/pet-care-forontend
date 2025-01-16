@@ -11,6 +11,7 @@ import AddPet from "../Pages/Deashboard/AddPet/AddPet";
 import DashboardHome from "../Pages/Deashboard/DashboardHome.jsx/DashboardHome";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
 import MyAddedPet from "../Pages/Deashboard/MyAddedPet/MyAddedPet";
+import PetDetails from "../Pages/PetDetails/PetDetails";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: "/pet-listing",
         element: <PetListing></PetListing>,
+      },
+      {
+        path: "/pet-listing/:id",
+        element: (
+          <PrivetRoute>
+            <PetDetails></PetDetails>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/donation-campaign",
