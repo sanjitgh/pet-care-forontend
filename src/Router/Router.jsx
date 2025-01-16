@@ -14,7 +14,7 @@ import MyAddedPet from "../Pages/Deashboard/MyAddedPet/MyAddedPet";
 import PetDetails from "../Pages/PetDetails/PetDetails";
 import CreateDonation from "../Pages/Deashboard/CreateDonation/CreateDonation";
 import MyDonationCampaign from "../Pages/Deashboard/MyDonationCampaign/MyDonationCampaign";
-import DonationDetailsCard from "../Pages/DonationDetailsCard/DonationDetailsCard";
+import DonationDetails from "../Pages/DonationDetails/DonationDetails";
 
 const router = createBrowserRouter([
   {
@@ -44,7 +44,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/donation-campaign/:id",
-        element: <DonationDetailsCard></DonationDetailsCard>
+        element: (
+          <PrivetRoute>
+            <DonationDetails></DonationDetails>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/login",
