@@ -61,7 +61,7 @@ const Deashboard = () => {
       </li>
       <li className="mb-2 cursor-pointer" onClick={handleMenuItemClick}>
         <NavLink
-          to={"/dashboard/create-donation-campaign"}
+          to={"/dashboard/create-donation"}
           className={({ isActive }) =>
             isActive
               ? "bg-[#ff260071] text-white flex gap-1 p-2 items-center"

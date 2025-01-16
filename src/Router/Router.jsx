@@ -12,6 +12,9 @@ import DashboardHome from "../Pages/Deashboard/DashboardHome.jsx/DashboardHome";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
 import MyAddedPet from "../Pages/Deashboard/MyAddedPet/MyAddedPet";
 import PetDetails from "../Pages/PetDetails/PetDetails";
+import CreateDonation from "../Pages/Deashboard/CreateDonation/CreateDonation";
+import MyDonationCampaign from "../Pages/Deashboard/MyDonationCampaign/MyDonationCampaign";
+import DonationDetailsCard from "../Pages/DonationDetailsCard/DonationDetailsCard";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +43,10 @@ const router = createBrowserRouter([
         element: <DonationCampaign></DonationCampaign>,
       },
       {
+        path: "/donation-campaign/:id",
+        element: <DonationDetailsCard></DonationDetailsCard>
+      },
+      {
         path: "/login",
         element: <Login></Login>,
       },
@@ -49,6 +56,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+  // dashboard routes
   {
     path: "/",
     errorElement: <ErrorPage></ErrorPage>,
@@ -79,6 +87,22 @@ const router = createBrowserRouter([
         element: (
           <PrivetRoute>
             <MyAddedPet></MyAddedPet>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/dashboard/create-donation",
+        element: (
+          <PrivetRoute>
+            <CreateDonation></CreateDonation>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/dashboard/my-donation-campaign",
+        element: (
+          <PrivetRoute>
+            <MyDonationCampaign></MyDonationCampaign>
           </PrivetRoute>
         ),
       },
