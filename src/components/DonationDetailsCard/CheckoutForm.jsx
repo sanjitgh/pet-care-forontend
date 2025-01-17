@@ -16,14 +16,10 @@ const CheckoutForm = ({ handleClose, item, setOpen, refetch }) => {
   const { user } = useAuth();
   const {
     _id,
-    petName,
-    petImage,
-    sortDescription,
-    longDescription,
     donatedAmount,
     donationLastDate,
     maxDonationAmount,
-    postedDate,
+
   } = item;
   console.log(item);
 
