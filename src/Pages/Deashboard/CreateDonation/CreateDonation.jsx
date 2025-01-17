@@ -41,6 +41,7 @@ const CreateDonation = () => {
       donatedAmount: "0",
       donator: user?.displayName,
       donationCreator: user?.email,
+      status: 'unPaused',
     };
 
     try {

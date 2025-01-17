@@ -14,14 +14,8 @@ const CheckoutForm = ({ handleClose, item, setOpen, refetch }) => {
   const elements = useElements();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  const {
-    _id,
-    donatedAmount,
-    donationLastDate,
-    maxDonationAmount,
 
-  } = item;
-  console.log(item);
+  const { _id, donatedAmount, donationLastDate, maxDonationAmount } = item;
 
   const dateOne = format(new Date(), "P");
   const dateTwo = format(new Date(donationLastDate), "P");
@@ -30,7 +24,18 @@ const CheckoutForm = ({ handleClose, item, setOpen, refetch }) => {
   const dbAmount = parseInt(maxDonationAmount);
   const inputedAmount = parseInt(price);
 
-  if (dbAmount < inputedAmount ) {
+  if (item?.status === "paused") {
+    Swal.fire({
+      position: "top-center",
+      icon: "error",
+      title: "This item is pause naw, Donation not acceptable in this moment!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    setOpen(false);
+  }
+
+  if (dbAmount < inputedAmount) {
     Swal.fire({
       position: "top-center",
       icon: "error",

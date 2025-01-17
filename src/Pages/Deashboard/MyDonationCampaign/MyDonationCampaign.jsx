@@ -14,7 +14,7 @@ import MyDonationCampaignTable from "./MyDonationCampaignTable";
 const MyDonationCampaign = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
-  const { data: myDonations = [] } = useQuery({
+  const { data: myDonations = [],refetch } = useQuery({
     queryKey: ["myDonations"],
     queryFn: async () => {
       const { data } = await axiosSecure(`/my-donation/${user?.email}`);
@@ -56,6 +56,7 @@ const MyDonationCampaign = () => {
               <MyDonationCampaignTable
                 key={item._id}
                 item={item}
+                refetch={refetch}
               ></MyDonationCampaignTable>
             ))}
           </TableBody>
