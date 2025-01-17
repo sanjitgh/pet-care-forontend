@@ -4,6 +4,7 @@ import About from "../components/HomeComponents/About";
 import Donner from "../components/HomeComponents/Donner";
 import FunFact from "../components/HomeComponents/FunFact";
 import CallToAction from "../components/CallToAction/CallToAction";
+import PetCategory from "../components/PetCategory/PetCategory";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
         <title>Home - Petcare</title>
       </Helmet>
       <Banner></Banner>
+      <PetCategory></PetCategory>
       <CallToAction></CallToAction>
       <About></About>
       <FunFact></FunFact>

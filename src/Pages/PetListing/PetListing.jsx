@@ -8,20 +8,30 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Helmet } from "react-helmet-async";
 import { FaArrowRight } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { TextField } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const PetListing = () => {
   const axiosPublic = useAxiosPublic();
-  const [filter, setFilter] = useState("");
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const initialFilter = queryParams.get("filter") || "";
+
+  const [filter, setFilter] = useState(initialFilter);
   const [search, setSearch] = useState("");
 
-  // get data fatchingd
+  // Update query parameter if category changes
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    setFilter(queryParams.get("filter") || "");
+  }, [location.search]);
+
+  // Get data based on filter and search
   const { data: pets = [] } = useQuery({
     queryKey: ["pets", filter, search],
     queryFn: async () => {
@@ -32,7 +42,7 @@ const PetListing = () => {
     },
   });
 
-  //   sort data in descending order
+  // Sort data in descending order
   const sortData = [...pets].sort(
     (a, b) => new Date(b.date) - new Date(a.date)
   );
@@ -44,7 +54,7 @@ const PetListing = () => {
       </Helmet>
       <section className="py-20">
         <div className="container mx-auto px-2 ">
-          {/* control bar */}
+          {/* Control Bar */}
           <div className="mb-10 md:flex items-center gap-5 justify-start">
             <FormControl className="md:w-48 w-full">
               <InputLabel
@@ -101,7 +111,7 @@ const PetListing = () => {
                 },
                 "& .MuiInputLabel-root": {
                   color: "#E16F52",
-                  marginLeft: '15px'
+                  marginLeft: "15px",
                 },
                 "& .MuiInputLabel-root.Mui-focused": {
                   color: "#E16F52",
@@ -109,7 +119,7 @@ const PetListing = () => {
               }}
             />
           </div>
-          {/* main content */}
+          {/* Main Content */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {sortData.map((item) => (
               <Card key={item._id}>
@@ -134,7 +144,7 @@ const PetListing = () => {
                 <CardActions>
                   <Link to={`/pet-listing/${item._id}`}>
                     <Button size="small" sx={{ color: "#E16F52" }}>
-                      View Details <FaArrowRight></FaArrowRight>
+                      View Details <FaArrowRight />
                     </Button>
                   </Link>
                 </CardActions>
