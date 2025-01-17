@@ -1,11 +1,9 @@
 import { format } from "date-fns";
 import { Helmet } from "react-helmet-async";
-import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
-import DialogActions from "@mui/material/DialogActions";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import { useState } from "react";
@@ -116,22 +114,12 @@ const DonationDetailsCard = ({ item }) => {
           <CloseIcon />
         </IconButton>
         <DialogContent dividers>
-          <input
-            type="number"
-            placeholder="Enter your amount"
-            className="border p-3 w-full mb-5"
-          />
           <div>
             <Elements stripe={stripePromise}>
-              <CheckoutForm></CheckoutForm>
+              <CheckoutForm handleClose={handleClose} item={item}></CheckoutForm>
             </Elements>
           </div>
         </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            Save changes
-          </Button>
-        </DialogActions>
       </BootstrapDialog>
     </>
   );

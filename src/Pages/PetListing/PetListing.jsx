@@ -101,6 +101,7 @@ const PetListing = () => {
                 },
                 "& .MuiInputLabel-root": {
                   color: "#E16F52",
+                  marginLeft: '15px'
                 },
                 "& .MuiInputLabel-root.Mui-focused": {
                   color: "#E16F52",
