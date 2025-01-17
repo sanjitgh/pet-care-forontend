@@ -21,10 +21,9 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 // stripe code
-// TODO
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_KEY);
 
-const DonationDetailsCard = ({ item }) => {
+const DonationDetailsCard = ({ item, refetch }) => {
   const {
     petName,
     petImage,
@@ -33,6 +32,7 @@ const DonationDetailsCard = ({ item }) => {
     donatedAmount,
     donationLastDate,
     postedDate,
+    maxDonationAmount
   } = item;
   const [open, setOpen] = useState(false);
 
@@ -65,15 +65,19 @@ const DonationDetailsCard = ({ item }) => {
         </div>
         <div>
           <p>
-            <b> Total Donation:</b>
-            <span>$ {donatedAmount}</span>
+            <b> Total Donation: </b>
+            <span>${donatedAmount}</span>
           </p>
           <p>
-            <b> Posted Date:</b>
+            <b> Need Money: </b>
+            <span>${maxDonationAmount}</span>
+          </p>
+          <p>
+            <b> Posted Date: </b>
             <span>{format(new Date(postedDate), "P")}</span>
           </p>
           <p>
-            <b> Donation Last Date:</b>
+            <b> Donation Last Date: </b>
             <span>{format(new Date(donationLastDate), "P")}</span>
           </p>
         </div>
@@ -116,7 +120,7 @@ const DonationDetailsCard = ({ item }) => {
         <DialogContent dividers>
           <div>
             <Elements stripe={stripePromise}>
-              <CheckoutForm handleClose={handleClose} item={item}></CheckoutForm>
+              <CheckoutForm handleClose={handleClose} item={item} setOpen={setOpen} refetch={refetch}></CheckoutForm>
             </Elements>
           </div>
         </DialogContent>

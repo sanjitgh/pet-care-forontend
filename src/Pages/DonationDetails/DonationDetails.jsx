@@ -6,7 +6,7 @@ import DonationDetailsCard from "../../components/DonationDetailsCard/DonationDe
 const DonationDetails = () => {
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
-  const { data: donationItem = [] } = useQuery({
+  const { data: donationItem = [], refetch } = useQuery({
     queryKey: ["donationItem", id],
     queryFn: async () => {
       const { data } = await axiosSecure.get(`/donations/${id}`);
@@ -22,6 +22,7 @@ const DonationDetails = () => {
             <DonationDetailsCard
               key={item._id}
               item={item}
+              refetch={refetch}
             ></DonationDetailsCard>
           ))}
         </div>

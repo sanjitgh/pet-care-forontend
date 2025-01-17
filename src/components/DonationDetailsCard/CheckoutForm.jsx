@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../../hook/UseAxiosSecure";
 import useAuth from "../../hook/useAuth";
 import toast from "react-hot-toast";
+import { compareAsc, format } from "date-fns";
+import Swal from "sweetalert2";
 
-const CheckoutForm = ({ handleClose, item }) => {
+const CheckoutForm = ({ handleClose, item, setOpen, refetch }) => {
   const [error, setError] = useState("");
   const [clientSecret, setClientSecret] = useState("");
-  const [price, setPrice] = useState(0); // State for price
+  const [price, setPrice] = useState(0);
   const stripe = useStripe();
   const elements = useElements();
   const axiosSecure = useAxiosSecure();
@@ -20,12 +22,42 @@ const CheckoutForm = ({ handleClose, item }) => {
     longDescription,
     donatedAmount,
     donationLastDate,
+    maxDonationAmount,
     postedDate,
   } = item;
+  console.log(item);
+
+  const dateOne = format(new Date(), "P");
+  const dateTwo = format(new Date(donationLastDate), "P");
+  const result = compareAsc(new Date(dateOne), new Date(dateTwo));
+
+  const dbAmount = parseInt(maxDonationAmount);
+  const inputedAmount = parseInt(price);
+
+  if (dbAmount < inputedAmount ) {
+    Swal.fire({
+      position: "top-center",
+      icon: "error",
+      title: "Donation amount must be lowest!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    setOpen(false);
+  }
+
+  if (result === 1) {
+    setOpen(false);
+    return Swal.fire({
+      position: "top-center",
+      icon: "error",
+      title: "Donation date is over!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
 
   useEffect(() => {
     if (price > 0) {
-      // Call API only if price is valid
       axiosSecure
         .post("/create-payment-intent", { price })
         .then((res) => {
@@ -74,11 +106,33 @@ const CheckoutForm = ({ handleClose, item }) => {
     if (confirmError) {
       setError(confirmError.message);
     } else {
-      console.log("Payment Intent:", paymentIntent);
       setError("");
       toast.success("Donate Successfull!");
       // close the modal
       handleClose();
+
+      // update donation pirce
+      const itemPrice = {
+        donatedAmount: parseInt(donatedAmount) + parseInt(price),
+      };
+      axiosSecure
+        .patch(`/donationAmountUpdate/${_id}`, itemPrice)
+        .then((res) => {
+          if (res.data.modifiedCount > 0) {
+            refetch();
+          }
+        });
+
+      // create donation history in db
+      const donationInfo = {
+        petId: _id,
+        paymentUser: user.displayName,
+        donationAmount: price,
+      };
+
+      axiosSecure
+        .post("/donationsHistory", donationInfo)
+        .then((res) => console.log(res.data));
     }
   };
 
@@ -89,7 +143,7 @@ const CheckoutForm = ({ handleClose, item }) => {
         placeholder="Enter Your Amount"
         className="w-full mb-6 border p-2"
         value={price}
-        onChange={(e) => setPrice(Number(e.target.value))} // Bind price state
+        onChange={(e) => setPrice(Number(e.target.value))}
       />
       <CardElement
         options={{

@@ -37,9 +37,10 @@ const CreateDonation = () => {
       sortDescription: data.sortDescription,
       longDescription: data.longDescription,
       petImage: imageUrl,
-      donator: user?.displayName,
       petName: data.name,
       donatedAmount: "0",
+      donator: user?.displayName,
+      donationCreator: user?.email,
     };
 
     try {
