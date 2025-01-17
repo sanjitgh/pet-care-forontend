@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { IoMdAddCircle } from "react-icons/io";
+import { IoMdAddCircle, IoMdClose } from "react-icons/io";
 import { CiSignpostDuo1, CiSquareQuestion } from "react-icons/ci";
 import { TbBrandCampaignmonitor } from "react-icons/tb";
-import { MdCampaign } from "react-icons/md";
+import { MdCampaign, MdOutlinePets } from "react-icons/md";
 import { SiMyget } from "react-icons/si";
 import { IoReturnDownBack } from "react-icons/io5";
+import DashboardHeader from "../DashboardHeader/DashboardHeader";
+import { FaDonate } from "react-icons/fa";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 const Deashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -15,7 +18,7 @@ const Deashboard = () => {
   };
 
   const handleMenuItemClick = () => {
-    setIsSidebarOpen(false); // Close the sidebar
+    setIsSidebarOpen(false);
   };
 
   const links = (
@@ -98,20 +101,48 @@ const Deashboard = () => {
           My Donations
         </NavLink>
       </li>
-      <div className="w-full h-[2px] bg-blue-gray-100 my-10"></div>
-      <li className="mb-2 cursor-pointer" onClick={handleMenuItemClick}>
-        <NavLink
-          to={"/"}
-          className={({ isActive }) =>
-            isActive
-              ? "bg-[#ff260071] text-white flex gap-1 p-2 items-center"
-              : "flex gap-1 items-center p-2"
-          }
-        >
-          <IoReturnDownBack />
-          Back Home
-        </NavLink>
-      </li>
+      <div className="w-full h-[2px] bg-blue-gray-100 my-10 block md:hidden"></div>
+      <div className="block md:hidden">
+        <li className="mb-2 cursor-pointer" onClick={handleMenuItemClick}>
+          <NavLink
+            to={"/"}
+            className={({ isActive }) =>
+              isActive
+                ? "bg-[#ff260071] text-white flex gap-1 p-2 items-center"
+                : "flex gap-1 items-center p-2"
+            }
+          >
+            <IoReturnDownBack />
+            Back Home
+          </NavLink>
+        </li>
+        <li className="mb-2 cursor-pointer" onClick={handleMenuItemClick}>
+          <NavLink
+            to={"/pet-listing"}
+            className={({ isActive }) =>
+              isActive
+                ? "bg-[#ff260071] text-white flex gap-1 p-2 items-center"
+                : "flex gap-1 items-center p-2"
+            }
+          >
+            <MdOutlinePets />
+            Pet Listing
+          </NavLink>
+        </li>
+        <li className="mb-2 cursor-pointer" onClick={handleMenuItemClick}>
+          <NavLink
+            to={"/donation-campaign"}
+            className={({ isActive }) =>
+              isActive
+                ? "bg-[#ff260071] text-white flex gap-1 p-2 items-center"
+                : "flex gap-1 items-center p-2"
+            }
+          >
+            <FaDonate></FaDonate>
+            Donation Campaign
+          </NavLink>
+        </li>
+      </div>
     </>
   );
 
@@ -131,24 +162,22 @@ const Deashboard = () => {
           </h1>
           <ul>{links}</ul>
           {isSidebarOpen && (
-            <button
-              className="absolute top-4 right-4 text-gray-600"
+            <IoMdClose
               onClick={toggleSidebar}
-            >
-              Close
-            </button>
+              className="absolute top-4 right-4 text-xl text-gray-600"
+            />
           )}
         </aside>
 
         {/* Main content */}
         <main className="w-full lg:w-[80%] md:p-10 p-4">
           {/* Toggle Button */}
-          <button
-            className="md:block lg:hidden mb-4 px-4 py-2 bg-blue-500 text-white rounded"
-            onClick={toggleSidebar}
-          >
-            {isSidebarOpen ? "Close Menu" : "Open Menu"}
-          </button>
+          <div className="flex items-center justify-between mb-5 md:hidden">
+            <h1 className="font-bold text-xl text-[#E16F52]">Dashboard</h1>
+            <RxHamburgerMenu onClick={toggleSidebar} className="text-xl " />
+          </div>
+
+          <DashboardHeader></DashboardHeader>
           <Outlet></Outlet>
         </main>
       </div>
