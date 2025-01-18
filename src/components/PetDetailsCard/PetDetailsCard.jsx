@@ -74,6 +74,7 @@ const PetDetailsCard = ({ item }) => {
       userEmail: data?.userEmail,
       userPhone: data?.userPhone,
       userAddress: data?.userAddress,
+      status: 'Panding'
     };
 
     try {

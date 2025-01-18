@@ -99,7 +99,8 @@ const Header = () => {
             <Link to={"/"} className="flex items-center gap-1 md:mr-5">
               <GiJumpingDog className="text-5xl" />
               <span className="text-2xl md:text-4xl tracking-normal font-extrabold">
-                Pet<span className="text-[#ffffff86] italic text-2xl">care</span>
+                Pet
+                <span className="text-[#ffffff86] italic text-2xl">care</span>
               </span>
             </Link>
           </Typography>
@@ -133,7 +134,7 @@ const Header = () => {
             >
               {links}
             </Menu>
-          </Box>{" "}
+          </Box>
           <Typography
             variant="h5"
             noWrap
@@ -202,9 +203,6 @@ const Header = () => {
                   <ul className="text-center text-white flex flex-col gap-3">
                     <li>
                       <Link to="/dashboard">Dashboard</Link>
-                    </li>
-                    <li>
-                      <Link to="">Profile</Link>
                     </li>
                     <li>
                       <button onClick={logOut} className="cursor-pointer">

@@ -5,6 +5,7 @@ import useAuth from "../../hook/useAuth";
 import toast from "react-hot-toast";
 import { compareAsc, format } from "date-fns";
 import Swal from "sweetalert2";
+import { LuFan } from "react-icons/lu";
 
 const CheckoutForm = ({ handleClose, item, setOpen, refetch }) => {
   const [error, setError] = useState("");
@@ -14,8 +15,17 @@ const CheckoutForm = ({ handleClose, item, setOpen, refetch }) => {
   const elements = useElements();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
+  const [loading, setLoading] = useState(false);
 
-  const { _id, donatedAmount, donationLastDate, maxDonationAmount } = item;
+  const {
+    _id,
+    petName,
+    petImage,
+    donatedAmount,
+    donationLastDate,
+    maxDonationAmount,
+    donationCreator,
+  } = item;
 
   const dateOne = format(new Date(), "P");
   const dateTwo = format(new Date(donationLastDate), "P");
@@ -72,7 +82,7 @@ const CheckoutForm = ({ handleClose, item, setOpen, refetch }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setLoading(true);
     if (!stripe || !elements) {
       return;
     }
@@ -126,14 +136,19 @@ const CheckoutForm = ({ handleClose, item, setOpen, refetch }) => {
 
       // create donation history in db
       const donationInfo = {
-        petId: _id,
+        petName: petName,
+        petImage,
+        donationCreator,
         paymentUser: user.displayName,
+        paymentUserEmail: user.email,
         donationAmount: price,
       };
 
-      axiosSecure
-        .post("/donationsHistory", donationInfo)
-        .then((res) => console.log(res.data));
+      axiosSecure.post("/donationsHistory", donationInfo).then((res) => {
+        if (res.data.insertedId) {
+          setLoading(false);
+        }
+      });
     }
   };
 
@@ -165,10 +180,11 @@ const CheckoutForm = ({ handleClose, item, setOpen, refetch }) => {
       <button
         type="submit"
         disabled={!stripe || !clientSecret || price <= 0}
-        className="px-6 py-2 border bg-[#E16F52] text-white mt-5"
+        className="px-6 py-2 border bg-[#E16F52] text-white mt-5 flex items-center gap-1"
       >
-        Pay ${price || 0}
+        Pay ${price || 0} {loading && <LuFan className="animate-spin" />}
       </button>
+
       <p className="text-red-500 text-center mt-3">{error}</p>
     </form>
   );

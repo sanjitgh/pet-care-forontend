@@ -36,7 +36,7 @@ const PetListing = () => {
     queryKey: ["pets", filter, search],
     queryFn: async () => {
       const { data } = await axiosPublic.get(
-        `/pets?filter=${filter}&search=${search}`
+        `/pets?adopted=false&filter=${filter}&search=${search}`
       );
       return data;
     },

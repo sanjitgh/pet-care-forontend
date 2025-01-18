@@ -1,68 +1,67 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
-import useAxiosSecure from "../../hook/UseAxiosSecure";
-import useAuth from "../../hook/useAuth";
+import useAxiosSecure from "../../../hook/UseAxiosSecure";
 import { useNavigate, useParams } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import DatePicker from "react-datepicker";
 import { useQuery } from "@tanstack/react-query";
-import { LuFan } from "react-icons/lu";
-import { uploadImage } from "../../api/utils";
+import { useForm } from "react-hook-form";
+import { uploadImage } from "../../../api/utils";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
+import DatePicker from "react-datepicker";
+import { LuFan } from "react-icons/lu";
 
-const MyDonationUpdate = () => {
-  const [loading, setLoading] = useState(false);
-  const axiosSecure = useAxiosSecure();
-  const { user } = useAuth();
-  const navigate = useNavigate();
-  const [startDate, setStartDate] = useState(new Date());
-  const { id } = useParams();
 
-  const { data: myData = {} } = useQuery({
-    queryKey: ["defaultData"],
-    queryFn: async () => {
-      const { data } = await axiosSecure.get(`/donations/${id}`);
-      return data;
-    },
-  });
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
-
-  const onSubmit = async (data) => {
-    setLoading(true);
-    const image = data.petImage[0];
-    const imageUrl = await uploadImage(image);
-
-    const donationData = {
-      donationLastDate: startDate,
-      petName: data.name,
-      maxDonationAmount: data.maxDonationAmount,
-      sortDescription: data.sortDescription,
-      longDescription: data.longDescription,
-      petImage: imageUrl,
-    };
-
-    // update donation data in db
-    axiosSecure.patch(`/donationsCampaign/${id}`, donationData).then((res) => {
-      if (res.data.modifiedCount > 0) {
-        setLoading(false);
-        reset();
-        navigate('/dashboard/my-donation-campaign')
-        Swal.fire({
-            position: "top-center",
-            icon: "success",
-            title: "Update Successfull!",
-            showConfirmButton: false,
-            timer: 1500
-          });
-      }
+const DonationUpdate = () => {
+    const [loading, setLoading] = useState(false);
+    const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate();
+    const [startDate, setStartDate] = useState(new Date());
+    const { id } = useParams();
+  
+    const { data: myData = {} } = useQuery({
+      queryKey: ["defaultData"],
+      queryFn: async () => {
+        const { data } = await axiosSecure.get(`/donations/${id}`);
+        return data;
+      },
     });
-  };
+  
+    const {
+      register,
+      handleSubmit,
+      reset,
+      formState: { errors },
+    } = useForm();
+  
+    const onSubmit = async (data) => {
+      setLoading(true);
+      const image = data.petImage[0];
+      const imageUrl = await uploadImage(image);
+  
+      const donationData = {
+        donationLastDate: startDate,
+        petName: data.name,
+        maxDonationAmount: data.maxDonationAmount,
+        sortDescription: data.sortDescription,
+        longDescription: data.longDescription,
+        petImage: imageUrl,
+      };
+  
+      // update donation data in db
+      axiosSecure.patch(`/donationsCampaign/${id}`, donationData).then((res) => {
+        if (res.data.modifiedCount > 0) {
+          setLoading(false);
+          reset();
+          navigate('/dashboard/all-donations')
+          Swal.fire({
+              position: "top-center",
+              icon: "success",
+              title: "Update Successfull!",
+              showConfirmButton: false,
+              timer: 1500
+            });
+        }
+      });
+    };
   return (
     <>
       <Helmet>
@@ -71,7 +70,7 @@ const MyDonationUpdate = () => {
       <div>
         <div className="border max-w-3xl mx-auto p-10 bg-gray-50">
           <h1 className="md:text-5xl text-2xl text-center mb-14">
-            Update a Donation
+            Add a Donation
           </h1>
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -160,4 +159,4 @@ const MyDonationUpdate = () => {
   );
 };
 
-export default MyDonationUpdate;
+export default DonationUpdate;

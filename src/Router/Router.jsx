@@ -20,6 +20,9 @@ import AdoptionRequest from "../Pages/Deashboard/AdoptionRequest/AdoptionRequest
 import DashboardUser from "../Pages/Deashboard/DashboardUsers/DashboardUser";
 import AdminRoute from "../Pages/AdminRoute/AdminRoute";
 import AllPets from "../Pages/Deashboard/AllPets/AllPets";
+import AllDonations from "../Pages/Deashboard/AllDonations/AllDonations";
+import DonationUpdate from "../Pages/Deashboard/DonationUpdate/DonationUpdate";
+import MyDonation from "../Pages/Deashboard/MyDonation/MyDonation";
 
 const router = createBrowserRouter([
   {
@@ -124,6 +127,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/dashboard/my-donations",
+        element: (
+          <PrivetRoute>
+            <MyDonation></MyDonation>
+          </PrivetRoute>
+        ),
+      },
+      {
         path: "/dashboard/my-donation-campaign/:id",
         element: (
           <PrivetRoute>
@@ -148,6 +159,26 @@ const router = createBrowserRouter([
           <PrivetRoute>
             <AdminRoute>
               <AllPets></AllPets>
+            </AdminRoute>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/dashboard/all-donations",
+        element: (
+          <PrivetRoute>
+            <AdminRoute>
+              <AllDonations></AllDonations>
+            </AdminRoute>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/dashboard/all-donations/:id",
+        element: (
+          <PrivetRoute>
+            <AdminRoute>
+              <DonationUpdate></DonationUpdate>
             </AdminRoute>
           </PrivetRoute>
         ),

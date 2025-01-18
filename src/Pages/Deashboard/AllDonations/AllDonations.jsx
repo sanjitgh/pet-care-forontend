@@ -9,15 +9,14 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Helmet } from "react-helmet-async";
-import MyDonationCampaignTable from "./MyDonationCampaignTable";
+import AllDonationCard from "../../../components/AllDonationCard/AllDonationCard";
 
-const MyDonationCampaign = () => {
+const AllDonations = () => {
   const axiosSecure = useAxiosSecure();
-  const { user } = useAuth();
-  const { data: myDonations = [], refetch } = useQuery({
-    queryKey: ["myDonations", user?.email],
+  const { data: allDonations = [], refetch } = useQuery({
+    queryKey: ["allDonations"],
     queryFn: async () => {
-      const { data } = await axiosSecure(`/my-donation/${user?.email}`);
+      const { data } = await axiosSecure.get('/donations');
       return data;
     },
   });
@@ -25,12 +24,10 @@ const MyDonationCampaign = () => {
   return (
     <>
       <Helmet>
-        <title>My Donation - PetCare</title>
+        <title>All Donation - PetCare</title>
       </Helmet>
-      <h1 className="text-center mb-5 text-2xl md:text-5xl ">
-        My Donation Campaign
-      </h1>
-      <TableContainer sx={{ maxHeight: "500px" }} component={Paper}>
+      <h1 className="text-center text-2xl md:text-5xl mb-5">All Donation</h1>
+      <TableContainer sx={{ maxHeight: "500px", maxHeight: "600px" }} component={Paper} >
         <Table>
           <TableHead sx={{ backgroundColor: "#F69585" }}>
             <TableRow>
@@ -41,26 +38,23 @@ const MyDonationCampaign = () => {
                 <span className="text-white">Maximum donation amount</span>
               </TableCell>
               <TableCell align="center">
-                <span className="text-white">Donation progress bar</span>
-              </TableCell>
-              <TableCell align="center">
                 <span className="text-white">Edit</span>
-              </TableCell>
-              <TableCell align="center">
-                <span className="text-white">Donators</span>
               </TableCell>
               <TableCell align="center">
                 <span className="text-white">Action</span>
               </TableCell>
+              <TableCell align="center">
+                <span className="text-white">Delete</span>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {myDonations.map((item) => (
-              <MyDonationCampaignTable
+            {allDonations.map((item) => (
+              <AllDonationCard
                 key={item._id}
                 item={item}
                 refetch={refetch}
-              ></MyDonationCampaignTable>
+              ></AllDonationCard>
             ))}
           </TableBody>
         </Table>
@@ -69,4 +63,4 @@ const MyDonationCampaign = () => {
   );
 };
 
-export default MyDonationCampaign;
+export default AllDonations;

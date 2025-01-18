@@ -52,6 +52,19 @@ const Deashboard = () => {
               All Pets
             </NavLink>
           </li>
+          <li className="mb-2 cursor-pointer" onClick={handleMenuItemClick}>
+            <NavLink
+              to={"/dashboard/all-donations"}
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-[#ff260071] text-white  flex gap-1 p-2 items-center"
+                  : "flex gap-1 items-center p-2"
+              }
+            >
+              <FaDonate></FaDonate>
+              All Donation
+            </NavLink>
+          </li>
         </>
       )}
       <li className="mb-2 cursor-pointer" onClick={handleMenuItemClick}>

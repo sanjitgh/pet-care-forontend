@@ -50,7 +50,7 @@ const AllPets = () => {
                   <span className="text-white">Adoption Status</span>
                 </TableCell>
                 <TableCell align="center">
-                  <span className="text-white">Remove</span>
+                  <span className="text-white">Delete</span>
                 </TableCell>
                 <TableCell align="center">
                   <span className="text-white">Action</span>
