@@ -9,10 +9,11 @@ import { IoReturnDownBack } from "react-icons/io5";
 import DashboardHeader from "../DashboardHeader/DashboardHeader";
 import { FaDonate, FaUsers } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
+import useRole from "../../../hook/useRole";
 
 const Deashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+  const [role, isLoading] = useRole();
   const toggleSidebar = () => {
     setIsSidebarOpen((prev) => !prev);
   };
@@ -23,19 +24,21 @@ const Deashboard = () => {
 
   const links = (
     <>
-      <li className="mb-2 cursor-pointer" onClick={handleMenuItemClick}>
-        <NavLink
-          to={"/dashboard/users"}
-          className={({ isActive }) =>
-            isActive
-              ? "bg-[#ff260071] text-white  flex gap-1 p-2 items-center"
-              : "flex gap-1 items-center p-2"
-          }
-        >
-          <FaUsers></FaUsers>
-          Users
-        </NavLink>
-      </li>
+      {role === "admin" && (
+        <li className="mb-2 cursor-pointer" onClick={handleMenuItemClick}>
+          <NavLink
+            to={"/dashboard/users"}
+            className={({ isActive }) =>
+              isActive
+                ? "bg-[#ff260071] text-white  flex gap-1 p-2 items-center"
+                : "flex gap-1 items-center p-2"
+            }
+          >
+            <FaUsers></FaUsers>
+            Users
+          </NavLink>
+        </li>
+      )}
       <li className="mb-2 cursor-pointer" onClick={handleMenuItemClick}>
         <NavLink
           to={"/dashboard/add-pet"}
