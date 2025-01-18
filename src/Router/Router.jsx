@@ -19,6 +19,7 @@ import MyDonationUpdate from "../components/MyDonationUpdate/MyDonationUpdate";
 import AdoptionRequest from "../Pages/Deashboard/AdoptionRequest/AdoptionRequest";
 import DashboardUser from "../Pages/Deashboard/DashboardUsers/DashboardUser";
 import AdminRoute from "../Pages/AdminRoute/AdminRoute";
+import AllPets from "../Pages/Deashboard/AllPets/AllPets";
 
 const router = createBrowserRouter([
   {
@@ -137,6 +138,16 @@ const router = createBrowserRouter([
           <PrivetRoute>
             <AdminRoute>
               <DashboardUser></DashboardUser>
+            </AdminRoute>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/dashboard/all-pets",
+        element: (
+          <PrivetRoute>
+            <AdminRoute>
+              <AllPets></AllPets>
             </AdminRoute>
           </PrivetRoute>
         ),
