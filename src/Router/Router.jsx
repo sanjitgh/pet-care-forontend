@@ -16,6 +16,8 @@ import CreateDonation from "../Pages/Deashboard/CreateDonation/CreateDonation";
 import MyDonationCampaign from "../Pages/Deashboard/MyDonationCampaign/MyDonationCampaign";
 import DonationDetails from "../Pages/DonationDetails/DonationDetails";
 import MyDonationUpdate from "../components/MyDonationUpdate/MyDonationUpdate";
+import AdoptionRequest from "../Pages/Deashboard/AdoptionRequest/AdoptionRequest";
+import DashboardUser from "../Pages/Deashboard/DashboardUsers/DashboardUser";
 
 const router = createBrowserRouter([
   {
@@ -80,6 +82,14 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/dashboard/users",
+        element: (
+          <PrivetRoute>
+            <DashboardUser></DashboardUser>
+          </PrivetRoute>
+        ),
+      },
+      {
         path: "/dashboard/add-pet",
         element: (
           <PrivetRoute>
@@ -92,6 +102,14 @@ const router = createBrowserRouter([
         element: (
           <PrivetRoute>
             <MyAddedPet></MyAddedPet>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/dashboard/adoption-request",
+        element: (
+          <PrivetRoute>
+            <AdoptionRequest></AdoptionRequest>
           </PrivetRoute>
         ),
       },

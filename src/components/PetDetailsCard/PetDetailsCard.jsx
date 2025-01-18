@@ -37,6 +37,7 @@ const PetDetailsCard = ({ item }) => {
 
   const {
     name,
+    email,
     image,
     age,
     category,
@@ -66,6 +67,7 @@ const PetDetailsCard = ({ item }) => {
   const onSubmit = async (data) => {
     const adoptData = {
       petId: _id,
+      hostEmail: email,
       petName: name,
       petImage: image,
       userName: data?.userName,
@@ -77,7 +79,6 @@ const PetDetailsCard = ({ item }) => {
     try {
       // submit data in db
       const { data } = await axiosSecure.post("/adoptionRequest", adoptData);
-      console.log(data);
       if (data.insertedId) {
         Swal.fire({
           position: "top-center",

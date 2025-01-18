@@ -7,7 +7,7 @@ import { MdCampaign, MdOutlinePets } from "react-icons/md";
 import { SiMyget } from "react-icons/si";
 import { IoReturnDownBack } from "react-icons/io5";
 import DashboardHeader from "../DashboardHeader/DashboardHeader";
-import { FaDonate } from "react-icons/fa";
+import { FaDonate, FaUsers } from "react-icons/fa";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 const Deashboard = () => {
@@ -23,6 +23,19 @@ const Deashboard = () => {
 
   const links = (
     <>
+      <li className="mb-2 cursor-pointer" onClick={handleMenuItemClick}>
+        <NavLink
+          to={"/dashboard/users"}
+          className={({ isActive }) =>
+            isActive
+              ? "bg-[#ff260071] text-white  flex gap-1 p-2 items-center"
+              : "flex gap-1 items-center p-2"
+          }
+        >
+          <FaUsers></FaUsers>
+          Users
+        </NavLink>
+      </li>
       <li className="mb-2 cursor-pointer" onClick={handleMenuItemClick}>
         <NavLink
           to={"/dashboard/add-pet"}
@@ -101,6 +114,9 @@ const Deashboard = () => {
           My Donations
         </NavLink>
       </li>
+
+      {/* home menu for sm device and hidden for large device */}
+
       <div className="w-full h-[2px] bg-blue-gray-100 my-10 block md:hidden"></div>
       <div className="block md:hidden">
         <li className="mb-2 cursor-pointer" onClick={handleMenuItemClick}>
