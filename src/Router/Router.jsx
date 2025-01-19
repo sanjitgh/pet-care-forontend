@@ -23,6 +23,7 @@ import AllPets from "../Pages/Deashboard/AllPets/AllPets";
 import AllDonations from "../Pages/Deashboard/AllDonations/AllDonations";
 import DonationUpdate from "../Pages/Deashboard/DonationUpdate/DonationUpdate";
 import MyDonation from "../Pages/Deashboard/MyDonation/MyDonation";
+import RecommendDonation from "../Pages/RecommendDonation/RecommendDonation";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/pet-listing",
         element: <PetListing></PetListing>,
+      },
+      {
+        path: "/recommend",
+        element: <RecommendDonation></RecommendDonation>
       },
       {
         path: "/pet-listing/:id",

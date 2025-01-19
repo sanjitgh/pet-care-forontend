@@ -3,13 +3,13 @@ import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../hook/useAxiosPublic";
 import { LuFan } from "react-icons/lu";
-import { FaGithub } from "react-icons/fa6";
+import { FaGithub, FaYahoo } from "react-icons/fa6";
 import useAuth from "../hook/useAuth";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 
 const Login = () => {
-  const { handelLogin, handelGoogleLogin, handelGithubLogin } = useAuth();
+  const { handelLogin, handelGoogleLogin, handelYahooLogin } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
@@ -55,14 +55,16 @@ const Login = () => {
     });
   };
 
-  //  github login
-  const handelLoginWithGithub = () => {
-    handelGithubLogin().then(async (res) => {
+  //  yahoo login
+  const handelLoginWithYahoo = () => {
+    console.log("click");
+    handelYahooLogin()
+    .then(async (res) => {
       // save user info to the database
       const newUser = {
         name: res.user.displayName,
         image: res.user.photoURL,
-        email: res.user.email,
+        email: res.user.providerData[0].email,
       };
 
       await axiosPublic.post("/users", {
@@ -101,11 +103,11 @@ const Login = () => {
             </div>
             <div className="mb-8">
               <Link
-                onClick={handelLoginWithGithub}
+                onClick={handelLoginWithYahoo}
                 className="text-base flex items-center gap-3 w-full text-center border justify-center p-3 rounded-xl text-white"
               >
-                <FaGithub className="h-6 w-6"></FaGithub>
-                Continue With Github
+                <FaYahoo className="h-6 w-6"></FaYahoo>
+                Continue With Yahoo
               </Link>
             </div>
             <p className="text-center text-white mb-8">

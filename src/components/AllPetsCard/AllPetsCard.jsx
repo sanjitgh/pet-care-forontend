@@ -55,6 +55,8 @@ const AllPetsCard = ({ item, refetch }) => {
             if (res.data.modifiedCount > 0) {
               Swal.fire({
                 title: "Updated!",
+                showConfirmButton: false,
+                timer: 1500,
                 text: `The pet has been marked as ${
                   newStatus === "true" ? "Adopted" : "Unadopted"
                 }.`,

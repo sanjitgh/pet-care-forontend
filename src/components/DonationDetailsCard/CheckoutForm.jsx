@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { compareAsc, format } from "date-fns";
 import Swal from "sweetalert2";
 import { LuFan } from "react-icons/lu";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ handleClose, item, setOpen, refetch }) => {
   const [error, setError] = useState("");
@@ -16,6 +17,7 @@ const CheckoutForm = ({ handleClose, item, setOpen, refetch }) => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const {
     _id,
@@ -147,6 +149,7 @@ const CheckoutForm = ({ handleClose, item, setOpen, refetch }) => {
       axiosSecure.post("/donationsHistory", donationInfo).then((res) => {
         if (res.data.insertedId) {
           setLoading(false);
+          navigate("/recommend");
         }
       });
     }

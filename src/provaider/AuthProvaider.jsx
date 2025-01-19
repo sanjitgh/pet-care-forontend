@@ -1,11 +1,12 @@
 import {
   createUserWithEmailAndPassword,
-  GithubAuthProvider,
   GoogleAuthProvider,
+  OAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+
   updateProfile,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
@@ -19,7 +20,8 @@ const AuthProvaider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const axiosPublic = useAxiosPublic();
   const googleProvaider = new GoogleAuthProvider();
-  const githubProvaider = new GithubAuthProvider();
+  const yahooprovider = new OAuthProvider('yahoo.com');
+
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -36,9 +38,9 @@ const AuthProvaider = ({ children }) => {
     return signInWithPopup(auth, googleProvaider);
   };
 
-  const handelGithubLogin = () => {
+  const handelYahooLogin = () => {
     setLoading(true);
-    return signInWithPopup(auth, githubProvaider);
+    return signInWithPopup(auth, yahooprovider);
   };
 
   const manageProfile = (name, image) => {
@@ -57,7 +59,8 @@ const AuthProvaider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-      if (currentUser?.email) {
+      console.log(currentUser);
+      if (currentUser?.email || currentUser.providerData[0].email) {
         // generate token
         const user = { email: currentUser.email };
         await axiosPublic.post("/jwt", user, {
@@ -89,7 +92,7 @@ const AuthProvaider = ({ children }) => {
     handelLogin,
     manageProfile,
     handelGoogleLogin,
-    handelGithubLogin,
+    handelYahooLogin,
     handelLogout,
     user,
     setUser,

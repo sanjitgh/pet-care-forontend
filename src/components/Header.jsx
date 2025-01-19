@@ -15,6 +15,8 @@ import useAuth from "../hook/useAuth";
 
 const Header = () => {
   const { user, handelLogout } = useAuth();
+console.log(user);
+  console.log(user);
   const links = (
     <>
       <div className="flex gap-5">
