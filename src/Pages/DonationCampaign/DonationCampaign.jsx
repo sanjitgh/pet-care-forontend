@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import useAxiosPublic from "../../hook/useAxiosPublic";
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -9,21 +9,38 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
+import { useInView } from "react-intersection-observer";
+import { useEffect } from "react";
 
 const DonationCampaign = () => {
   const axiosPublic = useAxiosPublic();
+  const { ref, inView } = useInView();
 
-  const { data: donations = [] } = useQuery({
-    queryKey: ["donations"],
-    queryFn: async () => {
-      const { data } = await axiosPublic.get("/donations");
-      return data;
-    },
-  });
-  //   sort data in descending order
-  const sortData = [...donations].sort(
-    (a, b) => new Date(b.postedDate) - new Date(a.postedDate)
-  );
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useInfiniteQuery({
+      queryKey: ["donations"],
+      queryFn: async ({ pageParam = 1 }) => {
+        const { data } = await axiosPublic.get(
+          `/donations?page=${pageParam}&limit=6`
+        );
+        return data;
+      },
+      getNextPageParam: (lastPage) => {
+        if (lastPage.currentPage < lastPage.totalPages) {
+          return lastPage.currentPage + 1;
+        }
+        return undefined;
+      },
+    });
+
+  const donations = data?.pages.flatMap((page) => page.data) || [];
+
+  useEffect(() => {
+    if (inView && hasNextPage) {
+      fetchNextPage();
+    }
+  }, [inView, hasNextPage, fetchNextPage]);
+
   return (
     <>
       <Helmet>
@@ -37,7 +54,8 @@ const DonationCampaign = () => {
         </div>
         <div className="container mx-auto px-2">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-            {sortData.map((item) => (
+
+            {donations.map((item) => (
               <Card key={item._id}>
                 <CardMedia sx={{ height: 250 }} image={item.petImage} />
                 <CardContent>
@@ -62,12 +80,15 @@ const DonationCampaign = () => {
                 <CardActions>
                   <Link to={`/donation-campaign/${item._id}`}>
                     <Button size="small" sx={{ color: "#E16F52" }}>
-                      View Details <FaArrowRight></FaArrowRight>
+                      View Details <FaArrowRight />
                     </Button>
                   </Link>
                 </CardActions>
               </Card>
             ))}
+          </div>
+          <div ref={ref} className="mt-4 text-center">
+            {isFetchingNextPage && <p>Loading more...</p>}
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../hook/useAxiosPublic";
 import { LuFan } from "react-icons/lu";
-import { FaGithub, FaYahoo } from "react-icons/fa6";
+import {  FaYahoo } from "react-icons/fa6";
 import useAuth from "../hook/useAuth";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";

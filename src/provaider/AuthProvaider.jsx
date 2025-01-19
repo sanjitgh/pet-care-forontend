@@ -59,7 +59,6 @@ const AuthProvaider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-      console.log(currentUser);
       if (currentUser?.email || currentUser.providerData[0].email) {
         // generate token
         const user = { email: currentUser.email };
