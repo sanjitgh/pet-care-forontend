@@ -6,9 +6,24 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
+import useAuth from "../../../hook/useAuth";
+import useAxiosSecure from "../../../hook/UseAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import AdoptionRequestCard from "../../../components/AdoptionRequestCard/AdoptionRequestCard";
 
 const AdoptionRequest = () => {
+  const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
+
+  // get adoption request
+  const { data: adopReq = [], refetch } = useQuery({
+    queryKey: ["adopReq", user?.email],
+    queryFn: async () => {
+      const { data } = await axiosSecure.get(`adoptionRequest/${user.email}`);
+      return data;
+    },
+  });
+
   return (
     <>
       <Helmet>
@@ -21,23 +36,23 @@ const AdoptionRequest = () => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="center">Name</TableCell>
+              <TableCell align="center">Pet Name</TableCell>
+              <TableCell align="center">Requester Name</TableCell>
               <TableCell align="center">Email</TableCell>
               <TableCell align="center">Phone</TableCell>
               <TableCell align="center">Location</TableCell>
+              <TableCell align="center">Status</TableCell>
               <TableCell align="center">Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell align="center">a</TableCell>
-              <TableCell align="center">a</TableCell>
-              <TableCell align="center">a</TableCell>
-              <TableCell align="center">a</TableCell>
-              <TableCell align="center">a</TableCell>
-            </TableRow>
+            {adopReq.map((item) => (
+              <AdoptionRequestCard
+                key={item._id}
+                item={item}
+                refetch={refetch}
+              ></AdoptionRequestCard>
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
