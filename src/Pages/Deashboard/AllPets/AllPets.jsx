@@ -13,9 +13,9 @@ import AllPetsCard from "../../../components/AllPetsCard/AllPetsCard";
 const AllPets = () => {
   const axiosSecure = useAxiosSecure();
   const { data: allPets = [], refetch } = useQuery({
-    queryKey: ["allPets"],
+    queryKey: ["all-pet"],
     queryFn: async () => {
-      const { data } = await axiosSecure.get("/pets");
+      const { data } = await axiosSecure.get("/all-pet");
       return data;
     },
   });

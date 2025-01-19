@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hook/useAxiosPublic";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -15,6 +15,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useState, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 
 const PetListing = () => {
   const axiosPublic = useAxiosPublic();
@@ -25,27 +26,41 @@ const PetListing = () => {
   const [filter, setFilter] = useState(initialFilter);
   const [search, setSearch] = useState("");
 
-  // Update query parameter if category changes
+
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     setFilter(queryParams.get("filter") || "");
   }, [location.search]);
 
-  // Get data based on filter and search
-  const { data: pets = [] } = useQuery({
-    queryKey: ["pets", filter, search],
-    queryFn: async () => {
-      const { data } = await axiosPublic.get(
-        `/pets?adopted=false&filter=${filter}&search=${search}`
-      );
-      return data;
-    },
-  });
+  const { ref, inView } = useInView();
 
-  // Sort data in descending order
-  const sortData = [...pets].sort(
-    (a, b) => new Date(b.date) - new Date(a.date)
-  );
+
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useInfiniteQuery({
+      queryKey: ["pets", filter, search],
+      queryFn: async ({ pageParam = 1 }) => {
+        const { data } = await axiosPublic.get(
+          `/pets?adopted=false&filter=${filter}&search=${search}&page=${pageParam}&limit=6`
+        );
+        return data;
+      },
+      getNextPageParam: (lastPage) => {
+
+        if (lastPage.currentPage < lastPage.totalPages) {
+          return lastPage.currentPage + 1; 
+        }
+        return undefined; // No more pages
+      },
+    });
+  const pets = data?.pages.flatMap((page) => page.data) || [];
+
+
+  useEffect(() => {
+    if (inView && hasNextPage) {
+      fetchNextPage();
+    }
+  }, [inView, hasNextPage, fetchNextPage]);
+
 
   return (
     <>
@@ -121,7 +136,7 @@ const PetListing = () => {
           </div>
           {/* Main Content */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-            {sortData.map((item) => (
+            {pets.map((item) => (
               <Card key={item._id}>
                 <CardMedia sx={{ minHeight: 250 }} image={item.image} />
                 <CardContent>
@@ -150,6 +165,9 @@ const PetListing = () => {
                 </CardActions>
               </Card>
             ))}
+          </div>
+          <div ref={ref} className="mt-4 text-center">
+            {isFetchingNextPage && <p>Loading more...</p>}
           </div>
         </div>
       </section>
