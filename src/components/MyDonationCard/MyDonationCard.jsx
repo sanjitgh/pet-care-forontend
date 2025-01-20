@@ -38,7 +38,7 @@ const MyDonationCard = ({ item, refetch }) => {
       <TableCell className="dark:text-white" align="center">{petName}</TableCell>
       <TableCell className="dark:text-white" align="center">${donationAmount}</TableCell>
       <TableCell className="dark:text-white" align="center">
-        <Button onClick={() => handleRemove(_id)} className="bg-[#F69585] dark:bg-gray-400">
+        <Button onClick={() => handleRemove(_id)} className="bg-[#F69585] p-2">
           Remove
         </Button>
       </TableCell>

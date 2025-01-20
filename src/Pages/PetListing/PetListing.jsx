@@ -160,7 +160,7 @@ const PetListing = () => {
                     variant="p"
                     component="div"
                   >
-                    <span className="font-semibold">Location:</span>{" "}
+                    <span className="font-semibold">Location:</span>
                     {item.location}
                   </Typography>
                 </CardContent>

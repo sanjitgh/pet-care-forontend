@@ -3,17 +3,26 @@
 body {
   font-family: "Roboto", serif;
 }
+
 .swiper-button-next,
 .swiper-button-prev {
   color: #e16f52 !important;
 }
 
-.dark_bg{
-  background-color: aqua
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.dark_header{
+::-webkit-scrollbar-track {
+  background: #181A20;
+}
 
+::-webkit-scrollbar-thumb {
+  background: #E16F52;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e17a60;
 }
 
 @tailwind base;

@@ -90,7 +90,7 @@ const AllDonationCard = ({ item, refetch }) => {
       <TableCell align="center">
         <Button
           onClick={() => handleStatus(_id)}
-          className={pause ? "bg-green-500" : "bg-[#F69585] dark:bg-gray-400"}
+          className={pause ? "bg-green-500" : "bg-[#F69585]"}
         >
           {pause ? "Resume" : "Pause"}
         </Button>

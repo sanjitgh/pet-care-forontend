@@ -27,7 +27,7 @@ const AllDonations = () => {
         <title>All Donation - PetCare</title>
       </Helmet>
       <h1 className="text-center text-2xl md:text-5xl mb-5 dark:text-white">All Donation</h1>
-      <TableContainer sx={{ maxHeight: "500px", maxHeight: "600px" }} component={Paper} >
+      <TableContainer sx={{ maxHeight: "600px" }} component={Paper} >
         <Table className="dark:bg-[#17191E]">
           <TableHead className="bg-[#F69585] dark:bg-[#17191E]">
             <TableRow>

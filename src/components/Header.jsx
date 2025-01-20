@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -17,44 +17,43 @@ import { ThemeContext } from "../ThemeProvaider/ThemeProvaider";
 const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { user, handelLogout } = useAuth();
+  const navigate = useNavigate();
   const links = (
     <>
-      <div className="flex gap-5 items-center">
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "border-b-white border-b dark:text-blue-gray-400" : "dark:text-white"
+        }
+        to={"/"}
+      >
+        Home
+      </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "border-b-white border-b dark:text-blue-gray-400" : "dark:text-white"
+        }
+        to={"/pet-listing"}
+      >
+        Pet Listing
+      </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "border-b-white border-b dark:text-blue-gray-400" : "dark:text-white"
+        }
+        to={"/donation-campaign"}
+      >
+        Donation Campaigns
+      </NavLink>
+      {!user && (
         <NavLink
           className={({ isActive }) =>
-            isActive ? "border-b-white border-b" : ""
+            isActive ? "border-b-white border-b dark:text-blue-gray-400" : "dark:text-white"
           }
-          to={"/"}
+          to={"/login"}
         >
-          Home
+          Login
         </NavLink>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? "border-b-white border-b" : ""
-          }
-          to={"/pet-listing"}
-        >
-          Pet Listing
-        </NavLink>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? "border-b-white border-b" : ""
-          }
-          to={"/donation-campaign"}
-        >
-          Donation Campaigns
-        </NavLink>
-        {!user && (
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "border-b-white border-b" : ""
-            }
-            to={"/login"}
-          >
-            Login
-          </NavLink>
-        )}
-      </div>
+      )}
     </>
   );
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -75,6 +74,7 @@ const Header = () => {
   const logOut = () => {
     handelLogout();
     setAnchorElUser(null);
+    navigate("/");
   };
 
   return (
@@ -107,7 +107,12 @@ const Header = () => {
             </Link>
           </Typography>
           {/* mobile  */}
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -119,6 +124,13 @@ const Header = () => {
               <MenuIcon />
             </IconButton>
             <Menu
+              PaperProps={{
+                sx: {
+                  width: "200px",
+                  backgroundColor: theme === "dark" ? "#252932" : "#e16f52",
+                  marginTop: "15px",
+                },
+              }}
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -134,7 +146,7 @@ const Header = () => {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: "block", md: "none" } }}
             >
-              {links}
+              <div className="flex flex-col gap-3 p-3">{links}</div>
             </Menu>
           </Box>
           <Typography
@@ -160,7 +172,7 @@ const Header = () => {
             </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {links}
+            <div className="flex gap-5">{links}</div>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Click me!">
@@ -177,6 +189,7 @@ const Header = () => {
                 )}
               </IconButton>
             </Tooltip>
+            {/* profile dropdown */}
             <Menu
               PaperProps={{
                 sx: {

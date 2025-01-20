@@ -111,7 +111,7 @@ const CheckoutForm = ({ handleClose, item, setOpen, refetch }) => {
         payment_method: {
           card: card,
           billing_details: {
-            email: user?.email || "anonymous",
+            email: user?.email || user?.providerData[0]?.email || "anonymous",
             name: user?.displayName || "anonymous",
           },
         },
@@ -143,7 +143,7 @@ const CheckoutForm = ({ handleClose, item, setOpen, refetch }) => {
         petImage,
         donationCreator,
         paymentUser: user.displayName,
-        paymentUserEmail: user.email,
+        paymentUserEmail: user.email || user?.providerData[0]?.email,
         donationAmount: price,
       };
 

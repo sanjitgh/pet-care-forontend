@@ -107,7 +107,7 @@ const Banner = () => {
             <div className="absolute inset-0 bg-black/50 dark:bg-black/80 flex items-center justify-center"></div>
             <div className="z-10 text-white dark:text-gray-200 text-center">
               <h1 className="font-bold dark:text-gray-400 md:text-5xl text-2xl mb-5">
-                YTogether, We Can Make a Difference
+                Together, We Can Make a Difference
               </h1>
               <p className="text-gray-300 max-w-[800px] mx-auto">
                 PetCare is more than a platform—it’s a community of animal

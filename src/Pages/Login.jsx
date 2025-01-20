@@ -59,7 +59,6 @@ const Login = () => {
 
   //  yahoo login
   const handelLoginWithYahoo = () => {
-    console.log("click");
     handelYahooLogin().then(async (res) => {
       // save user info to the database
       const newUser = {

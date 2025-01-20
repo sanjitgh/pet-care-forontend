@@ -17,10 +17,10 @@ const MyDonation = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const { data: myDonationData = [], refetch } = useQuery({
-    queryKey: ["myDonationData", user?.email],
+    queryKey: ["myDonationData", user?.email || user?.providerData[0]?.email],
     queryFn: async () => {
       const { data } = await axiosSecure(
-        `/my-donations-history/${user?.email}`
+        `/my-donations-history/${user?.email || user?.providerData[0]?.email}`
       );
       return data;
     },

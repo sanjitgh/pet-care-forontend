@@ -119,7 +119,7 @@ const MyDonationCampaignTable = ({ item, refetch }) => {
         <TableCell align="center">
           <Button
             onClick={handleClickOpen}
-            className="bg-[#F69585] dark:bg-gray-400"
+            className="bg-[#F69585] p-2"
           >
             Donator{" "}
           </Button>
@@ -127,7 +127,7 @@ const MyDonationCampaignTable = ({ item, refetch }) => {
         <TableCell align="center">
           <Button
             onClick={() => handleStatus(_id)}
-            className="bg-[#F69585] dark:bg-gray-400"
+            className="bg-[#F69585] p-2"
           >
             {pause ? "Resume" : "Pause"}
           </Button>

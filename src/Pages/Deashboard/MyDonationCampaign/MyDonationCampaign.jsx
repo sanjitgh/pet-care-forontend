@@ -15,9 +15,11 @@ const MyDonationCampaign = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const { data: myDonations = [], refetch } = useQuery({
-    queryKey: ["myDonations", user?.email],
+    queryKey: ["myDonations", user?.email || user?.providerData[0]?.email],
     queryFn: async () => {
-      const { data } = await axiosSecure(`/my-donation/${user?.email}`);
+      const { data } = await axiosSecure(
+        `/my-donation/${user?.email || user?.providerData[0]?.email}`
+      );
       return data;
     },
   });

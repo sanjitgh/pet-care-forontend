@@ -17,9 +17,11 @@ const AdoptionRequest = () => {
 
   // get adoption request
   const { data: adopReq = [], refetch } = useQuery({
-    queryKey: ["adopReq", user?.email],
+    queryKey: ["adopReq", user?.email || user?.providerData[0]?.email],
     queryFn: async () => {
-      const { data } = await axiosSecure.get(`adoptionRequest/${user.email}`);
+      const { data } = await axiosSecure.get(
+        `adoptionRequest/${user.email || user?.providerData[0]?.email}`
+      );
       return data;
     },
   });

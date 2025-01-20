@@ -92,7 +92,7 @@ const MyAddedPet = () => {
 
             <button
               onClick={() => handleAdoptedChange(info.row.original)}
-              className="bg-[#F69585] dark:bg-gray-400 text-white px-2 py-1 text-xs rounded"
+              className="bg-[#F69585] text-white px-2 py-1 text-xs rounded"
             >
               {info.row.original.adopted === "true" ? "Adopted" : "Adopt"}
             </button>
@@ -178,7 +178,7 @@ const MyAddedPet = () => {
         <title>My Pet - PetCare</title>
       </Helmet>
       <div className="px-2">
-        <h1 className="text-2xl md:text-4xl text-center mb-5 font-bold dark:text-white">
+        <h1 className="text-2xl md:text-5xl text-center mb-5 font-bold dark:text-white">
           My Added Pets
         </h1>
         <div className="overflow-x-auto shadow-lg rounded-lg">

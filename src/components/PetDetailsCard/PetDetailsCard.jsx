@@ -74,8 +74,10 @@ const PetDetailsCard = ({ item }) => {
       userEmail: data?.userEmail,
       userPhone: data?.userPhone,
       userAddress: data?.userAddress,
-      status: 'Panding'
+      status: "Panding",
     };
+
+    console.log(adoptData);
 
     try {
       // submit data in db
@@ -172,7 +174,11 @@ const PetDetailsCard = ({ item }) => {
           },
         }}
       >
-        <DialogTitle  className="dark:bg-[#17191E] dark:text-white" sx={{ m: 0, p: 2 }} id="customized-dialog-title">
+        <DialogTitle
+          className="dark:bg-[#17191E] dark:text-white"
+          sx={{ m: 0, p: 2 }}
+          id="customized-dialog-title"
+        >
           {name}
         </DialogTitle>
         <IconButton
@@ -222,7 +228,7 @@ const PetDetailsCard = ({ item }) => {
                 <Tooltip title="You can't edit your email!" placement="top">
                   <input
                     type="text"
-                    defaultValue={user?.email}
+                    defaultValue={user?.email || user?.providerData[0]?.email}
                     {...register("userEmail", { required: true })}
                     className="w-full border p-2 focus:outline focus:outline-0 dark:bg-transparent dark:text-white"
                     readOnly
@@ -254,10 +260,7 @@ const PetDetailsCard = ({ item }) => {
                 )}
               </div>
             </div>
-            <Button
-              type="submit"
-             className="bg-[#E16F52] dark:bg-gray-400"
-            >
+            <Button type="submit" className="bg-[#E16F52] dark:bg-gray-400">
               submit
             </Button>
           </form>
