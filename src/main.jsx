@@ -11,14 +11,14 @@ const queryClient = new QueryClient();
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <HelmetProvider>
-        <AuthProvaider>
+    <AuthProvaider>
+      <QueryClientProvider client={queryClient}>
+        <HelmetProvider>
           <ThemeProvider>
             <RouterProvider router={Router}></RouterProvider>
           </ThemeProvider>
-        </AuthProvaider>
-      </HelmetProvider>
-    </QueryClientProvider>
+        </HelmetProvider>
+      </QueryClientProvider>
+    </AuthProvaider>
   </StrictMode>
 );

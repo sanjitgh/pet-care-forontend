@@ -13,17 +13,14 @@ import { Button } from "@material-tailwind/react";
 const RecommendDonation = () => {
   const axiosPublic = useAxiosPublic();
 
-  const { data: donations = [] } = useQuery({
-    queryKey: ["donations"],
+  const { data: donationsRecommend = [] } = useQuery({
+    queryKey: ["donationsRecommend"],
     queryFn: async () => {
       const { data } = await axiosPublic.get("/donations-recommend");
       return data;
     },
   });
-  //   sort data in descending order
-  const sortData = [...donations].sort(
-    (a, b) => new Date(b.postedDate) - new Date(a.postedDate)
-  );
+
   return (
     <>
       <Helmet>
@@ -37,7 +34,7 @@ const RecommendDonation = () => {
         </div>
         <div className="container mx-auto px-2">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-            {sortData.map((item) => (
+            {donationsRecommend.map((item) => (
               <Card
                 className="dark:bg-[#181A20] dark:text-white"
                 key={item._id}

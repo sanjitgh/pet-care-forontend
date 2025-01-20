@@ -19,8 +19,7 @@ const AuthProvaider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const axiosPublic = useAxiosPublic();
   const googleProvaider = new GoogleAuthProvider();
-  const yahooprovider = new OAuthProvider('yahoo.com');
-
+  const yahooprovider = new OAuthProvider("yahoo.com");
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -58,9 +57,11 @@ const AuthProvaider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-      if (currentUser?.email || currentUser.providerData[0].email) {
+      if (currentUser?.email || currentUser?.providerData[0]?.email) {
         // generate token
-        const user = { email: currentUser.email };
+        const user = {
+          email: currentUser.email || currentUser?.providerData[0]?.email,
+        };
         await axiosPublic.post("/jwt", user, {
           withCredentials: true,
         });

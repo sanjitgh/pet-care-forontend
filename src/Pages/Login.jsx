@@ -142,7 +142,7 @@ const Login = () => {
 
             <Button
               type="submit"
-              className="bg-[#E16F52] mt-5 dark:bg-gray-400"
+              className="bg-white text-[#E16F52] mt-5 dark:bg-gray-400"
             >
               <span className="flex gap-1 items-center">
                 Login{loading && <LuFan className="animate-spin" />}
