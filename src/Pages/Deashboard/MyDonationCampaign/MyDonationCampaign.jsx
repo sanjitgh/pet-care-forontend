@@ -27,12 +27,16 @@ const MyDonationCampaign = () => {
       <Helmet>
         <title>My Donation - PetCare</title>
       </Helmet>
-      <h1 className="text-center mb-5 text-2xl md:text-5xl ">
+      <h1 className="text-center mb-5 text-2xl md:text-5xl dark:text-white">
         My Donation Campaign
       </h1>
-      <TableContainer sx={{ maxHeight: "500px" }} component={Paper}>
+      <TableContainer
+        className="dark:bg-[#17191E]"
+        sx={{ maxHeight: "500px" }}
+        component={Paper}
+      >
         <Table>
-          <TableHead sx={{ backgroundColor: "#F69585" }}>
+          <TableHead className="bg-[#F69585] dark:bg-[#17191E]">
             <TableRow>
               <TableCell align="center">
                 <span className="text-white">Pet Name</span>

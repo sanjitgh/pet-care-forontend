@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -12,12 +12,14 @@ import Typography from "@mui/material/Typography";
 import { FaUserTie } from "react-icons/fa";
 import { GiJumpingDog } from "react-icons/gi";
 import useAuth from "../hook/useAuth";
+import { ThemeContext } from "../ThemeProvaider/ThemeProvaider";
 
 const Header = () => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const { user, handelLogout } = useAuth();
   const links = (
     <>
-      <div className="flex gap-5">
+      <div className="flex gap-5 items-center">
         <NavLink
           className={({ isActive }) =>
             isActive ? "border-b-white border-b" : ""
@@ -77,9 +79,9 @@ const Header = () => {
 
   return (
     <AppBar
-      className="py-2 bg-orange-500"
+      className="py-2 dark:bg-[#181A20]"
       position="static"
-      sx={{ backgroundColor: "#e16f52" }}
+      sx={{ background: "#e16f52" }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -161,7 +163,7 @@ const Header = () => {
             {links}
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Click me!">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 {user ? (
                   <img
@@ -179,7 +181,7 @@ const Header = () => {
               PaperProps={{
                 sx: {
                   width: "200px",
-                  backgroundColor: "#e16f52",
+                  backgroundColor: theme === "dark" ? "#252932" : "#e16f52",
                   marginTop: "65px",
                   padding: "10px",
                 },
@@ -209,6 +211,11 @@ const Header = () => {
                         Logout
                       </button>
                     </li>
+                    <li>
+                      <button onClick={toggleTheme}>
+                        Toggle {theme === "dark" ? "Light" : "Dark"} Mode
+                      </button>
+                    </li>
                   </ul>
                 </>
               ) : (
@@ -223,6 +230,11 @@ const Header = () => {
                       <Link to={"/register"} onClick={handleCloseUserMenu}>
                         Register
                       </Link>
+                    </li>
+                    <li>
+                      <button onClick={toggleTheme}>
+                        Toggle {theme === "dark" ? "Light" : "Dark"} Mode
+                      </button>
                     </li>
                   </ul>
                 </>

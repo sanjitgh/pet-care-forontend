@@ -40,7 +40,7 @@ const AdoptionRequestCard = ({ item, refetch }) => {
                 "error"
               );
             }
-          })
+          });
       }
     });
   };
@@ -52,13 +52,25 @@ const AdoptionRequestCard = ({ item, refetch }) => {
         borderBottom: "1px solid #ddd",
       }}
     >
-      <TableCell align="center">{petName}</TableCell>
-      <TableCell align="center">{userName}</TableCell>
-      <TableCell align="center">{userEmail}</TableCell>
-      <TableCell align="center">{userPhone}</TableCell>
-      <TableCell align="center">{userAddress}</TableCell>
-      <TableCell align="center">{currentStatus}</TableCell>
-      <TableCell align="center">
+      <TableCell className="dark:text-white" align="center">
+        {petName}
+      </TableCell>
+      <TableCell className="dark:text-white" align="center">
+        {userName}
+      </TableCell>
+      <TableCell className="dark:text-white" align="center">
+        {userEmail}
+      </TableCell>
+      <TableCell className="dark:text-white" align="center">
+        {userPhone}
+      </TableCell>
+      <TableCell className="dark:text-white" align="center">
+        {userAddress}
+      </TableCell>
+      <TableCell className="dark:text-white" align="center">
+        {currentStatus}
+      </TableCell>
+      <TableCell className="dark:text-white" align="center">
         <Button
           onClick={() => handleStatus(_id, "Accepted")}
           className="bg-green-500 mx-1"

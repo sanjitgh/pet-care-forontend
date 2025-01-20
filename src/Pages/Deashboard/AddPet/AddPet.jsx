@@ -9,8 +9,8 @@ import useAxiosSecure from "../../../hook/UseAxiosSecure";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../../hook/useAuth";
 import { useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2'
-
+import Swal from "sweetalert2";
+import { Button } from "@material-tailwind/react";
 
 const options = [
   { value: "cat", label: "Cat" },
@@ -59,7 +59,7 @@ const AddPet = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate('/dashboard/my-added-pet')
+        navigate("/dashboard/my-added-pet");
       }
     } catch (err) {
       console.log(err);
@@ -74,8 +74,10 @@ const AddPet = () => {
         <title>Add Pet - PetCare</title>
       </Helmet>
       <div>
-        <div className="border max-w-3xl mx-auto p-10 bg-gray-50">
-          <h1 className="md:text-5xl text-2xl text-center mb-14">Add a Pet</h1>
+        <div className="border max-w-3xl mx-auto p-10 bg-gray-50 dark:bg-[#17191E] dark:border-gray-700">
+          <h1 className="md:text-5xl text-2xl text-center mb-14 dark:text-white ">
+            Add a Pet
+          </h1>
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col gap-5"
@@ -85,7 +87,7 @@ const AddPet = () => {
               {...register("name", { required: true })}
               placeholder="Pet Name*"
               type="text"
-              className="w-full border outline-none p-2"
+              className="w-full border outline-none p-2 dark:bg-[#17191E] dark:text-white "
             />
             {errors.name && (
               <p className="text-red-500">Pet name is required</p>
@@ -95,7 +97,7 @@ const AddPet = () => {
               {...register("age", { required: true })}
               placeholder="Pet Age*"
               type="number"
-              className="w-full border outline-none p-2"
+              className="w-full border outline-none p-2 dark:bg-[#17191E] dark:text-white "
             />
             {errors.age && <p className="text-red-500">Pet age is required</p>}
             {/* location */}
@@ -103,7 +105,7 @@ const AddPet = () => {
               {...register("location", { required: true })}
               placeholder="Pet Location*"
               type="text"
-              className="w-full border outline-none p-2"
+              className="w-full border outline-none p-2 dark:bg-[#17191E] dark:text-white "
             />
             {errors.location && (
               <p className="text-red-500">Pet location is required</p>
@@ -112,7 +114,7 @@ const AddPet = () => {
             <textarea
               {...register("pet_owner_description", { required: true })}
               placeholder="Pet owner sort description*"
-              className="w-full border outline-none p-2 h-20"
+              className="w-full border outline-none p-2 dark:bg-[#17191E] dark:text-white  h-20"
             ></textarea>
             {errors.pet_owner_description && (
               <p className="text-red-500">Owner sort description is required</p>
@@ -127,7 +129,7 @@ const AddPet = () => {
                   {...field} // Spread the field props to connect with react-hook-form
                   theme="snow"
                   placeholder="Pet description*"
-                  className="w-full outline-none h-28 mb-10"
+                  className="w-full outline-none h-28 mb-10  dark:text-white "
                 />
               )}
             />
@@ -185,14 +187,11 @@ const AddPet = () => {
             )}
             {/* Submit Button */}
             <div>
-              <button
-                className="text-white text-center mx-auto py-2 px-8 cursor-pointer bg-[#E16F52] mt-6"
-                type="submit"
-              >
+              <Button type="submit" className="bg-[#E16F52] dark:bg-gray-400 ">
                 <span className="flex gap-1 items-center">
                   Add Pet{loading && <LuFan className="animate-spin" />}
                 </span>
-              </button>
+              </Button>
             </div>
           </form>
         </div>

@@ -3,7 +3,7 @@ import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <footer className="pt-20 text-gray-300 bg-[#e16f52]">
+    <footer className="pt-20 text-gray-300 bg-[#e16f52] dark:bg-[#181A20]">
       <div className="md:px-10 container mx-auto px-3">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
           <div>

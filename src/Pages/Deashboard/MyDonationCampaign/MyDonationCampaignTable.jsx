@@ -94,9 +94,13 @@ const MyDonationCampaignTable = ({ item, refetch }) => {
   return (
     <>
       <TableRow key={item._id} sx={{ borderBottom: "1px solid #ddd" }}>
-        <TableCell align="center">{petName}</TableCell>
-        <TableCell align="center">${maxDonationAmount}</TableCell>
-        <TableCell align="center">
+        <TableCell className="dark:text-white" align="center">
+          {petName}
+        </TableCell>
+        <TableCell className="dark:text-white" align="center">
+          ${maxDonationAmount}
+        </TableCell>
+        <TableCell className="dark:text-white" align="center">
           <div className="w-full h-2 bg-gray-700 rounded relative">
             <div
               className="h-2 rounded bg-[#F69585] absolute top-0 left-0"
@@ -113,12 +117,18 @@ const MyDonationCampaignTable = ({ item, refetch }) => {
           </Link>
         </TableCell>
         <TableCell align="center">
-          <Button onClick={handleClickOpen} className="bg-[#F69585]">
+          <Button
+            onClick={handleClickOpen}
+            className="bg-[#F69585] dark:bg-gray-400"
+          >
             Donator{" "}
           </Button>
         </TableCell>
         <TableCell align="center">
-          <Button onClick={() => handleStatus(_id)} className="bg-[#F69585]">
+          <Button
+            onClick={() => handleStatus(_id)}
+            className="bg-[#F69585] dark:bg-gray-400"
+          >
             {pause ? "Resume" : "Pause"}
           </Button>
         </TableCell>

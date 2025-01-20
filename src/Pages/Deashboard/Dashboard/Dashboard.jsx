@@ -31,8 +31,8 @@ const Deashboard = () => {
               to={"/dashboard/users"}
               className={({ isActive }) =>
                 isActive
-                  ? "bg-[#ff260071] text-white  flex gap-1 p-2 items-center"
-                  : "flex gap-1 items-center p-2"
+                  ? "bg-[#ff260071] dark:bg-[#262A34] text-white  flex gap-1 p-2 items-center"
+                  : "flex gap-1 items-center p-2 dark:text-white "
               }
             >
               <FaUsers></FaUsers>
@@ -44,8 +44,8 @@ const Deashboard = () => {
               to={"/dashboard/all-pets"}
               className={({ isActive }) =>
                 isActive
-                  ? "bg-[#ff260071] text-white  flex gap-1 p-2 items-center"
-                  : "flex gap-1 items-center p-2"
+                  ? "bg-[#ff260071] dark:bg-[#262A34] text-white  flex gap-1 p-2 items-center"
+                  : "flex gap-1 items-center p-2 dark:text-white"
               }
             >
               <MdOutlinePets />
@@ -57,8 +57,8 @@ const Deashboard = () => {
               to={"/dashboard/all-donations"}
               className={({ isActive }) =>
                 isActive
-                  ? "bg-[#ff260071] text-white  flex gap-1 p-2 items-center"
-                  : "flex gap-1 items-center p-2"
+                  ? "bg-[#ff260071] dark:bg-[#262A34] text-white  flex gap-1 p-2 items-center"
+                  : "flex gap-1 items-center p-2 dark:text-white"
               }
             >
               <FaDonate></FaDonate>
@@ -72,8 +72,8 @@ const Deashboard = () => {
           to={"/dashboard/add-pet"}
           className={({ isActive }) =>
             isActive
-              ? "bg-[#ff260071] text-white  flex gap-1 p-2 items-center"
-              : "flex gap-1 items-center p-2"
+              ? "bg-[#ff260071] dark:bg-[#262A34] text-white  flex gap-1 p-2 items-center"
+              : "flex gap-1 items-center p-2 dark:text-white"
           }
         >
           <IoMdAddCircle />
@@ -85,8 +85,8 @@ const Deashboard = () => {
           to={"/dashboard/my-added-pet"}
           className={({ isActive }) =>
             isActive
-              ? "bg-[#ff260071] text-white  flex gap-1 p-2 items-center"
-              : "flex gap-1 items-center p-2"
+              ? "bg-[#ff260071] dark:bg-[#262A34] text-white  flex gap-1 p-2 items-center"
+              : "flex gap-1 items-center p-2 dark:text-white"
           }
         >
           <CiSignpostDuo1 />
@@ -98,8 +98,8 @@ const Deashboard = () => {
           to={"/dashboard/adoption-request"}
           className={({ isActive }) =>
             isActive
-              ? "bg-[#ff260071] text-white flex gap-1 p-2 items-center"
-              : "flex gap-1 items-center p-2"
+              ? "bg-[#ff260071] dark:bg-[#262A34] text-white flex gap-1 p-2 items-center"
+              : "flex gap-1 items-center p-2 dark:text-white"
           }
         >
           <CiSquareQuestion />
@@ -111,8 +111,8 @@ const Deashboard = () => {
           to={"/dashboard/create-donation"}
           className={({ isActive }) =>
             isActive
-              ? "bg-[#ff260071] text-white flex gap-1 p-2 items-center"
-              : "flex gap-1 items-center p-2"
+              ? "bg-[#ff260071] dark:bg-[#262A34] text-white flex gap-1 p-2 items-center"
+              : "flex gap-1 items-center p-2 dark:text-white"
           }
         >
           <TbBrandCampaignmonitor />
@@ -124,8 +124,8 @@ const Deashboard = () => {
           to={"/dashboard/my-donation-campaign"}
           className={({ isActive }) =>
             isActive
-              ? "bg-[#ff260071] text-white flex gap-1 p-2 items-center"
-              : "flex gap-1 items-center p-2"
+              ? "bg-[#ff260071] dark:bg-[#262A34] text-white flex gap-1 p-2 items-center"
+              : "flex gap-1 items-center p-2 dark:text-white"
           }
         >
           <MdCampaign />
@@ -137,8 +137,8 @@ const Deashboard = () => {
           to={"/dashboard/my-donations"}
           className={({ isActive }) =>
             isActive
-              ? "bg-[#ff260071] text-white flex gap-1 p-2 items-center"
-              : "flex gap-1 items-center p-2"
+              ? "bg-[#ff260071] dark:bg-[#262A34] text-white flex gap-1 p-2 items-center"
+              : "flex gap-1 items-center p-2 dark:text-white"
           }
         >
           <SiMyget />
@@ -155,8 +155,8 @@ const Deashboard = () => {
             to={"/"}
             className={({ isActive }) =>
               isActive
-                ? "bg-[#ff260071] text-white flex gap-1 p-2 items-center"
-                : "flex gap-1 items-center p-2"
+                ? "bg-[#ff260071] dark:bg-[#262A34] text-white flex gap-1 p-2 items-center"
+                : "flex gap-1 items-center p-2 dark:text-white"
             }
           >
             <IoReturnDownBack />
@@ -168,8 +168,8 @@ const Deashboard = () => {
             to={"/pet-listing"}
             className={({ isActive }) =>
               isActive
-                ? "bg-[#ff260071] text-white flex gap-1 p-2 items-center"
-                : "flex gap-1 items-center p-2"
+                ? "bg-[#ff260071] dark:bg-[#262A34] text-white flex gap-1 p-2 items-center"
+                : "flex gap-1 items-center p-2 dark:text-white"
             }
           >
             <MdOutlinePets />
@@ -181,8 +181,8 @@ const Deashboard = () => {
             to={"/donation-campaign"}
             className={({ isActive }) =>
               isActive
-                ? "bg-[#ff260071] text-white flex gap-1 p-2 items-center"
-                : "flex gap-1 items-center p-2"
+                ? "bg-[#ff260071] dark:bg-[#262A34] text-white flex gap-1 p-2 items-center"
+                : "flex gap-1 items-center p-2 dark:text-white"
             }
           >
             <FaDonate></FaDonate>
@@ -200,11 +200,11 @@ const Deashboard = () => {
         <aside
           className={`${
             isSidebarOpen
-              ? "fixed inset-0 w-full bg-gray-200 z-20"
-              : "hidden md:hidden lg:block w-[20%] bg-gray-200"
+              ? "fixed inset-0 w-full bg-gray-200 dark:bg-[#17191E] z-20"
+              : "hidden md:hidden lg:block w-[20%] bg-gray-200 dark:bg-[#17191E]"
           } p-4 transition-all duration-300`}
         >
-          <h1 className="text-xl md:text-3xl font-bold mb-6 text-[#E16F52]">
+          <h1 className="text-xl dark:text-white md:text-3xl font-bold mb-6 text-[#E16F52]">
             <Link to={"/dashboard"}>Dashboard</Link>
           </h1>
           <ul>{links}</ul>
@@ -217,7 +217,7 @@ const Deashboard = () => {
         </aside>
 
         {/* Main content */}
-        <main className="w-full lg:w-[80%] md:p-10 p-4">
+        <main className="w-full lg:w-[80%] md:p-10 p-4 dark:bg-[#262A34]">
           {/* Toggle Button */}
           <div className="flex items-center justify-between mb-5 md:hidden">
             <h1 className="font-bold text-xl text-[#E16F52]">Dashboard</h1>

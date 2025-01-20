@@ -26,14 +26,12 @@ const PetListing = () => {
   const [filter, setFilter] = useState(initialFilter);
   const [search, setSearch] = useState("");
 
-
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     setFilter(queryParams.get("filter") || "");
   }, [location.search]);
 
   const { ref, inView } = useInView();
-
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQuery({
@@ -45,15 +43,13 @@ const PetListing = () => {
         return data;
       },
       getNextPageParam: (lastPage) => {
-
         if (lastPage.currentPage < lastPage.totalPages) {
-          return lastPage.currentPage + 1; 
+          return lastPage.currentPage + 1;
         }
         return undefined; // No more pages
       },
     });
   const pets = data?.pages.flatMap((page) => page.data) || [];
-
 
   useEffect(() => {
     if (inView && hasNextPage) {
@@ -61,13 +57,12 @@ const PetListing = () => {
     }
   }, [inView, hasNextPage, fetchNextPage]);
 
-
   return (
     <>
       <Helmet>
         <title>All Pet - PetCare</title>
       </Helmet>
-      <section className="py-20">
+      <section className="py-20 dark:bg-[#282C37] min-h-[95vh]">
         <div className="container mx-auto px-2 ">
           {/* Control Bar */}
           <div className="mb-10 md:flex items-center gap-5 justify-start">
@@ -83,6 +78,7 @@ const PetListing = () => {
               >
                 Category
               </InputLabel>
+
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -137,7 +133,7 @@ const PetListing = () => {
           {/* Main Content */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {pets.map((item) => (
-              <Card key={item._id}>
+              <Card key={item._id} className="dark:bg-[#181A1F]">
                 <CardMedia sx={{ minHeight: 250 }} image={item.image} />
                 <CardContent>
                   <Typography
@@ -145,29 +141,46 @@ const PetListing = () => {
                     variant="h5"
                     component="div"
                     sx={{ color: "#E16F52" }}
+                    className="dark:text-white "
                   >
                     {item.name.slice(0, 40)}
                   </Typography>
-                  <Typography gutterBottom variant="p" component="div">
-                    <span className="font-semibold">Age:</span> {item.age}
+                  <Typography
+                    className="dark:text-gray-400"
+                    gutterBottom
+                    variant="p"
+                    component="div"
+                  >
+                    <span className="font-semibold">Age:</span>
+                    {item.age}
                   </Typography>
-                  <Typography gutterBottom variant="p" component="div">
+                  <Typography
+                    className="dark:text-gray-400"
+                    gutterBottom
+                    variant="p"
+                    component="div"
+                  >
                     <span className="font-semibold">Location:</span>{" "}
                     {item.location}
                   </Typography>
                 </CardContent>
                 <CardActions>
                   <Link to={`/pet-listing/${item._id}`}>
-                    <Button size="small" sx={{ color: "#E16F52" }}>
+                    <Button
+                      className="dark:text-gray-400"
+                      size="small"
+                      sx={{ color: "#E16F52" }}
+                    >
                       View Details <FaArrowRight />
                     </Button>
                   </Link>
                 </CardActions>
               </Card>
             ))}
+            {!pets.length && <p className="dark:text-white">No Data Found</p>}
           </div>
           <div ref={ref} className="mt-4 text-center">
-            {isFetchingNextPage && <p>Loading more...</p>}
+            {isFetchingNextPage && <p className="dark:text-white">Loading more...</p>}
           </div>
         </div>
       </section>

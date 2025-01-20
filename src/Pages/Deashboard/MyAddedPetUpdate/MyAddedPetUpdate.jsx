@@ -10,6 +10,7 @@ import ReactQuill from "react-quill";
 import Select from "react-select";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
+import { Button } from "@material-tailwind/react";
 
 const options = [
   { value: "cat", label: "Cat" },
@@ -97,8 +98,8 @@ const MyAddedPetUpdate = () => {
         <title>Update Pet - PetCare</title>
       </Helmet>
       <div>
-        <div className="border max-w-3xl mx-auto p-10 bg-gray-50">
-          <h1 className="md:text-5xl text-2xl text-center mb-14">
+        <div className="border max-w-3xl mx-auto p-10 bg-gray-50 dark:bg-[#17191E]">
+          <h1 className="md:text-5xl text-2xl text-center mb-14 dark:text-white">
             Update a Pet
           </h1>
           <form
@@ -111,7 +112,7 @@ const MyAddedPetUpdate = () => {
               placeholder="Pet Name*"
               type="text"
               defaultValue={formData?.length > 0 ? formData[0]?.name : ""}
-              className="w-full border outline-none p-2"
+              className="w-full border outline-none p-2 dark:bg-transparent text-white"
             />
             {errors.name && (
               <p className="text-red-500">Pet name is required</p>
@@ -122,7 +123,7 @@ const MyAddedPetUpdate = () => {
               placeholder="Pet Age*"
               defaultValue={formData?.length > 0 ? formData[0]?.age : ""}
               type="number"
-              className="w-full border outline-none p-2"
+              className="w-full border outline-none p-2 dark:bg-transparent text-white"
             />
             {errors.age && <p className="text-red-500">Pet age is required</p>}
             {/* location */}
@@ -131,7 +132,7 @@ const MyAddedPetUpdate = () => {
               placeholder="Pet Location*"
               defaultValue={formData?.length > 0 ? formData[0]?.location : ""}
               type="text"
-              className="w-full border outline-none p-2"
+              className="w-full border outline-none p-2 dark:bg-transparent text-white"
             />
             {errors.location && (
               <p className="text-red-500">Pet location is required</p>
@@ -143,7 +144,7 @@ const MyAddedPetUpdate = () => {
               defaultValue={
                 formData?.length > 0 ? formData[0]?.pet_owner_description : ""
               }
-              className="w-full border outline-none p-2 h-20"
+              className="w-full border outline-none p-2 dark:bg-transparent text-white h-20"
             ></textarea>
             {errors.pet_owner_description && (
               <p className="text-red-500">Owner sort description is required</p>
@@ -158,7 +159,7 @@ const MyAddedPetUpdate = () => {
                   {...field} // Spread the field props to connect with react-hook-form
                   theme="snow"
                   placeholder="Pet description*"
-                  className="w-full outline-none h-28 mb-10"
+                  className="w-full outline-none h-28 mb-10 dark:bg-transparent dark:text-white"
                 />
               )}
             />
@@ -216,14 +217,11 @@ const MyAddedPetUpdate = () => {
             )}
             {/* Submit Button */}
             <div>
-              <button
-                className="text-white text-center mx-auto py-2 px-8 cursor-pointer bg-[#E16F52] mt-6"
-                type="submit"
-              >
+              <Button className="bg-[#E16F52] dark:bg-gray-400">
                 <span className="flex gap-1 items-center">
                   Add Pet{loading && <LuFan className="animate-spin" />}
                 </span>
-              </button>
+              </Button>
             </div>
           </form>
         </div>

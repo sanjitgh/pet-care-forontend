@@ -3,10 +3,10 @@ import img from "../../../src/assest/callToAction/happy.webp";
 import img2 from "../../../src/assest/callToAction/happy2.webp";
 const CallToAction = () => {
   return (
-    <section className="py-20 bg-gray-100">
+    <section className="py-20 bg-gray-100 dark:bg-[#23272F] ">
       <div className="container mx-auto px-2 grid grid-cols-1 sm:grid-cols-2 gap-10 place-items-center">
         <div className="text-center md:text-left">
-          <h1 className="text-4xl font-bold text-gray-800">
+          <h1 className="text-4xl font-bold text-gray-800 dark:text-white">
             Adopt, Don't Shop
           </h1>
           <p className="text-lg text-gray-600 mt-4">
@@ -19,7 +19,7 @@ const CallToAction = () => {
             <li className="ml-4"> Make a positive impact in your community.</li>
           </ul>
           <Link to={'/pet-listing'}>
-            <button className="mt-6 bg-[#E16F52] text-white px-6 py-3 rounded-lg text-lg transition">
+            <button className="mt-6 bg-[#E16F52] dark:bg-blue-gray-500 text-white px-6 py-3 rounded-lg text-lg transition">
               You Want Adopt?
             </button>
           </Link>

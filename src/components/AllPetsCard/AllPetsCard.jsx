@@ -79,11 +79,11 @@ const AllPetsCard = ({ item, refetch }) => {
       <TableCell align="center">
         <Avatar src={image}></Avatar>
       </TableCell>
-      <TableCell align="center">{name}</TableCell>
-      <TableCell align="center">{age}Y</TableCell>
-      <TableCell align="center">{category}</TableCell>
-      <TableCell align="center">{location}</TableCell>
-      <TableCell align="center">
+      <TableCell className="dark:text-white" align="center">{name}</TableCell>
+      <TableCell className="dark:text-white" align="center">{age}Y</TableCell>
+      <TableCell className="dark:text-white" align="center">{category}</TableCell>
+      <TableCell className="dark:text-white" align="center">{location}</TableCell>
+      <TableCell className="dark:text-white" align="center">
         {adopted === "false" ? (
           <span className="bg-red-400 text-white rounded p-1">Unadopted</span>
         ) : (

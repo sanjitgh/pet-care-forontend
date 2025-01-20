@@ -9,6 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import { LuFan } from "react-icons/lu";
 import { uploadImage } from "../../api/utils";
 import Swal from "sweetalert2";
+import { Button } from "@material-tailwind/react";
 
 const MyDonationUpdate = () => {
   const [loading, setLoading] = useState(false);
@@ -52,14 +53,14 @@ const MyDonationUpdate = () => {
       if (res.data.modifiedCount > 0) {
         setLoading(false);
         reset();
-        navigate('/dashboard/my-donation-campaign')
+        navigate("/dashboard/my-donation-campaign");
         Swal.fire({
-            position: "top-center",
-            icon: "success",
-            title: "Update Successfull!",
-            showConfirmButton: false,
-            timer: 1500
-          });
+          position: "top-center",
+          icon: "success",
+          title: "Update Successfull!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     });
   };
@@ -69,8 +70,8 @@ const MyDonationUpdate = () => {
         <title>Update Donation - PetCare</title>
       </Helmet>
       <div>
-        <div className="border max-w-3xl mx-auto p-10 bg-gray-50">
-          <h1 className="md:text-5xl text-2xl text-center mb-14">
+        <div className="border max-w-3xl mx-auto p-10 bg-gray-50 dark:bg-[#17191E]">
+          <h1 className="md:text-5xl text-2xl text-center mb-14 dark:text-white">
             Update a Donation
           </h1>
           <form
@@ -79,11 +80,13 @@ const MyDonationUpdate = () => {
           >
             {/* last Date */}
             <div className="flex flex-col">
-              <label htmlFor="date">Donation Last Date</label>
+              <label htmlFor="date" className="dark:text-white">
+                Donation Last Date
+              </label>
               <DatePicker
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
-                className="w-full border outline-none p-2"
+                className="w-full border outline-none p-2 dark:bg-transparent dark:text-white"
               />
             </div>
 
@@ -92,7 +95,7 @@ const MyDonationUpdate = () => {
               {...register("name", { required: true })}
               placeholder="Pet Name*"
               type="text"
-              className="w-full border outline-none p-2"
+              className="w-full border outline-none p-2 dark:bg-transparent dark:text-white"
               defaultValue={myData[0]?.petName}
             />
             {errors.name && <p className="text-red-500">Name is required</p>}
@@ -102,7 +105,7 @@ const MyDonationUpdate = () => {
               {...register("maxDonationAmount", { required: true })}
               placeholder="Max donation amount*"
               type="number"
-              className="w-full border outline-none p-2"
+              className="w-full border outline-none p-2 dark:bg-transparent dark:text-white"
               defaultValue={myData[0]?.maxDonationAmount}
             />
             {errors.maxDonationAmount && (
@@ -113,7 +116,7 @@ const MyDonationUpdate = () => {
             <textarea
               {...register("sortDescription", { required: true })}
               placeholder="Sort description*"
-              className="w-full border outline-none p-2 h-20"
+              className="w-full border outline-none p-2 dark:bg-transparent dark:text-white h-20"
               defaultValue={myData[0]?.sortDescription}
             ></textarea>
             {errors.sortDescription && (
@@ -123,7 +126,7 @@ const MyDonationUpdate = () => {
             <textarea
               {...register("longDescription", { required: true })}
               placeholder="Long description*"
-              className="w-full border outline-none p-2 h-28"
+              className="w-full border outline-none p-2 dark:bg-transparent dark:text-white h-28"
               defaultValue={myData[0]?.longDescription}
             ></textarea>
             {errors.longDescription && (
@@ -141,17 +144,12 @@ const MyDonationUpdate = () => {
             )}
             {/* Submit Button */}
             <div>
-              <div>
-                <button
-                  className="text-white text-center mx-auto py-2 px-4 cursor-pointer bg-[#E16F52] mt-6"
-                  type="submit"
-                >
-                  <span className="flex gap-1 items-center">
-                    Create Donation
-                    {loading && <LuFan className="animate-spin" />}
-                  </span>
-                </button>
-              </div>
+              <Button type="submit" className="bg-[#E16F52] dark:bg-gray-400">
+                <span className="flex gap-1 items-center">
+                  Create Donation
+                  {loading && <LuFan className="animate-spin" />}
+                </span>
+              </Button>
             </div>
           </form>
         </div>

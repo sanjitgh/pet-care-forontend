@@ -6,7 +6,6 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-
   updateProfile,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";

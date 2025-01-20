@@ -13,7 +13,7 @@ const DashboardHome = () => {
       <div>
         {role === "admin" ? (
           <Divider>
-            <span className="text-center text-2xl md:text-5xl">
+            <span className="text-center text-2xl md:text-5xl dark:text-white">
               Welcome to Admin Dashboard
             </span>
           </Divider>

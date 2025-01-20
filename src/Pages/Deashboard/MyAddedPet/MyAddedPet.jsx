@@ -92,7 +92,7 @@ const MyAddedPet = () => {
 
             <button
               onClick={() => handleAdoptedChange(info.row.original)}
-              className="bg-[#F69585] text-white px-2 py-1 text-xs rounded"
+              className="bg-[#F69585] dark:bg-gray-400 text-white px-2 py-1 text-xs rounded"
             >
               {info.row.original.adopted === "true" ? "Adopted" : "Adopt"}
             </button>
@@ -178,12 +178,12 @@ const MyAddedPet = () => {
         <title>My Pet - PetCare</title>
       </Helmet>
       <div className="px-2">
-        <h1 className="text-2xl md:text-4xl text-center mb-5 font-bold">
+        <h1 className="text-2xl md:text-4xl text-center mb-5 font-bold dark:text-white">
           My Added Pets
         </h1>
         <div className="overflow-x-auto shadow-lg rounded-lg">
           <table className="min-w-full border border-gray-300 text-[10px] md:text-xs">
-            <thead className="bg-gray-200 text-[11px] md:text-sm uppercase">
+            <thead className="bg-gray-200 dark:bg-[#17191E] dark:text-white text-[11px] md:text-sm uppercase">
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (
@@ -211,7 +211,7 @@ const MyAddedPet = () => {
               {table.getRowModel().rows.map((row) => (
                 <tr
                   key={row.id}
-                  className="odd:bg-white even:bg-gray-100 hover:bg-gray-200"
+                  className="odd:bg-white even:bg-gray-100 hover:bg-gray-200 dark:bg-[#17191E] dark:text-white"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <td key={cell.id} className="border border-gray-300 p-2">

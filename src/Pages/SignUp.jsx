@@ -5,6 +5,7 @@ import useAxiosPublic from "../hook/useAxiosPublic";
 import { uploadImage } from "../api/utils";
 import { LuFan } from "react-icons/lu";
 import { useState } from "react";
+import { Button } from "@material-tailwind/react";
 
 const SignUp = () => {
   const { createUser, manageProfile, user, setUser } = useAuth();
@@ -62,8 +63,8 @@ const SignUp = () => {
   };
 
   return (
-    <div className="py-20 min-h-[95vh] flex justify-center items-center bg-gray-50">
-      <div className="bg-[#E16F52] w-[600px] p-16">
+    <div className="py-20 min-h-[95vh] flex justify-center items-center bg-gray-50 dark:bg-[#252932] ">
+      <div className="bg-[#E16F52] dark:bg-[#16181D]  w-[600px] p-16">
         <h1 className="text-center text-white font-semibold text-2xl md:text-5xl mb-8">
           Register Now
         </h1>
@@ -104,14 +105,12 @@ const SignUp = () => {
               </Link>
             </p>
           </div>
-          <button
-            className="bg-white text-center mx-auto py-2 px-8 cursor-pointer text-[#E16F52] mt-6"
-            type="submit"
-          >
+
+          <Button type="submit" className="bg-[#E16F52] mt-5 dark:bg-gray-400">
             <span className="flex gap-1 items-center">
               Register{loading && <LuFan className="animate-spin" />}
             </span>
-          </button>
+          </Button>
         </form>
       </div>
     </div>

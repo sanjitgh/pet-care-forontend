@@ -37,11 +37,11 @@ const DashboardUserCard = ({ item, refetch }) => {
       <TableCell align="center">
         <Avatar alt="Profile" src={image} />
       </TableCell>
-      <TableCell align="center">{name}</TableCell>
-      <TableCell align="center">{email}</TableCell>
-      <TableCell align="center">
+      <TableCell className="dark:text-white" align="center">{name}</TableCell>
+      <TableCell className="dark:text-white" align="center">{email}</TableCell>
+      <TableCell className="dark:text-white" align="center">
         {role === "admin" ? (
-          <Button disabled className="capitalize bg-[#F69585]">
+          <Button disabled className="capitalize bg-[#F69585] dark:bg-gray-400">
             {role}
           </Button>
         ) : (

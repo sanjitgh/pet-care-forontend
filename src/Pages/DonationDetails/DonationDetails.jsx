@@ -16,7 +16,7 @@ const DonationDetails = () => {
 
   return (
     <>
-      <div className="py-16">
+      <div className="py-16 dark:bg-[#262A34] dark:text-white">
         <div className="max-w-screen-xl mx-auto px-2">
           {donationItem.map((item) => (
             <DonationDetailsCard

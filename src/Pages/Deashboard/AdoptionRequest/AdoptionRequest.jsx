@@ -29,20 +29,34 @@ const AdoptionRequest = () => {
       <Helmet>
         <title>Adoption Request - PetCare</title>
       </Helmet>
-      <h1 className="text-2xl md:text-5xl text-center my-5">
+      <h1 className="text-2xl md:text-5xl text-center my-5 dark:text-white">
         Adoption Request
       </h1>
-      <TableContainer component={Paper}>
+      <TableContainer className="dark:bg-[#17191E]" component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="center">Pet Name</TableCell>
-              <TableCell align="center">Requester Name</TableCell>
-              <TableCell align="center">Email</TableCell>
-              <TableCell align="center">Phone</TableCell>
-              <TableCell align="center">Location</TableCell>
-              <TableCell align="center">Status</TableCell>
-              <TableCell align="center">Action</TableCell>
+              <TableCell className="dark:text-white" align="center">
+                Pet Name
+              </TableCell>
+              <TableCell className="dark:text-white" align="center">
+                Requester Name
+              </TableCell>
+              <TableCell className="dark:text-white" align="center">
+                Email
+              </TableCell>
+              <TableCell className="dark:text-white" align="center">
+                Phone
+              </TableCell>
+              <TableCell className="dark:text-white" align="center">
+                Location
+              </TableCell>
+              <TableCell className="dark:text-white" align="center">
+                Status
+              </TableCell>
+              <TableCell className="dark:text-white" align="center">
+                Action
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

@@ -3,10 +3,12 @@ import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../hook/useAxiosPublic";
 import { LuFan } from "react-icons/lu";
-import {  FaYahoo } from "react-icons/fa6";
+import { FaYahoo } from "react-icons/fa6";
 import useAuth from "../hook/useAuth";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { Button } from "@material-tailwind/react";
+import yahoo from "../../src/assest/yahoo.png";
 
 const Login = () => {
   const { handelLogin, handelGoogleLogin, handelYahooLogin } = useAuth();
@@ -58,8 +60,7 @@ const Login = () => {
   //  yahoo login
   const handelLoginWithYahoo = () => {
     console.log("click");
-    handelYahooLogin()
-    .then(async (res) => {
+    handelYahooLogin().then(async (res) => {
       // save user info to the database
       const newUser = {
         name: res.user.displayName,
@@ -81,8 +82,8 @@ const Login = () => {
       <Helmet>
         <title>Login - PetCare</title>
       </Helmet>
-      <div className="py-20 min-h-[95vh] flex justify-center items-center bg-gray-50">
-        <div className="bg-[#E16F52] w-[600px] p-16">
+      <div className="py-20 min-h-[95vh] flex justify-center items-center bg-gray-50 dark:bg-[#252932] ">
+        <div className="bg-[#E16F52] dark:bg-[#181A20] w-[600px] p-16">
           <h1 className="text-white text-center font-semibold text-2xl md:text-5xl mb-8">
             Join PetCare
           </h1>
@@ -106,7 +107,7 @@ const Login = () => {
                 onClick={handelLoginWithYahoo}
                 className="text-base flex items-center gap-3 w-full text-center border justify-center p-3 rounded-xl text-white"
               >
-                <FaYahoo className="h-6 w-6"></FaYahoo>
+                <img src={yahoo} className="w-7" alt="" />
                 Continue With Yahoo
               </Link>
             </div>
@@ -140,14 +141,14 @@ const Login = () => {
               <p className="text-white mb-2 mt-3">{errors.password.message}</p>
             )}
 
-            <button
-              className="bg-white text-center mx-auto py-2 px-8 cursor-pointer text-[#E16F52] mt-6"
+            <Button
               type="submit"
+              className="bg-[#E16F52] mt-5 dark:bg-gray-400"
             >
               <span className="flex gap-1 items-center">
                 Login{loading && <LuFan className="animate-spin" />}
               </span>
-            </button>
+            </Button>
             <div className="mt-4">
               <p className="text-white">
                 Are you new here?

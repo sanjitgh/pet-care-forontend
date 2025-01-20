@@ -80,9 +80,9 @@ const AllDonationCard = ({ item, refetch }) => {
   };
   return (
     <TableRow sx={{ borderBottom: "1px solid #ddd" }}>
-      <TableCell align="center">{petName}</TableCell>
-      <TableCell align="center">${maxDonationAmount}</TableCell>
-      <TableCell align="center">
+      <TableCell className="dark:text-white" align="center">{petName}</TableCell>
+      <TableCell className="dark:text-white" align="center">${maxDonationAmount}</TableCell>
+      <TableCell className="dark:text-white" align="center">
         <Link to={`/dashboard/all-donations/${_id}`}>
           <FaEdit className="text-[#F69585] text-xl mx-auto"></FaEdit>
         </Link>
@@ -90,7 +90,7 @@ const AllDonationCard = ({ item, refetch }) => {
       <TableCell align="center">
         <Button
           onClick={() => handleStatus(_id)}
-          className={pause ? "bg-green-500" : "bg-[#F69585]"}
+          className={pause ? "bg-green-500" : "bg-[#F69585] dark:bg-gray-400"}
         >
           {pause ? "Resume" : "Pause"}
         </Button>

@@ -10,6 +10,7 @@ import { useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
+import { Button } from "@material-tailwind/react";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -82,13 +83,13 @@ const DonationDetailsCard = ({ item, refetch }) => {
           </p>
         </div>
         {/* donate button */}
-        <button
+        <Button
           onClick={handleClickOpen}
           type="button"
-          className="border px-6 py-3 mt-4 "
+          className="bg-[#E16F52] dark:bg-gray-400 px-6 py-3 mt-4 "
         >
           Donate Now
-        </button>
+        </Button>
       </div>
       {/* payment modal */}
       <BootstrapDialog
@@ -102,7 +103,7 @@ const DonationDetailsCard = ({ item, refetch }) => {
           },
         }}
       >
-        <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
+        <DialogTitle className="dark:bg-[#17191E] dark:text-white" sx={{ m: 0, p: 2 }} id="customized-dialog-title">
           Payment
         </DialogTitle>
         <IconButton
@@ -117,7 +118,7 @@ const DonationDetailsCard = ({ item, refetch }) => {
         >
           <CloseIcon />
         </IconButton>
-        <DialogContent dividers>
+        <DialogContent dividers className="dark:bg-[#262A33]">
           <div>
             <Elements stripe={stripePromise}>
               <CheckoutForm handleClose={handleClose} item={item} setOpen={setOpen} refetch={refetch}></CheckoutForm>

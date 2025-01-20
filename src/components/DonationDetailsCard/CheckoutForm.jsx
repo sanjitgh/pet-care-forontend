@@ -7,6 +7,7 @@ import { compareAsc, format } from "date-fns";
 import Swal from "sweetalert2";
 import { LuFan } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@material-tailwind/react";
 
 const CheckoutForm = ({ handleClose, item, setOpen, refetch }) => {
   const [error, setError] = useState("");
@@ -156,11 +157,11 @@ const CheckoutForm = ({ handleClose, item, setOpen, refetch }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="dark:bg-[#262A33]">
       <input
         type="number"
         placeholder="Enter Your Amount"
-        className="w-full mb-6 border p-2"
+        className="w-full mb-6 border p-2 dark:bg-transparent dark:text-white"
         value={price}
         onChange={(e) => setPrice(Number(e.target.value))}
       />
@@ -180,13 +181,13 @@ const CheckoutForm = ({ handleClose, item, setOpen, refetch }) => {
           },
         }}
       />
-      <button
+      <Button
         type="submit"
         disabled={!stripe || !clientSecret || price <= 0}
-        className="px-6 py-2 border bg-[#E16F52] text-white mt-5 flex items-center gap-1"
+        className="px-6 bg-[#E16F52] dark:bg-gray-400 text-white mt-5 flex items-center gap-1"
       >
         Pay ${price || 0} {loading && <LuFan className="animate-spin" />}
-      </button>
+      </Button>
 
       <p className="text-red-500 text-center mt-3">{error}</p>
     </form>

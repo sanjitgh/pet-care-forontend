@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const DashboardHeader = () => {
   return (
-    <header className="mb-10 hidden md:block text-[#E16F52]">
+    <header className="mb-10 hidden md:block text-[#E16F52] dark:text-white">
       <ul className="flex items-center gap-8">
         <li>
           <Link to={"/"}>Back Home</Link>

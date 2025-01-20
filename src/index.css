@@ -8,6 +8,14 @@ body {
   color: #e16f52 !important;
 }
 
+.dark_bg{
+  background-color: aqua
+}
+
+.dark_header{
+
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

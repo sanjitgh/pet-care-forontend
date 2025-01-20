@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -8,6 +8,7 @@ import { motion } from "motion/react";
 import img1 from "../../../src/assest/bannerImg/banner1.webp";
 import img2 from "../../../src/assest/bannerImg/banner2.webp";
 import img3 from "../../../src/assest/bannerImg/banner3.webp";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -20,9 +21,9 @@ const Banner = () => {
               backgroundImage: `url(${img1})`,
             }}
           >
-            <div className="absolute inset-0 bg-black/50 flex items-center justify-center"></div>
+            <div className="absolute inset-0 bg-black/50 dark:bg-black/80  flex items-center justify-center"></div>
             <div className="z-10 text-white dark:text-gray-200 text-center">
-              <h1 className="font-bold md:text-5xl text-2xl mb-5">
+              <h1 className="font-bold dark:text-gray-400 md:text-5xl text-2xl mb-5">
                 Discover the Joy of Pet Adoption with PetCare
               </h1>
               <p className="text-gray-300 max-w-[800px] mx-auto">
@@ -42,14 +43,16 @@ const Banner = () => {
                   ease: "easeInOut",
                 }}
               >
-                <Button
-                  className="bg-[#e16f52] py-4 hover:bg-[#e16f52] rounded-none mt-6"
-                  variant="filled"
-                >
-                  <span className="flex items-center gap-2">
-                    Browse Pets Now
-                  </span>
-                </Button>
+                <Link to={"/pet-listing"}>
+                  <Button
+                    className="bg-[#e16f52] py-4 dark:bg-gray-700 hover:bg-[#e16f52] rounded-none mt-6"
+                    variant="filled"
+                  >
+                    <span className="flex items-center gap-2">
+                      Browse Pets Now
+                    </span>
+                  </Button>
+                </Link>
               </motion.div>
             </div>
           </div>
@@ -61,9 +64,9 @@ const Banner = () => {
               backgroundImage: `url(${img2})`,
             }}
           >
-            <div className="absolute inset-0 bg-black/50 flex items-center justify-center"></div>
+            <div className="absolute inset-0 bg-black/50 dark:bg-black/80 flex items-center justify-center"></div>
             <div className="z-10 text-white dark:text-gray-200 text-center">
-              <h1 className="font-bold md:text-5xl text-2xl mb-5">
+              <h1 className="font-bold dark:text-gray-400 md:text-5xl text-2xl mb-5">
                 Change Lives, One Adoption at a Time
               </h1>
               <p className="text-gray-300 max-w-[800px] mx-auto">
@@ -82,12 +85,14 @@ const Banner = () => {
                   ease: "easeInOut",
                 }}
               >
-                <Button
-                  className="bg-[#e16f52] py-4 hover:bg-[#e16f52] rounded-none mt-6"
-                  variant="filled"
-                >
-                  <span className="flex items-center gap-2">Adopt Today</span>
-                </Button>
+                <Link to={"/pet-listing"}>
+                  <Button
+                    className="bg-[#e16f52] py-4 dark:bg-gray-700 hover:bg-[#e16f52] rounded-none mt-6"
+                    variant="filled"
+                  >
+                    <span className="flex items-center gap-2">Adopt Today</span>
+                  </Button>
+                </Link>
               </motion.div>
             </div>
           </div>
@@ -99,9 +104,9 @@ const Banner = () => {
               backgroundImage: `url(${img3})`,
             }}
           >
-            <div className="absolute inset-0 bg-black/50 flex items-center justify-center"></div>
+            <div className="absolute inset-0 bg-black/50 dark:bg-black/80 flex items-center justify-center"></div>
             <div className="z-10 text-white dark:text-gray-200 text-center">
-              <h1 className="font-bold md:text-5xl text-2xl mb-5">
+              <h1 className="font-bold dark:text-gray-400 md:text-5xl text-2xl mb-5">
                 YTogether, We Can Make a Difference
               </h1>
               <p className="text-gray-300 max-w-[800px] mx-auto">
@@ -121,12 +126,16 @@ const Banner = () => {
                   ease: "easeInOut",
                 }}
               >
-                <Button
-                  className="bg-[#e16f52] py-4 hover:bg-[#e16f52] rounded-none mt-6"
-                  variant="filled"
-                >
-                  <span className="flex items-center gap-2">Get Involved</span>
-                </Button>
+                <Link to={"/donation-campaign"}>
+                  <Button
+                    className="bg-[#e16f52] py-4 dark:bg-gray-700 hover:bg-[#e16f52] rounded-none mt-6"
+                    variant="filled"
+                  >
+                    <span className="flex items-center gap-2">
+                      Get Involved
+                    </span>
+                  </Button>
+                </Link>
               </motion.div>
             </div>
           </div>

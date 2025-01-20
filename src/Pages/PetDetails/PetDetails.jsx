@@ -16,7 +16,7 @@ const PetDetails = () => {
 
   return (
     <>
-      <div className="py-20">
+      <div className="py-20 dark:bg-[#252933] min-h-[95vh]">
         <div className="container mx-auto px-2">
           <div className="grid grid-cols-1 md:grid-cols-2">
             {pet.map((item) => (

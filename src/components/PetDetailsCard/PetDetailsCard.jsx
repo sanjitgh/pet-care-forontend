@@ -2,7 +2,6 @@ import { useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { format } from "date-fns";
 import "./textCss.css";
-import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
@@ -14,6 +13,7 @@ import useAuth from "../../hook/useAuth";
 import { Tooltip } from "@mui/material";
 import useAxiosSecure from "../../hook/UseAxiosSecure";
 import Swal from "sweetalert2";
+import { Button } from "@material-tailwind/react";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -101,7 +101,7 @@ const PetDetailsCard = ({ item }) => {
       <Helmet>
         <title>{name} - PetCare</title>
       </Helmet>
-      <div className="bg-[#E16F52]">
+      <div className="bg-[#E16F52] dark:bg-[#181A20]">
         <div className="md:p-10 p-4 text-white">
           <h1 className="md:text-4xl text-2xl">{name}</h1>
           <div className="wrapper_des">
@@ -172,7 +172,7 @@ const PetDetailsCard = ({ item }) => {
           },
         }}
       >
-        <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
+        <DialogTitle  className="dark:bg-[#17191E] dark:text-white" sx={{ m: 0, p: 2 }} id="customized-dialog-title">
           {name}
         </DialogTitle>
         <IconButton
@@ -187,7 +187,7 @@ const PetDetailsCard = ({ item }) => {
         >
           <CloseIcon />
         </IconButton>
-        <DialogContent>
+        <DialogContent className="dark:bg-[#252A33] dark:text-white">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-5 mb-5">
               {/* petId */}
@@ -212,7 +212,7 @@ const PetDetailsCard = ({ item }) => {
                     type="text"
                     defaultValue={user?.displayName}
                     {...register("userName", { required: true })}
-                    className="w-full border p-2 focus:outline focus:outline-0"
+                    className="w-full border p-2 focus:outline focus:outline-0 dark:bg-transparent dark:text-white"
                     readOnly
                   />
                 </Tooltip>
@@ -224,7 +224,7 @@ const PetDetailsCard = ({ item }) => {
                     type="text"
                     defaultValue={user?.email}
                     {...register("userEmail", { required: true })}
-                    className="w-full border p-2 focus:outline focus:outline-0"
+                    className="w-full border p-2 focus:outline focus:outline-0 dark:bg-transparent dark:text-white"
                     readOnly
                   />
                 </Tooltip>
@@ -235,7 +235,7 @@ const PetDetailsCard = ({ item }) => {
                   type="number"
                   placeholder="Phone Number"
                   {...register("userPhone", { required: true })}
-                  className="w-full border p-2 focus:outline focus:outline-0"
+                  className="w-full border p-2 focus:outline focus:outline-0 dark:bg-transparent dark:text-white"
                 />
                 {errors.userPhone && (
                   <p className="text-red-500">This field is required</p>
@@ -247,7 +247,7 @@ const PetDetailsCard = ({ item }) => {
                   type="text"
                   placeholder="Address"
                   {...register("userAddress", { required: true })}
-                  className="w-full border p-2 focus:outline focus:outline-0 "
+                  className="w-full border p-2 focus:outline focus:outline-0 dark:bg-transparent dark:text-white "
                 />
                 {errors.userAddress && (
                   <p className="text-red-500">This field is required</p>
@@ -256,15 +256,7 @@ const PetDetailsCard = ({ item }) => {
             </div>
             <Button
               type="submit"
-              variant="outlined"
-              sx={{
-                backgroundColor: "#E16F52",
-                border: "none",
-                color: "white",
-                "&:hover": {
-                  backgroundColor: "#D05A2B",
-                },
-              }}
+             className="bg-[#E16F52] dark:bg-gray-400"
             >
               submit
             </Button>

@@ -9,6 +9,7 @@ import { LuFan } from "react-icons/lu";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { uploadImage } from "../../../api/utils";
+import { Button } from "@material-tailwind/react";
 
 const CreateDonation = () => {
   const [loading, setLoading] = useState(false);
@@ -41,7 +42,7 @@ const CreateDonation = () => {
       donatedAmount: "0",
       donator: user?.displayName,
       donationCreator: user?.email,
-      status: 'unPaused',
+      status: "unPaused",
     };
 
     try {
@@ -70,21 +71,23 @@ const CreateDonation = () => {
         <title>Create Donation - PetCare</title>
       </Helmet>
       <div>
-        <div className="border max-w-3xl mx-auto p-10 bg-gray-50">
-          <h1 className="md:text-5xl text-2xl text-center mb-14">
+        <div className="border max-w-3xl mx-auto p-10 bg-gray-50 dark:bg-[#17191E]">
+          <h1 className="md:text-5xl text-2xl text-center mb-14 dark:text-white">
             Add a Donation
           </h1>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col gap-5"
+            className="flex flex-col gap-5 "
           >
             {/* last Date */}
             <div className="flex flex-col">
-              <label htmlFor="date">Donation Last Date</label>
+              <label htmlFor="date" className="dark:text-white">
+                Donation Last Date
+              </label>
               <DatePicker
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
-                className="w-full border outline-none p-2"
+                className="w-full dark:text-gray-400 border outline-none p-2 dark:bg-[#262A34]"
               />
             </div>
 
@@ -93,7 +96,7 @@ const CreateDonation = () => {
               {...register("name", { required: true })}
               placeholder="Pet Name*"
               type="text"
-              className="w-full border outline-none p-2"
+              className="w-full border outline-none p-2 dark:bg-[#262A34]"
             />
             {errors.name && <p className="text-red-500">Name is required</p>}
 
@@ -102,7 +105,7 @@ const CreateDonation = () => {
               {...register("maxDonationAmount", { required: true })}
               placeholder="Max donation amount*"
               type="number"
-              className="w-full border outline-none p-2"
+              className="w-full border outline-none p-2 dark:bg-[#262A34]"
             />
             {errors.maxDonationAmount && (
               <p className="text-red-500">Max donation amount is required</p>
@@ -112,7 +115,7 @@ const CreateDonation = () => {
             <textarea
               {...register("sortDescription", { required: true })}
               placeholder="Sort description*"
-              className="w-full border outline-none p-2 h-20"
+              className="w-full border outline-none p-2 dark:bg-[#262A34] h-20"
             ></textarea>
             {errors.sortDescription && (
               <p className="text-red-500">Sort description is required</p>
@@ -121,7 +124,7 @@ const CreateDonation = () => {
             <textarea
               {...register("longDescription", { required: true })}
               placeholder="Long description*"
-              className="w-full border outline-none p-2 h-28"
+              className="w-full border outline-none p-2 dark:bg-[#262A34] h-28"
             ></textarea>
             {errors.longDescription && (
               <p className="text-red-500">Long description is required</p>
@@ -138,17 +141,12 @@ const CreateDonation = () => {
             )}
             {/* Submit Button */}
             <div>
-              <div>
-                <button
-                  className="text-white text-center mx-auto py-2 px-4 cursor-pointer bg-[#E16F52] mt-6"
-                  type="submit"
-                >
-                  <span className="flex gap-1 items-center">
-                    Create Donation
-                    {loading && <LuFan className="animate-spin" />}
-                  </span>
-                </button>
-              </div>
+              <Button type="button" className="bg-[#E16F52] dark:bg-gray-400">
+                <span className="flex gap-1 items-center">
+                  Create Donation
+                  {loading && <LuFan className="animate-spin" />}
+                </span>
+              </Button>
             </div>
           </form>
         </div>

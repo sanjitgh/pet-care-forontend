@@ -35,10 +35,10 @@ const MyDonationCard = ({ item, refetch }) => {
       <TableCell align="center">
         <Avatar src={petImage}></Avatar>
       </TableCell>
-      <TableCell align="center">{petName}</TableCell>
-      <TableCell align="center">${donationAmount}</TableCell>
-      <TableCell align="center">
-        <Button onClick={() => handleRemove(_id)} className="bg-[#F69585]">
+      <TableCell className="dark:text-white" align="center">{petName}</TableCell>
+      <TableCell className="dark:text-white" align="center">${donationAmount}</TableCell>
+      <TableCell className="dark:text-white" align="center">
+        <Button onClick={() => handleRemove(_id)} className="bg-[#F69585] dark:bg-gray-400">
           Remove
         </Button>
       </TableCell>
