@@ -24,6 +24,7 @@ import AllDonations from "../Pages/Deashboard/AllDonations/AllDonations";
 import DonationUpdate from "../Pages/Deashboard/DonationUpdate/DonationUpdate";
 import MyDonation from "../Pages/Deashboard/MyDonation/MyDonation";
 import RecommendDonation from "../Pages/RecommendDonation/RecommendDonation";
+import MyAddedPetUpdate from "../Pages/Deashboard/MyAddedPetUpdate/MyAddedPetUpdate";
 
 const router = createBrowserRouter([
   {
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/recommend",
-        element: <RecommendDonation></RecommendDonation>
+        element: <RecommendDonation></RecommendDonation>,
       },
       {
         path: "/pet-listing/:id",
@@ -104,6 +105,14 @@ const router = createBrowserRouter([
         element: (
           <PrivetRoute>
             <MyAddedPet></MyAddedPet>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/dashboard/my-added-pet/:id",
+        element: (
+          <PrivetRoute>
+            <MyAddedPetUpdate></MyAddedPetUpdate>
           </PrivetRoute>
         ),
       },

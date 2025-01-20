@@ -16,7 +16,7 @@ const AllDonations = () => {
   const { data: allDonations = [], refetch } = useQuery({
     queryKey: ["allDonations"],
     queryFn: async () => {
-      const { data } = await axiosSecure.get('/donations');
+      const { data } = await axiosSecure.get('/all-donations');
       return data;
     },
   });
