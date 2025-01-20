@@ -2,19 +2,21 @@
 PetCare
 
 ### Key Features:
- - 
+ - Adopt Pet
+ - Payment System
+ - Donate pets
+ - Authentication System
 
 
 ### Npm Packages
  - material-tailwind
  - axious
  - react-icon
- - motion
- - react counter
  - react router
- - react spinners
  - sweetalert2
  - swipper
  - date-fns
+ - tanstack query
 
 ### Live URL:
+https://petcare-1777f.web.app/
