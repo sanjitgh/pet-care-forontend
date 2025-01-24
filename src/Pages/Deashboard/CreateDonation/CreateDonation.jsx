@@ -141,7 +141,7 @@ const CreateDonation = () => {
             )}
             {/* Submit Button */}
             <div>
-              <Button type="button" className="bg-[#E16F52] dark:bg-gray-400">
+              <Button type="submit" className="bg-[#E16F52] dark:bg-gray-400">
                 <span className="flex gap-1 items-center">
                   Create Donation
                   {loading && <LuFan className="animate-spin" />}

@@ -177,7 +177,6 @@ const PetListing = () => {
                 </CardActions>
               </Card>
             ))}
-            {!pets.length && <p className="dark:text-white">No Data Found</p>}
           </div>
           <div ref={ref} className="mt-4 text-center">
             {isFetchingNextPage && <p className="dark:text-white">Loading more...</p>}
