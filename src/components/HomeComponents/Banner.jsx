@@ -16,7 +16,7 @@ const Banner = () => {
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         <SwiperSlide>
           <div
-            className="bg-center bg-cover bg-no-repeat min-h-[800px] relative flex justify-center items-center"
+            className="bg-center bg-cover bg-no-repeat min-h-[calc(100vh-80px)] relative flex justify-center items-center"
             style={{
               backgroundImage: `url(${img1})`,
             }}
@@ -59,7 +59,7 @@ const Banner = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div
-            className="bg-center bg-cover bg-no-repeat min-h-[800px] relative flex justify-center items-center"
+            className="bg-center bg-cover bg-no-repeat min-h-[calc(100vh-80px)] relative flex justify-center items-center"
             style={{
               backgroundImage: `url(${img2})`,
             }}
@@ -99,7 +99,7 @@ const Banner = () => {
         </SwiperSlide>
         <SwiperSlide>
           <div
-            className="bg-center bg-cover bg-no-repeat min-h-[800px] relative flex justify-center items-center"
+            className="bg-center bg-cover bg-no-repeat min-h-[calc(100vh-80px)] relative flex justify-center items-center"
             style={{
               backgroundImage: `url(${img3})`,
             }}
