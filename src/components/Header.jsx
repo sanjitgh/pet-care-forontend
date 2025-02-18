@@ -24,7 +24,7 @@ const Header = () => {
         className={({ isActive }) =>
           isActive
             ? "text-white md:text-[#5f56c6] uppercase text-[14px] font-medium"
-            : "md:text-[#333333] uppercase text-[14px] font-medium text-white"
+            : "md:text-[#333333] uppercase text-[14px] font-medium text-white dark:text-white"
         }
         to={"/"}
       >
@@ -34,7 +34,7 @@ const Header = () => {
         className={({ isActive }) =>
           isActive
             ? "text-white md:text-[#5f56c6] uppercase text-[14px] font-medium"
-            : "md:text-[#333333] uppercase text-[14px] font-medium text-white"
+            : "md:text-[#333333] uppercase text-[14px] font-medium text-white dark:text-white"
         }
         to={"/pet-listing"}
       >
@@ -44,7 +44,7 @@ const Header = () => {
         className={({ isActive }) =>
           isActive
             ? "text-white md:text-[#5f56c6] uppercase text-[14px] font-medium"
-            : "md:text-[#333333] uppercase text-[14px] font-medium text-white"
+            : "md:text-[#333333] uppercase text-[14px] font-medium text-white dark:text-white"
         }
         to={"/donation-campaign"}
       >
@@ -55,11 +55,23 @@ const Header = () => {
           className={({ isActive }) =>
             isActive
               ? "text-white md:text-[#5f56c6] uppercase text-[14px] font-medium"
-              : "md:text-[#333333] uppercase text-[14px] font-medium text-white"
+              : "md:text-[#333333] uppercase text-[14px] font-medium text-white dark:text-white"
           }
           to={"/login"}
         >
           Login
+        </NavLink>
+      )}
+      {user && (
+        <NavLink
+          className={({ isActive }) =>
+            isActive
+              ? "text-white md:text-[#5f56c6] uppercase text-[14px] font-medium"
+              : "md:text-[#333333] uppercase text-[14px] font-medium text-white dark:text-white"
+          }
+          to={"/dashboard"}
+        >
+          Dashboard
         </NavLink>
       )}
     </>
@@ -86,10 +98,7 @@ const Header = () => {
   };
 
   return (
-    <AppBar
-      className="py-2 dark:bg-[#181A20] !bg-white"
-      position="static"
-    >
+    <AppBar className="py-2 dark:!bg-[#030712] !bg-white" position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -105,8 +114,8 @@ const Header = () => {
             }}
           >
             <Link to={"/"} className="flex items-center gap-1 md:mr-10">
-              <GiJumpingDog className="text-5xl text-[#5f56c6]" />
-              <span className="text-2xl md:text-4xl tracking-normal font-extrabold text-[#5f56c6]">
+              <GiJumpingDog className="text-5xl text-[#5f56c6] dark:text-white" />
+              <span className="text-2xl md:text-4xl tracking-normal font-extrabold text-[#5f56c6] dark:text-white">
                 Pet
                 <span className=" italic text-2xl">care</span>
               </span>
@@ -126,13 +135,16 @@ const Header = () => {
               aria-haspopup="true"
               className="!px-0"
             >
-              <RxHamburgerMenu onClick={handleOpenNavMenu}></RxHamburgerMenu>
+              <RxHamburgerMenu
+                onClick={handleOpenNavMenu}
+                className="text-white"
+              ></RxHamburgerMenu>
             </IconButton>
             <Menu
               PaperProps={{
                 sx: {
                   width: "200px",
-                  backgroundColor: theme === "dark" ? "#252932" : "#5F56C6",
+                  backgroundColor: theme === "dark" ? "#030712" : "#5F56C6",
                   marginTop: "24px",
                 },
               }}
@@ -196,11 +208,11 @@ const Header = () => {
             </Tooltip>
             {/* profile dropdown */}
             <Menu
+              className="mt-[57px] md:mt-14 xl:mt-16"
               PaperProps={{
                 sx: {
                   width: "200px",
-                  backgroundColor: theme === "dark" ? "#252932" : "#5F56C6",
-                  marginTop: "58px",
+                  backgroundColor: theme === "dark" ? "#030712" : "#5F56C6",
                   padding: "10px",
                 },
               }}

@@ -7,9 +7,9 @@ const Donner = () => {
   return (
     <section className="py-20 dark:bg-[#23272F] ">
       <div className="container mx-auto px-2">
-        <div className="grid gird-cols-2 md:gap-3 gap-10 sm:grid-cols-3 md:grid-cols-5 place-items-center border py-14 px-8 bg-gray-50 dark:bg-[#181A20] dark:border-gray-600 ">
+        <div className="grid gird-cols-2 md:gap-3 gap-10 sm:grid-cols-3 md:grid-cols-5 place-items-center py-14 px-8 bg-gray-50 dark:bg-[#181A20]  rounded">
           <div>
-            <h1 className="text-3xl font-semibold dark:text-white italic">Our Sponsors and Donors</h1>
+            <h1 className="text-[35px] text-[#333333] font-semibold dark:text-white italic">Our Sponsors and Donors</h1>
           </div>
           <img className="max-w-[150px]" src={img1} alt="" />
           <img className="max-w-[150px]" src={img2} alt="" />

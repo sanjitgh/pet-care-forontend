@@ -1,102 +1,71 @@
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { PiArrowUpRightBold } from "react-icons/pi";
+import imgLogo from "../../src/assest/footer.png";
 const Footer = () => {
   return (
-    <footer className="pt-20 text-gray-300 bg-[#e16f52] dark:bg-[#181A20]">
-      <div className="md:px-10 container mx-auto px-3">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
-          <div>
-            <h1 className="text-white font-bold md:text-4xl text-2xl">
-              PetCare
-            </h1>
-            <p className="max-w-[350px] my-3">
-              Your go-to source for honest reviews and expert recommendations.
-              Reach out for support or collaboration.
-            </p>
-            <ul className="flex items-center gap-5">
-              <li>
-                <a
-                  className="text-xl transition-all"
-                  href={"https://www.facebook.com/"}
-                  target="_blank"
-                >
-                  <FaFacebookF />
-                </a>
-              </li>
-              <li>
-                <a
-                  className="text-xl transition-all"
-                  href={"https://www.twitter.com/"}
-                  target="_blank"
-                >
-                  <FaXTwitter />
-                </a>
-              </li>
-              <li>
-                <a
-                  className="text-xl transition-all"
-                  href={"https://www.instagram.com/"}
-                  target="_blank"
-                >
-                  <FaInstagram />
-                </a>
-              </li>
-            </ul>
-          </div>
-          <nav>
-            <h6 className="text-white text-xl font-medium">Services</h6>
-            <div className="flex flex-col mt-3">
-              <Link className="text-base font-normal transition-all">
-                Service
-              </Link>
-              <Link className="text-base font-normal transition-all">
-                Newsletter
-              </Link>
-              <Link className="text-base font-normal transition-all">Blog</Link>
-            </div>
-          </nav>
-          <nav>
-            <h6 className="text-white text-xl font-medium">Security</h6>
-            <div className="flex flex-col mt-3">
-              <Link className="text-base font-normal transition-all">
-                Terms and Condition
-              </Link>
-              <Link to={""} className="text-base font-normal transition-all">
-                Privacy Policy
-              </Link>
-              <Link to={""} className="text-base font-normal transition-all">
-                Contact Us
-              </Link>
-            </div>
-          </nav>
-          <nav>
-            <h6 className="text-white text-xl font-medium">Information</h6>
-            <div className="flex flex-col mt-3">
-              <Link
-                to={"/register"}
-                className="text-base font-normal transition-all"
+    <footer className="pt-16 text-gray-300 bg-[#5F56C6] dark:bg-[#181A20] overflow-hidden relative">
+      <div className="container mx-auto px-3 flex flex-col md:flex-row gap-14 md:gap-10 items-end">
+        {/* left item */}
+        <div className="w-full md:w-[40%]">
+          <h1 className="text-white font-semibold text-3xl sm:text-3xl md:text-[40px] !leading-tight mb-5">
+            Join Our Communities On Social Networks
+          </h1>
+          <ul className="flex items-center gap-5">
+            <li className="p-2 rounded-full hover:scale-[1.1] duration-300 bg-[#1877F2]">
+              <a
+                className="text-xl transition-all"
+                href={"https://www.facebook.com/"}
+                target="_blank"
               >
-                Sign Up
-              </Link>
-              <Link
-                to={"/login"}
-                className="text-base font-normal transition-all"
+                <FaFacebookF />
+              </a>
+            </li>
+            <li className="p-2 rounded-full hover:scale-[1.1] duration-300 bg-[#1DA1F2]">
+              <a
+                className="text-xl transition-all"
+                href={"https://www.twitter.com/"}
+                target="_blank"
               >
-                Login
+                <FaXTwitter />
+              </a>
+            </li>
+            <li className="p-2 rounded-full hover:scale-[1.1] duration-300 bg-[#962fbf]">
+              <a
+                className="text-xl transition-all"
+                href={"https://www.instagram.com/"}
+                target="_blank"
+              >
+                <FaInstagram />
+              </a>
+            </li>
+          </ul>
+        </div>
+        {/* right item */}
+        <div className="w-full md:w-[60%]">
+          <ul className="flex items-center md:justify-end flex-wrap pb-3 uppercase text-white gap-5 border-b-[2px] border-white">
+            <li>
+              <Link className="flex items-center gap-2">
+                Home <PiArrowUpRightBold className="text-xl" />
               </Link>
-              <Link className="text-base font-normal transition-all">
-                About Us
+            </li>
+            <li>
+              <Link className="flex items-center gap-2">
+                Pet Listing <PiArrowUpRightBold className="text-xl" />
               </Link>
-            </div>
-          </nav>
+            </li>
+            <li>
+              <Link className="flex items-center gap-2">
+                Donation Campaigns <PiArrowUpRightBold className="text-xl" />
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
-      <div className="border-t border-t-[#dddddd41] mt-10 mb-0"></div>
-      <div className="py-8">
-        <p className="text-center font-medium text-white">
-          © 2025 PetCare. All rights reserved.
-        </p>
+      {/* logo image */}
+      <div className="pt-10 md:pt-14 mx-auto max-w-[300px] sm:max-w-[500px] lg:max-w-[800px] 2xl:max-w-[1200px]  -mb-4 sm:-mb-7 lg:-mb-14  2xl:-mb-20">
+        <img className="w-full" src={imgLogo} alt="footer logo" />
       </div>
     </footer>
   );

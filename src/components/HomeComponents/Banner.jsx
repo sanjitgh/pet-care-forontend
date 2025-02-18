@@ -12,10 +12,10 @@ const Banner = () => {
           backgroundImage: `url(${img1})`,
         }}
       >
-        <div className="absolute inset-0 bg-black/1 dark:bg-black/70  flex  items-center justify-center"></div>
+        <div className="absolute inset-0 bg-black/0 dark:bg-black/90 md:dark:bg-black/70  flex  items-center justify-center"></div>
         <div className="container mx-auto px-2">
           <div className="z-10 text-white dark:text-gray-200 text-center md:text-start md:max-w-[650px] relative">
-            <h1 className="font-semibold dark:text-white text-2xl sm:text-3xl md:text-4xl 2xl:text-6xl text-[#5F56C6]">
+            <h1 className="font-semibold dark:text-white text-3xl sm:text-3xl md:text-4xl 2xl:text-6xl text-[#5F56C6]">
               Discover the Joy of Pet Adoption with PetCare
             </h1>
             <p className="text-[#333333] max-w-[800px] mx-auto my-4 md:my-8 sm:text-lg dark:text-gray-300">

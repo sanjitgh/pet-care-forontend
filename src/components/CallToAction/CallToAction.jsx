@@ -4,7 +4,7 @@ import img2 from "../../../src/assest/callToAction/happy2.webp";
 import { Button } from "@material-tailwind/react";
 const CallToAction = () => {
   return (
-    <section className="py-20 bg-gray-100 dark:bg-[#23272F] ">
+    <section className="py-20 bg-gray-100 dark:bg-[#0D1323] ">
       <div className="container mx-auto px-2 grid grid-cols-1 sm:grid-cols-2 gap-10 place-items-center">
         {/* left item */}
         <div className="text-center md:text-left">

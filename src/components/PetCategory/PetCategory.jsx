@@ -18,7 +18,7 @@ const PetCategory = () => {
   };
 
   return (
-    <section className="py-14 xl:py-20 dark:bg-[#181A20]">
+    <section className="py-14 xl:py-20 dark:bg-[#030712]">
       <div className="container mx-auto px-2">
         <h2 className="text-2xl md:text-4xl text-[#5F56C6] dark:text-white font-bold mb-10">
           Popular Category
