@@ -23,7 +23,7 @@ const Header = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "text-white md:border-b uppercase text-[14px] font-medium"
+            ? "text-white md:text-orange-700 dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
             : "uppercase text-[14px] font-medium text-white dark:text-white"
         }
         to={"/"}
@@ -33,7 +33,7 @@ const Header = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "text-white md:border-b uppercase text-[14px] font-medium"
+            ? "text-white md:text-orange-700 dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
             : "uppercase text-[14px] font-medium text-white dark:text-white"
         }
         to={"/pet-listing"}
@@ -43,7 +43,7 @@ const Header = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "text-white md:border-b uppercase text-[14px] font-medium"
+            ? "text-white md:text-orange-700 dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
             : "uppercase text-[14px] font-medium text-white dark:text-white"
         }
         to={"/donation-campaign"}
@@ -53,7 +53,7 @@ const Header = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "text-white md:border-b uppercase text-[14px] font-medium"
+            ? "text-white md:text-orange-700 dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
             : "uppercase text-[14px] font-medium text-white dark:text-white"
         }
         to={"/about-us"}
@@ -64,19 +64,19 @@ const Header = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "text-white md:border-b uppercase text-[14px] font-medium"
+              ? "text-white md:text-orange-700 dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
               : "uppercase text-[14px] font-medium text-white dark:text-white"
           }
           to={"/login"}
         >
-          Login
+          Join Us
         </NavLink>
       )}
       {user && (
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "text-white md:border-b uppercase text-[14px] font-medium"
+              ? "text-white md:text-orange-700 dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
               : "uppercase text-[14px] font-medium text-white dark:text-white"
           }
           to={"/dashboard"}
@@ -108,7 +108,7 @@ const Header = () => {
   };
 
   return (
-    <div className="sticky top-0">
+    <div className="sticky top-0 z-50">
       <AppBar
         className="py-2 dark:!bg-[#0D1323] !bg-[#5F56C6]"
         position="static"
@@ -216,7 +216,7 @@ const Header = () => {
                       className="w-12 h-12 rounded-full"
                     />
                   ) : (
-                    <FaUserTie className="text-3xl text-[#5f56c6]" />
+                    <FaUserTie className="text-3xl text-white" />
                   )}
                 </IconButton>
               </Tooltip>
@@ -274,7 +274,7 @@ const Header = () => {
                       </li>
                       <li>
                         <button onClick={toggleTheme}>
-                          Toggle {theme === "dark" ? "Light" : "Dark"} Mode
+                          {theme === "dark" ? "Light" : "Dark"} Mode
                         </button>
                       </li>
                     </ul>

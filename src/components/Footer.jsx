@@ -46,18 +46,23 @@ const Footer = () => {
         <div className="w-full md:w-[60%]">
           <ul className="flex items-center md:justify-end flex-wrap pb-3 uppercase text-white gap-5 border-b-[2px] border-white">
             <li>
-              <Link className="flex items-center gap-2">
+              <Link to={'/'} className="flex items-center gap-2">
                 Home <PiArrowUpRightBold className="text-xl" />
               </Link>
             </li>
             <li>
-              <Link className="flex items-center gap-2">
+              <Link to={'/pet-listing'} className="flex items-center gap-2">
                 Pet Listing <PiArrowUpRightBold className="text-xl" />
               </Link>
             </li>
             <li>
-              <Link className="flex items-center gap-2">
+              <Link to={'/donation-campaign'} className="flex items-center gap-2">
                 Donation Campaigns <PiArrowUpRightBold className="text-xl" />
+              </Link>
+            </li>
+            <li>
+              <Link to={'login'} className="flex items-center gap-2">
+                Join Us <PiArrowUpRightBold className="text-xl" />
               </Link>
             </li>
           </ul>

@@ -17,6 +17,7 @@ import Select from "@mui/material/Select";
 import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { SiGrafana } from "react-icons/si";
+import SkeletonGrid from "../../Skeleton/SkeletonGrid";
 
 const PetListing = () => {
   const axiosPublic = useAxiosPublic();
@@ -26,6 +27,7 @@ const PetListing = () => {
 
   const [filter, setFilter] = useState(initialFilter);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -38,9 +40,11 @@ const PetListing = () => {
     useInfiniteQuery({
       queryKey: ["pets", filter, search],
       queryFn: async ({ pageParam = 1 }) => {
+        setLoading(true);
         const { data } = await axiosPublic.get(
           `/pets?adopted=false&filter=${filter}&search=${search}&page=${pageParam}&limit=6`
         );
+        setLoading(false);
         return data;
       },
       getNextPageParam: (lastPage) => {
@@ -131,56 +135,63 @@ const PetListing = () => {
               }}
             />
           </div>
+
           {/* Main Content */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-            {pets.map((item) => (
-              <Card key={item._id} className="dark:bg-[#0D1323] !shadow">
-                <CardMedia
-                  className="!rounded"
-                  sx={{ minHeight: 250 }}
-                  image={item.image}
-                />
-                <CardContent className="!pb-0">
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="div"
-                    className="dark:text-white text-[#5F56C6]"
-                  >
-                    {item.name.slice(0, 40)}
-                  </Typography>
-                  <Typography
-                    className="dark:text-gray-400"
-                    gutterBottom
-                    variant="p"
-                    component="div"
-                  >
-                    <span className="font-semibold">Age: </span>
-                    {item.age} Years
-                  </Typography>
-                  <Typography
-                    className="dark:text-gray-400"
-                    gutterBottom
-                    variant="p"
-                    component="div"
-                  >
-                    <span className="font-semibold"></span>
-                    {item.location}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Link to={`/pet-listing/${item._id}`}>
-                    <Button
-                      className="dark:text-gray-400 !text-[#5F56C6]"
-                      size="small"
+          {loading ? (
+            <SkeletonGrid></SkeletonGrid>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+              {pets.map((item) => (
+                <Card key={item._id} className="dark:bg-[#0D1323] !shadow">
+                  <CardMedia
+                    className="!rounded"
+                    sx={{ minHeight: 250 }}
+                    image={item.image}
+                  />
+                  <CardContent className="!pb-0">
+                    <Typography
+                      gutterBottom
+                      variant="h5"
+                      component="div"
+                      className="dark:text-white text-[#5F56C6]"
                     >
-                      View Details <FaArrowRight />
-                    </Button>
-                  </Link>
-                </CardActions>
-              </Card>
-            ))}
-          </div>
+                      {item.name.slice(0, 40)}
+                    </Typography>
+                    <Typography
+                      className="dark:text-gray-400"
+                      gutterBottom
+                      variant="p"
+                      component="div"
+                    >
+                      <span className="font-semibold">Age: </span>
+                      {item.age} Years
+                    </Typography>
+                    <Typography
+                      className="dark:text-gray-400"
+                      gutterBottom
+                      variant="p"
+                      component="div"
+                    >
+                      <span className="font-semibold"></span>
+                      {item.location}
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Link to={`/pet-listing/${item._id}`}>
+                      <Button
+                        className="dark:text-gray-400 !text-[#5F56C6]"
+                        size="small"
+                      >
+                        View Details <FaArrowRight />
+                      </Button>
+                    </Link>
+                  </CardActions>
+                </Card>
+              ))}
+            </div>
+          )}
+
+          {/* infininty loading */}
           <div ref={ref} className="mt-4 text-center">
             {isFetchingNextPage && (
               <div className="flex justify-center mt-10">

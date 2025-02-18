@@ -10,20 +10,24 @@ import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { SiGrafana } from "react-icons/si";
+import SkeletonGrid from "../../Skeleton/SkeletonGrid";
 
 const DonationCampaign = () => {
   const axiosPublic = useAxiosPublic();
   const { ref, inView } = useInView();
+  const [loading, setLoading] = useState(true);
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQuery({
       queryKey: ["donations"],
       queryFn: async ({ pageParam = 1 }) => {
+        setLoading(true);
         const { data } = await axiosPublic.get(
           `/donations?page=${pageParam}&limit=6`
         );
+        setLoading(false);
         return data;
       },
       getNextPageParam: (lastPage) => {
@@ -49,47 +53,56 @@ const DonationCampaign = () => {
       </Helmet>
       <section className="dark:bg-[#030712] py-14 md:py-20">
         <div className="container mx-auto px-2">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-            {donations.map((item) => (
-              <Card key={item._id} className="dark:bg-[#0D1323] !shadow">
-                <CardMedia sx={{ height: 250 }} image={item.petImage} />
-                <CardContent>
-                  <Typography
-                    className="dark:text-white"
-                    gutterBottom
-                    variant="h5"
-                    component="div"
-                  >
-                    {item.petName}
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "text.secondary" }}>
-                    <div className="dark:text-gray-400">
-                      <span>
-                        <b>Maximum Donation: </b>
-                      </span>
-                      ${item.maxDonationAmount}
-                    </div>
-                    <div className="dark:text-gray-400">
-                      <span>
-                        <b>Donated Amount: </b>
-                      </span>
-                      ${item.donatedAmount}
-                    </div>
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Link to={`/donation-campaign/${item._id}`}>
-                    <Button
-                      className="dark:text-gray-400 !text-[#5F56C6]"
-                      size="small"
+          {loading ? (
+            <SkeletonGrid></SkeletonGrid>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+              {donations.map((item) => (
+                <Card key={item._id} className="dark:bg-[#0D1323] !shadow">
+                  <CardMedia sx={{ height: 250 }} image={item.petImage} />
+                  <CardContent>
+                    <Typography
+                      className="dark:text-white"
+                      gutterBottom
+                      variant="h5"
+                      component="div"
                     >
-                      View Details <FaArrowRight />
-                    </Button>
-                  </Link>
-                </CardActions>
-              </Card>
-            ))}
-          </div>
+                      {item.petName}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{ color: "text.secondary" }}
+                    >
+                      <div className="dark:text-gray-400">
+                        <span>
+                          <b>Maximum Donation: </b>
+                        </span>
+                        ${item.maxDonationAmount}
+                      </div>
+                      <div className="dark:text-gray-400">
+                        <span>
+                          <b>Donated Amount: </b>
+                        </span>
+                        ${item.donatedAmount}
+                      </div>
+                    </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <Link to={`/donation-campaign/${item._id}`}>
+                      <Button
+                        className="dark:text-gray-400 !text-[#5F56C6]"
+                        size="small"
+                      >
+                        View Details <FaArrowRight />
+                      </Button>
+                    </Link>
+                  </CardActions>
+                </Card>
+              ))}
+            </div>
+          )}
+
+          {/* infininty loading */}
           <div ref={ref} className="mt-4 text-center">
             {isFetchingNextPage && (
               <div className="flex justify-center mt-10">

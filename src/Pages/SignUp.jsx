@@ -63,8 +63,8 @@ const SignUp = () => {
   };
 
   return (
-    <div className="py-20 min-h-[95vh] flex justify-center items-center bg-gray-50 dark:bg-[#252932] ">
-      <div className="bg-[#E16F52] dark:bg-[#16181D]  w-[600px] p-16">
+    <div className="py-20 min-h-[calc(100vh-80px)] flex justify-center items-center bg-gray-50 dark:bg-[#030712] ">
+      <div className="bg-[#5F56C6] dark:bg-[#0D1323]  w-[600px] p-16">
         <h1 className="text-center text-white font-semibold text-2xl md:text-5xl mb-8">
           Register Now
         </h1>
@@ -74,7 +74,7 @@ const SignUp = () => {
             type="text"
             autoComplete="off"
             placeholder="full name"
-            className="w-full bg-transparent border mb-5 p-3 rounded-lg placeholder:text-white outline-none text-white"
+            className="w-full bg-transparent border mb-5 p-3 rounded placeholder:text-white outline-none text-white"
             required
           />
 
@@ -83,7 +83,7 @@ const SignUp = () => {
             type="email"
             autoComplete="off"
             placeholder="email"
-            className="w-full bg-transparent border mb-5 p-3 rounded-lg placeholder:text-white outline-none text-white"
+            className="w-full bg-transparent border mb-5 p-3 rounded placeholder:text-white outline-none text-white"
             required
           />
           <input
@@ -91,13 +91,23 @@ const SignUp = () => {
             type="password"
             autoComplete="off"
             placeholder="password"
-            className="w-full bg-transparent border mb-5 p-3 rounded-lg placeholder:text-white outline-none text-white"
+            className="w-full bg-transparent border mb-5 p-3 rounded placeholder:text-white outline-none text-white"
             required
           />
 
           <input name="image" type="file" required accept="image/*" />
 
-          <div className="mt-2">
+          <div>
+            <Button
+              type="submit"
+              className="bg-white text-[#5F56C6] dark:text-[#0D1323] py-3 tracking-wide rounded mt-5"
+            >
+              <span className="flex gap-1 items-center">
+                Register{loading && <LuFan className="animate-spin" />}
+              </span>
+            </Button>
+          </div>
+          <div className="mt-3">
             <p className="text-white">
               Already have an account?{" "}
               <Link to={"/login"}>
@@ -105,15 +115,6 @@ const SignUp = () => {
               </Link>
             </p>
           </div>
-
-          <Button
-            type="submit"
-            className="bg-white text-[#E16F52]  mt-5 dark:bg-gray-400"
-          >
-            <span className="flex gap-1 items-center">
-              Register{loading && <LuFan className="animate-spin" />}
-            </span>
-          </Button>
         </form>
       </div>
     </div>

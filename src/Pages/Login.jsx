@@ -81,8 +81,8 @@ const Login = () => {
       <Helmet>
         <title>Login - PetCare</title>
       </Helmet>
-      <div className="py-20 min-h-[95vh] flex justify-center items-center bg-gray-50 dark:bg-[#252932] ">
-        <div className="bg-[#E16F52] dark:bg-[#181A20] w-[600px] p-16">
+      <div className="py-20 min-h-[calc(100vh-80px)] flex justify-center items-center bg-gray-50 dark:bg-[#030712] ">
+        <div className="bg-[#5F56C6] dark:bg-[#0D1323] w-[600px] p-16">
           <h1 className="text-white text-center font-semibold text-2xl md:text-5xl mb-8">
             Join PetCare
           </h1>
@@ -91,7 +91,7 @@ const Login = () => {
             <div className="mb-8">
               <Link
                 onClick={handelLoginWithGoogle}
-                className="text-base flex items-center gap-3 w-full text-center border justify-center p-3 rounded-xl text-white"
+                className="text-base flex items-center gap-3 w-full text-center border justify-center p-3 rounded text-white"
               >
                 <img
                   src="https://docs.material-tailwind.com/icons/google.svg"
@@ -104,7 +104,7 @@ const Login = () => {
             <div className="mb-8">
               <Link
                 onClick={handelLoginWithYahoo}
-                className="text-base flex items-center gap-3 w-full text-center border justify-center p-3 rounded-xl text-white"
+                className="text-base flex items-center gap-3 w-full text-center border justify-center p-3 rounded text-white"
               >
                 <img src={yahoo} className="w-7" alt="" />
                 Continue With Yahoo
@@ -119,7 +119,7 @@ const Login = () => {
               type="email"
               autoComplete="off"
               placeholder="email"
-              className="w-full bg-transparent border mb-5 p-3 rounded-lg placeholder:text-white outline-none text-white"
+              className="w-full bg-transparent border mb-5 p-3 rounded placeholder:text-white outline-none text-white"
             />
 
             <input
@@ -133,7 +133,7 @@ const Login = () => {
               type="password"
               autoComplete="off"
               placeholder="password"
-              className="w-full bg-transparent border p-3 rounded-lg placeholder:text-white outline-none text-white"
+              className="w-full bg-transparent border p-3 rounded placeholder:text-white outline-none text-white"
             />
 
             {errors.password && (
@@ -142,7 +142,7 @@ const Login = () => {
 
             <Button
               type="submit"
-              className="bg-white text-[#E16F52] mt-5 dark:bg-gray-400"
+              className="bg-white text-[#5F56C6] dark:text-[#0D1323] py-3 tracking-wide rounded mt-5"
             >
               <span className="flex gap-1 items-center">
                 Login{loading && <LuFan className="animate-spin" />}
