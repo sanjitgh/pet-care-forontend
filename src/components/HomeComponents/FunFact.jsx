@@ -3,7 +3,7 @@ import img from "../../../src/assest/funfact.webp";
 const FunFact = () => {
   return (
     <section
-      className="py-32 bg-no-repeat bg-center bg-cover relative bg-fixed"
+      className="py-32 bg-no-repeat bg-center bg-cover relative"
       style={{ backgroundImage: `url(${img})` }}
     >
         <div className="absolute w-full h-full bg-black top-0 opacity-60 dark:opacity-80"></div>

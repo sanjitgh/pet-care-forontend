@@ -98,14 +98,13 @@ const Header = () => {
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
               fontWeight: 700,
               letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
             }}
           >
-            <Link to={"/"} className="flex items-center gap-1 md:mr-5">
+            <Link to={"/"} className="flex items-center gap-1 md:mr-10">
               <GiJumpingDog className="text-5xl text-[#5f56c6]" />
               <span className="text-2xl md:text-4xl tracking-normal font-extrabold text-[#5f56c6]">
                 Pet
@@ -178,7 +177,7 @@ const Header = () => {
             </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <div className="flex gap-5 items-center">{links}</div>
+            <div className="flex gap-6 items-center">{links}</div>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Click me!">

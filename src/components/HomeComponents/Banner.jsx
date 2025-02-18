@@ -12,7 +12,7 @@ const Banner = () => {
           backgroundImage: `url(${img1})`,
         }}
       >
-        <div className="absolute inset-0 bg-black/10 dark:bg-black/70  flex  items-center justify-center"></div>
+        <div className="absolute inset-0 bg-black/1 dark:bg-black/70  flex  items-center justify-center"></div>
         <div className="container mx-auto px-2">
           <div className="z-10 text-white dark:text-gray-200 text-center md:text-start md:max-w-[650px] relative">
             <h1 className="font-semibold dark:text-white text-2xl sm:text-3xl md:text-4xl 2xl:text-6xl text-[#5F56C6]">
