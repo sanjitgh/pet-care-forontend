@@ -4,14 +4,8 @@ html {
   scroll-behavior: smooth;
 }
 
-
 body {
   font-family: "Lexend", serif;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-  color: #e16f52 !important;
 }
 
 

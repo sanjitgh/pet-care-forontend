@@ -27,7 +27,7 @@ const PetCategory = () => {
           {categories.map((category, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-[#23272F] shadow rounded overflow-hidden hover:shadow-md transition-shadow relative"
+              className="bg-white dark:bg-[#0D1323] shadow rounded overflow-hidden hover:shadow-md transition-shadow relative"
             >
               <img
                 src={category.image}

@@ -77,8 +77,6 @@ const PetDetailsCard = ({ item }) => {
       status: "Panding",
     };
 
-    console.log(adoptData);
-
     try {
       // submit data in db
       const { data } = await axiosSecure.post("/adoptionRequest", adoptData);
@@ -103,64 +101,84 @@ const PetDetailsCard = ({ item }) => {
       <Helmet>
         <title>{name} - PetCare</title>
       </Helmet>
-      <div className="bg-[#E16F52] dark:bg-[#181A20]">
-        <div className="md:p-10 p-4 text-white">
-          <h1 className="md:text-4xl text-2xl">{name}</h1>
-          <div className="wrapper_des">
-            <div
-              dangerouslySetInnerHTML={{
-                __html: cleanedDescription,
-              }}
-            />
-          </div>
-          {/* pet info */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center gap-2">
-              <span className="bg-white w-20 text-center text-black p-2 text-xs rounded">
-                CATEGORY
-              </span>
-              <span className="capitalize text-xl italic">{category}</span>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <span className="bg-white w-20 text-center text-black p-2 text-xs rounded">
-                AGE
-              </span>
-              <span className="capitalize text-xl italic">{age}Y</span>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <span className="bg-white w-20 text-center text-black p-2 text-xs rounded">
-                LOCATION
-              </span>
-              <span className="capitalize text-xl italic">{location}</span>
-            </div>
-            <div className="flex flex-col items-center gap-2">
-              <span className="bg-white w-20 text-center text-black p-2 text-xs rounded">
-                DATE
-              </span>
-              <span className="capitalize text-lg italic text-center">
-                {format(new Date(date), "Pp")}
-              </span>
-            </div>
-          </div>
-          <div className="w-full h-[1px] bg-white mt-5"></div>
-          <p className="my-5">
-            <strong>Owner Description:</strong> {pet_owner_description}
-          </p>
 
-          <button
-            onClick={handleClickOpen}
-            className="text-white border-white border text-center py-2 px-8 cursor-pointer bg-transparent mt-6"
-          >
-            <span className="flex gap-1 items-center">Adopt</span>
-          </button>
+      <div className="shadow-lg  dark:bg-[#0D1323] p-5 md:p-10 md:pt-5 rounded">
+        <h1 className="md:text-4xl text-2xl text-center text-[#333333] dark:text-white">
+          {name}
+        </h1>
+
+        <div className="wrapper_des my-4">
+          <div
+            className="text-[#676666] dark:text-gray-200 text-[18px] mb-[0.8rem]"
+            dangerouslySetInnerHTML={{
+              __html: cleanedDescription,
+            }}
+          />
         </div>
-      </div>
-      <div className="order-first md:order-last">
-        <img
-          className="w-full max-h-[550px] md:sticky md:top-0"
-          src={image}
-          alt={name}
-        />
+
+        <div>
+          <img
+            className="w-full max-h-[600px] rounded"
+            src={image}
+            alt={name}
+          />
+        </div>
+
+        <p className="my-5 text-[#676666] dark:text-gray-200 text-lg flex flex-col gap-2">
+          <strong className="text-[#333333] text-xl dark:text-white">
+            About Owner:{" "}
+          </strong>{" "}
+          {pet_owner_description}
+        </p>
+        <h3 className="capitalize text-xl font-semibold text-[#333333] dark:text-white">
+          {category} Information
+        </h3>
+        <div className="w-full h-[2px] bg-[#5F56C6] my-4"></div>
+        <div className="">
+          <div className="grid grid-cols-4 gap-8">
+            <div className="flex flex-col gap-2">
+              <span className="text-lg font-semibold text-[#333333] dark:text-white">
+                Location:
+              </span>
+              <span className="capitalize text-base text-[#5F56C6]">
+                {location}
+              </span>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="text-lg font-semibold text-[#333333] dark:text-white">
+                Category:
+              </span>
+              <span className="capitalize text-base text-[#5F56C6]">
+                {category}
+              </span>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <span className="text-lg font-semibold text-[#333333] dark:text-white">
+                Age:
+              </span>
+              <span className="capitalize text-base text-[#5F56C6]">
+                {age}Y
+              </span>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <span className="text-lg font-semibold text-[#333333] dark:text-white">
+                Date:
+              </span>
+              <span className="capitalize text-base text-[#5F56C6]">
+                {format(new Date(date), "P")}
+              </span>
+            </div>
+          </div>
+
+          <Button
+            onClick={handleClickOpen}
+            className="bg-[#5A52BC] py-3 tracking-wide hover:bg-[#554DB2] rounded mt-5"
+          >
+            Adopt Request
+          </Button>
+        </div>
       </div>
 
       <BootstrapDialog
@@ -175,7 +193,7 @@ const PetDetailsCard = ({ item }) => {
         }}
       >
         <DialogTitle
-          className="dark:bg-[#17191E] dark:text-white"
+          className="dark:bg-[#0D1323] dark:text-white"
           sx={{ m: 0, p: 2 }}
           id="customized-dialog-title"
         >
@@ -193,22 +211,22 @@ const PetDetailsCard = ({ item }) => {
         >
           <CloseIcon />
         </IconButton>
-        <DialogContent className="dark:bg-[#252A33] dark:text-white">
+        <DialogContent className="dark:bg-[#0D1323] dark:text-white">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-5 mb-5">
               {/* petId */}
               <p>
-                <strong>Pet Id:</strong> {_id}
+                <strong>Id :</strong> {_id}
               </p>
 
               {/* petName */}
               <p>
-                <strong>Pet Name:</strong> {name}
+                <strong>Name :</strong> {name}
               </p>
 
               {/* petImg */}
               <p className="flex items-center gap-2">
-                <strong>Pet Image:</strong>{" "}
+                <strong>Image : </strong>{" "}
                 <img src={image} alt="pet-img" className="w-10 h-10" />
               </p>
               {/* user name */}
@@ -242,6 +260,7 @@ const PetDetailsCard = ({ item }) => {
                   placeholder="Phone Number"
                   {...register("userPhone", { required: true })}
                   className="w-full border p-2 focus:outline focus:outline-0 dark:bg-transparent dark:text-white"
+                  autocomplete="off"
                 />
                 {errors.userPhone && (
                   <p className="text-red-500">This field is required</p>
@@ -254,14 +273,18 @@ const PetDetailsCard = ({ item }) => {
                   placeholder="Address"
                   {...register("userAddress", { required: true })}
                   className="w-full border p-2 focus:outline focus:outline-0 dark:bg-transparent dark:text-white "
+                  autocomplete="off"
                 />
                 {errors.userAddress && (
                   <p className="text-red-500">This field is required</p>
                 )}
               </div>
             </div>
-            <Button type="submit" className="bg-[#E16F52] dark:bg-gray-400">
-              submit
+            <Button
+              type="submit"
+              className="bg-[#5A52BC] py-3 tracking-wide hover:bg-[#554DB2] rounded"
+            >
+              Submit
             </Button>
           </form>
         </DialogContent>

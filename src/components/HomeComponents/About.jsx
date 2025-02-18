@@ -3,9 +3,9 @@ import img from "../../assest/about.webp";
 const About = () => {
   return (
     <section className="py-20 dark:bg-[#030712] dark:text-white ">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2  gap-10  px-2">
+      <div className="container mx-auto flex flex-col md:flex-row items-center gap-10 px-2">
         {/* left item */}
-        <div>
+        <div className="w-full md:w-[55%]">
           <h3 className="text-lg xl:text-xl text-[#5F56C6] dark:text-white ">
             About PetCare
           </h3>
@@ -26,7 +26,7 @@ const About = () => {
           </p>
         </div>
         {/* right item */}
-        <div className="relative">
+        <div className="w-full md:w-[45%] relative">
           <img className="w-full max-h-[450px] object-cover rounded" src={img} alt="pet" />
           <h1 className="absolute top-0 right-0 bg-[#5F56C6] dark:bg-[#0D1323] p-5 flex flex-col text-white items-center rounded-bl-xl rounded-tr">
             <span className="text-5xl">5+</span>

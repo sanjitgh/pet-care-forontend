@@ -5,7 +5,7 @@ import { PiArrowUpRightBold } from "react-icons/pi";
 import imgLogo from "../../src/assest/footer.png";
 const Footer = () => {
   return (
-    <footer className="pt-16 text-gray-300 bg-[#5F56C6] dark:bg-[#181A20] overflow-hidden relative">
+    <footer className="pt-16 text-gray-300 bg-[#5F56C6] dark:bg-[#0D1323] overflow-hidden relative">
       <div className="container mx-auto px-3 flex flex-col md:flex-row gap-14 md:gap-10 items-end">
         {/* left item */}
         <div className="w-full md:w-[40%]">

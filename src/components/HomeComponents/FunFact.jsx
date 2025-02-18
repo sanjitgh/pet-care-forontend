@@ -6,7 +6,7 @@ const FunFact = () => {
       className="py-20 lg:py-32 bg-no-repeat bg-center bg-cover relative"
       style={{ backgroundImage: `url(${img})` }}
     >
-      <div className="absolute w-full h-full bg-black top-0 opacity-20 dark:opacity-70"></div>
+      <div className="absolute w-full h-full bg-black top-0 opacity-20 dark:opacity-80"></div>
       <div className="container mx-auto px-2 z-10 relative">
         <div className="md:max-w-[50%] text-white">
           <h3 className="text-lg text-white"> Fun Facts About Pets</h3>

@@ -16,6 +16,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+import { SiGrafana } from "react-icons/si";
 
 const PetListing = () => {
   const axiosPublic = useAxiosPublic();
@@ -62,17 +63,17 @@ const PetListing = () => {
       <Helmet>
         <title>All Pet - PetCare</title>
       </Helmet>
-      <section className="py-20 dark:bg-[#282C37] min-h-[95vh]">
-        <div className="container mx-auto px-2 ">
+      <section className="py-14 md:pt-10 md:pb-20 dark:bg-[#030712] min-h-[calc(100vh-80px)]">
+        <div className="container mx-auto px-2">
           {/* Control Bar */}
           <div className="mb-10 md:flex items-center gap-5 justify-start">
-            <FormControl className="md:w-48 w-full">
+            <FormControl className="md:w-48 w-full !text-[#5F56C6]">
               <InputLabel
                 id="demo-simple-select-label"
                 sx={{
-                  color: "#E16F52",
+                  color: "#5F56C6",
                   "&.Mui-focused": {
-                    color: "#E16F52",
+                    color: "#5F56C6",
                   },
                 }}
               >
@@ -87,14 +88,14 @@ const PetListing = () => {
                 sx={{
                   "& .MuiOutlinedInput-notchedOutline": {
                     border: "none",
-                    borderBottom: "2px solid #E16F52",
+                    borderBottom: "2px solid #5F56C6",
                     borderRadius: "0px",
                   },
                   "&:hover .MuiOutlinedInput-notchedOutline": {
-                    borderBottom: "2px solid #E16F52",
+                    borderBottom: "2px solid #5F56C6",
                   },
                   "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-                    borderBottom: "2px solid #E16F52",
+                    borderBottom: "2px solid #5F56C6",
                   },
                 }}
               >
@@ -112,20 +113,20 @@ const PetListing = () => {
               variant="standard"
               sx={{
                 "& .MuiInput-underline:before": {
-                  borderBottom: "2px solid #E16F52",
+                  borderBottom: "2px solid #5F56C6",
                 },
                 "& .MuiInput-underline:after": {
-                  borderBottom: "2px solid #E16F52",
+                  borderBottom: "2px solid #5F56C6",
                 },
                 "& .MuiInput-underline:hover:not(.Mui-disabled):before": {
-                  borderBottom: "2px solid #E16F52",
+                  borderBottom: "2px solid #5F56C6",
                 },
                 "& .MuiInputLabel-root": {
-                  color: "#E16F52",
+                  color: "#5F56C6",
                   marginLeft: "15px",
                 },
                 "& .MuiInputLabel-root.Mui-focused": {
-                  color: "#E16F52",
+                  color: "#5F56C6",
                 },
               }}
             />
@@ -133,15 +134,18 @@ const PetListing = () => {
           {/* Main Content */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {pets.map((item) => (
-              <Card key={item._id} className="dark:bg-[#181A1F]">
-                <CardMedia sx={{ minHeight: 250 }} image={item.image} />
-                <CardContent>
+              <Card key={item._id} className="dark:bg-[#0D1323] !shadow">
+                <CardMedia
+                  className="!rounded"
+                  sx={{ minHeight: 250 }}
+                  image={item.image}
+                />
+                <CardContent className="!pb-0">
                   <Typography
                     gutterBottom
                     variant="h5"
                     component="div"
-                    sx={{ color: "#E16F52" }}
-                    className="dark:text-white "
+                    className="dark:text-white text-[#5F56C6]"
                   >
                     {item.name.slice(0, 40)}
                   </Typography>
@@ -151,8 +155,8 @@ const PetListing = () => {
                     variant="p"
                     component="div"
                   >
-                    <span className="font-semibold">Age:</span>
-                    {item.age}
+                    <span className="font-semibold">Age: </span>
+                    {item.age} Years
                   </Typography>
                   <Typography
                     className="dark:text-gray-400"
@@ -160,16 +164,15 @@ const PetListing = () => {
                     variant="p"
                     component="div"
                   >
-                    <span className="font-semibold">Location:</span>
+                    <span className="font-semibold"></span>
                     {item.location}
                   </Typography>
                 </CardContent>
                 <CardActions>
                   <Link to={`/pet-listing/${item._id}`}>
                     <Button
-                      className="dark:text-gray-400"
+                      className="dark:text-gray-400 !text-[#5F56C6]"
                       size="small"
-                      sx={{ color: "#E16F52" }}
                     >
                       View Details <FaArrowRight />
                     </Button>
@@ -179,7 +182,11 @@ const PetListing = () => {
             ))}
           </div>
           <div ref={ref} className="mt-4 text-center">
-            {isFetchingNextPage && <p className="dark:text-white">Loading more...</p>}
+            {isFetchingNextPage && (
+              <div className="flex justify-center mt-10">
+                <SiGrafana className="text-4xl text-[#5F56C6] animate-spin" />
+              </div>
+            )}
           </div>
         </div>
       </section>

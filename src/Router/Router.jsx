@@ -25,6 +25,7 @@ import DonationUpdate from "../Pages/Deashboard/DonationUpdate/DonationUpdate";
 import MyDonation from "../Pages/Deashboard/MyDonation/MyDonation";
 import RecommendDonation from "../Pages/RecommendDonation/RecommendDonation";
 import MyAddedPetUpdate from "../Pages/Deashboard/MyAddedPetUpdate/MyAddedPetUpdate";
+import AboutUs from "../Pages/AboutUs/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <SignUp></SignUp>,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs></AboutUs>
       },
     ],
   },
