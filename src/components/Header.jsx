@@ -1,11 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
@@ -13,6 +12,7 @@ import { FaUserTie } from "react-icons/fa";
 import { GiJumpingDog } from "react-icons/gi";
 import useAuth from "../hook/useAuth";
 import { ThemeContext } from "../ThemeProvaider/ThemeProvaider";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -22,7 +22,9 @@ const Header = () => {
     <>
       <NavLink
         className={({ isActive }) =>
-          isActive ? "border-b-white border-b dark:text-blue-gray-400" : "dark:text-white"
+          isActive
+            ? "text-white md:text-[#5f56c6] uppercase text-[14px] font-medium"
+            : "md:text-[#333333] uppercase text-[14px] font-medium text-white"
         }
         to={"/"}
       >
@@ -30,7 +32,9 @@ const Header = () => {
       </NavLink>
       <NavLink
         className={({ isActive }) =>
-          isActive ? "border-b-white border-b dark:text-blue-gray-400" : "dark:text-white"
+          isActive
+            ? "text-white md:text-[#5f56c6] uppercase text-[14px] font-medium"
+            : "md:text-[#333333] uppercase text-[14px] font-medium text-white"
         }
         to={"/pet-listing"}
       >
@@ -38,7 +42,9 @@ const Header = () => {
       </NavLink>
       <NavLink
         className={({ isActive }) =>
-          isActive ? "border-b-white border-b dark:text-blue-gray-400" : "dark:text-white"
+          isActive
+            ? "text-white md:text-[#5f56c6] uppercase text-[14px] font-medium"
+            : "md:text-[#333333] uppercase text-[14px] font-medium text-white"
         }
         to={"/donation-campaign"}
       >
@@ -47,7 +53,9 @@ const Header = () => {
       {!user && (
         <NavLink
           className={({ isActive }) =>
-            isActive ? "border-b-white border-b dark:text-blue-gray-400" : "dark:text-white"
+            isActive
+              ? "text-white md:text-[#5f56c6] uppercase text-[14px] font-medium"
+              : "md:text-[#333333] uppercase text-[14px] font-medium text-white"
           }
           to={"/login"}
         >
@@ -79,9 +87,8 @@ const Header = () => {
 
   return (
     <AppBar
-      className="py-2 dark:bg-[#181A20]"
+      className="py-2 dark:bg-[#181A20] !bg-white"
       position="static"
-      sx={{ background: "#e16f52" }}
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -99,10 +106,10 @@ const Header = () => {
             }}
           >
             <Link to={"/"} className="flex items-center gap-1 md:mr-5">
-              <GiJumpingDog className="text-5xl" />
-              <span className="text-2xl md:text-4xl tracking-normal font-extrabold">
+              <GiJumpingDog className="text-5xl text-[#5f56c6]" />
+              <span className="text-2xl md:text-4xl tracking-normal font-extrabold text-[#5f56c6]">
                 Pet
-                <span className="text-[#ffffff86] italic text-2xl">care</span>
+                <span className=" italic text-2xl">care</span>
               </span>
             </Link>
           </Typography>
@@ -118,17 +125,16 @@ const Header = () => {
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
+              className="!px-0"
             >
-              <MenuIcon />
+              <RxHamburgerMenu onClick={handleOpenNavMenu}></RxHamburgerMenu>
             </IconButton>
             <Menu
               PaperProps={{
                 sx: {
                   width: "200px",
-                  backgroundColor: theme === "dark" ? "#252932" : "#e16f52",
-                  marginTop: "15px",
+                  backgroundColor: theme === "dark" ? "#252932" : "#5F56C6",
+                  marginTop: "24px",
                 },
               }}
               id="menu-appbar"
@@ -172,7 +178,7 @@ const Header = () => {
             </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <div className="flex gap-5">{links}</div>
+            <div className="flex gap-5 items-center">{links}</div>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Click me!">
@@ -185,7 +191,7 @@ const Header = () => {
                     className="w-12 h-12 rounded-full"
                   />
                 ) : (
-                  <FaUserTie className="text-3xl text-white" />
+                  <FaUserTie className="text-3xl text-[#5f56c6]" />
                 )}
               </IconButton>
             </Tooltip>
@@ -194,8 +200,8 @@ const Header = () => {
               PaperProps={{
                 sx: {
                   width: "200px",
-                  backgroundColor: theme === "dark" ? "#252932" : "#e16f52",
-                  marginTop: "65px",
+                  backgroundColor: theme === "dark" ? "#252932" : "#5F56C6",
+                  marginTop: "58px",
                   padding: "10px",
                 },
               }}
