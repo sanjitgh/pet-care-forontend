@@ -7,15 +7,15 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../hook/UseAxiosSecure";
 import AllPetsCard from "../../../components/AllPetsCard/AllPetsCard";
+import useAxiosPublic from "../../../hook/useAxiosPublic";
 
 const AllPets = () => {
-  const axiosSecure = useAxiosSecure();
+  const axiousPublic = useAxiosPublic();
   const { data: allPets = [], refetch } = useQuery({
     queryKey: ["all-pet"],
     queryFn: async () => {
-      const { data } = await axiosSecure.get("/all-pet");
+      const { data } = await axiousPublic.get("/all-pet");
       return data;
     },
   });

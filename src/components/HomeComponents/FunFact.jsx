@@ -32,7 +32,7 @@ const FunFact = () => {
             </h1>
             <h1 className="flex flex-col items-center">
               <span className="text-3xl md:text-5xl italic font-bold text-[#5F56C6]">
-                166+
+                102+
               </span>
               <span className="text-md sm:text-lg dark:text-gray-300">
                 Dedicated <br /> Volunteer
@@ -40,7 +40,7 @@ const FunFact = () => {
             </h1>
             <h1 className="flex flex-col items-center">
               <span className="text-3xl md:text-5xl italic font-bold text-[#5F56C6]">
-                $2M+
+                $55k+
               </span>
               <span className="text-md sm:text-lg dark:text-gray-300">
                 Food & Product <br /> Donations

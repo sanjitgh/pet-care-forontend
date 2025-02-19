@@ -2,7 +2,7 @@ import img from "../../assest/about.webp";
 
 const About = () => {
   return (
-    <section className="py-20 dark:bg-[#030712] dark:text-white ">
+    <section className="py-14 md:py-20 bg-[#F5F5F5] dark:bg-[#0D1323] dark:text-white ">
       <div className="container mx-auto flex flex-col md:flex-row items-center gap-10 px-2">
         {/* left item */}
         <div className="w-full md:w-[55%]">

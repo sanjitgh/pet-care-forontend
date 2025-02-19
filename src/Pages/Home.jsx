@@ -5,6 +5,8 @@ import Donner from "../components/HomeComponents/Donner";
 import FunFact from "../components/HomeComponents/FunFact";
 import CallToAction from "../components/CallToAction/CallToAction";
 import PetCategory from "../components/PetCategory/PetCategory";
+import FeaturedPet from "../components/FeaturedPet/FeaturedPet";
+import OurApp from "../components/OurApp/OurApp";
 
 const Home = () => {
   return (
@@ -15,9 +17,11 @@ const Home = () => {
       <Banner></Banner>
       <PetCategory></PetCategory>
       <CallToAction></CallToAction>
+      <FeaturedPet></FeaturedPet>
       <About></About>
-      <FunFact></FunFact>
       <Donner></Donner>
+      <FunFact></FunFact>
+      <OurApp></OurApp>
     </>
   );
 };

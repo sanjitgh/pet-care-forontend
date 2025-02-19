@@ -24,8 +24,8 @@ const Header = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "text-white md:text-black dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
-            : "uppercase text-[14px] font-medium text-white dark:text-white"
+            ? "text-white md:border-b dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
+            : "uppercase text-[14px] font-medium text-white dark:text-white border-b border-transparent"
         }
         to={"/"}
       >
@@ -34,8 +34,8 @@ const Header = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "text-white md:text-black dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
-            : "uppercase text-[14px] font-medium text-white dark:text-white"
+            ? "text-white md:border-b dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
+            : "uppercase text-[14px] font-medium text-white dark:text-white border-b border-transparent"
         }
         to={"/pet-listing"}
       >
@@ -44,8 +44,8 @@ const Header = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "text-white md:text-black dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
-            : "uppercase text-[14px] font-medium text-white dark:text-white"
+            ? "text-white md:border-b dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
+            : "uppercase text-[14px] font-medium text-white dark:text-white border-b border-transparent"
         }
         to={"/donation-campaign"}
       >
@@ -54,8 +54,8 @@ const Header = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "text-white md:text-black dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
-            : "uppercase text-[14px] font-medium text-white dark:text-white"
+            ? "text-white md:border-b dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
+            : "uppercase text-[14px] font-medium text-white dark:text-white border-b border-transparent"
         }
         to={"/about-us"}
       >
@@ -65,8 +65,8 @@ const Header = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "text-white md:text-black dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
-              : "uppercase text-[14px] font-medium text-white dark:text-white"
+              ? "text-white md:border-b dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
+              : "uppercase text-[14px] font-medium text-white dark:text-white border-b border-transparent"
           }
           to={"/login"}
         >
@@ -77,8 +77,8 @@ const Header = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "text-white md:text-black dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
-              : "uppercase text-[14px] font-medium text-white dark:text-white"
+              ? "text-white md:border-b dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
+              : "uppercase text-[14px] font-medium text-white dark:text-white border-b border-transparent"
           }
           to={"/dashboard"}
         >

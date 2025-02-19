@@ -1,4 +1,4 @@
-import { Card, CardBody, Typography } from "@material-tailwind/react";
+import { Card, CardBody } from "@material-tailwind/react";
 import { FaUsersGear } from "react-icons/fa6";
 import useAxiosSecure from "../../../hook/UseAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
