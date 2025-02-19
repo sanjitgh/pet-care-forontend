@@ -42,8 +42,11 @@ const DonationDetailsCard = ({ item, refetch }) => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
-    if (!user) navigate("/login");
-    setOpen(true);
+    if (!user) {
+      navigate("/login");
+    } else {
+      setOpen(true);
+    }
   };
   const handleClose = () => {
     setOpen(false);

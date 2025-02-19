@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import useRole from "../../../hook/useRole";
+import DashboardDynamicData from "../DahboardDynamicData/DahboardDynamicData";
 
 const DashboardHome = () => {
   const [role] = useRole();
@@ -18,6 +19,7 @@ const DashboardHome = () => {
           <span className="text-2xl dark:text-white">User Dashboard</span>
         )}
       </div>
+      <DashboardDynamicData></DashboardDynamicData>
     </>
   );
 };
