@@ -25,10 +25,16 @@ const DashboardUser = () => {
       <Helmet>
         <title>Users - PetCare</title>
       </Helmet>
-      <h1 className="text-2xl md:text-5xl text-center my-5 dark:text-white">All User</h1>
-      <TableContainer className="dark:bg-[#17191E]" component={Paper} sx={{ maxHeight: "600px" }}>
+      <h1 className="text-2xl md:text-4xl text-center mb-8 dark:text-white">
+        All User
+      </h1>
+      <TableContainer
+        className="dark:bg-[#17191E]"
+        component={Paper}
+        sx={{ maxHeight: "600px" }}
+      >
         <Table>
-          <TableHead className="bg-[#F69585] dark:bg-[#17191E]">
+          <TableHead className="bg-[#5F56C6] dark:bg-[#030712]">
             <TableRow>
               <TableCell align="center">
                 <span className="text-white">Profile</span>

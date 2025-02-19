@@ -98,7 +98,7 @@ const MyAddedPetUpdate = () => {
         <title>Update Pet - PetCare</title>
       </Helmet>
       <div>
-        <div className="border max-w-3xl mx-auto p-10 bg-gray-50 dark:bg-[#17191E]">
+        <div className="max-w-3xl mx-auto p-10 bg-gray-50 dark:bg-[#030712]">
           <h1 className="md:text-5xl text-2xl text-center mb-14 dark:text-white">
             Update a Pet
           </h1>
@@ -111,8 +111,8 @@ const MyAddedPetUpdate = () => {
               {...register("name", { required: true })}
               placeholder="Pet Name*"
               type="text"
-              defaultValue={formData?.length > 0 ? formData[0]?.name : ""}
-              className="w-full border outline-none p-2 dark:bg-transparent text-white"
+              defaultValue={formData[0]?.name}
+              className="w-full border outline-none p-2 dark:bg-transparent text-black dark:text-white"
             />
             {errors.name && (
               <p className="text-red-500">Pet name is required</p>
@@ -123,7 +123,7 @@ const MyAddedPetUpdate = () => {
               placeholder="Pet Age*"
               defaultValue={formData?.length > 0 ? formData[0]?.age : ""}
               type="number"
-              className="w-full border outline-none p-2 dark:bg-transparent text-white"
+              className="w-full border outline-none p-2 dark:bg-transparent text-black dark:text-white"
             />
             {errors.age && <p className="text-red-500">Pet age is required</p>}
             {/* location */}
@@ -132,7 +132,7 @@ const MyAddedPetUpdate = () => {
               placeholder="Pet Location*"
               defaultValue={formData?.length > 0 ? formData[0]?.location : ""}
               type="text"
-              className="w-full border outline-none p-2 dark:bg-transparent text-white"
+              className="w-full border outline-none p-2 dark:bg-transparent text-black dark:text-white"
             />
             {errors.location && (
               <p className="text-red-500">Pet location is required</p>
@@ -144,7 +144,7 @@ const MyAddedPetUpdate = () => {
               defaultValue={
                 formData?.length > 0 ? formData[0]?.pet_owner_description : ""
               }
-              className="w-full border outline-none p-2 dark:bg-transparent text-white h-20"
+              className="w-full border outline-none p-2 dark:bg-transparent text-black dark:text-white h-20"
             ></textarea>
             {errors.pet_owner_description && (
               <p className="text-red-500">Owner sort description is required</p>

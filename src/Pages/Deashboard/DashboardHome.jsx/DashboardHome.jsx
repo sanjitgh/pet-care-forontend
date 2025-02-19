@@ -1,4 +1,3 @@
-import { Divider } from "@mui/material";
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import useRole from "../../../hook/useRole";
@@ -12,17 +11,11 @@ const DashboardHome = () => {
       </Helmet>
       <div>
         {role === "admin" ? (
-          <Divider>
-            <span className="text-center text-2xl md:text-5xl dark:text-white">
-              Welcome to Admin Dashboard
-            </span>
-          </Divider>
+          <span className="text-center text-2xl dark:text-white">
+            Admin Dashboard
+          </span>
         ) : (
-          <Divider>
-            <span className="text-center text-2xl md:text-5xl">
-              Welcome to User Dashboard
-            </span>
-          </Divider>
+          <span className="text-2xl dark:text-white">User Dashboard</span>
         )}
       </div>
     </>

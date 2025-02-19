@@ -74,7 +74,7 @@ const AddPet = () => {
         <title>Add Pet - PetCare</title>
       </Helmet>
       <div>
-        <div className="border max-w-3xl mx-auto p-10 bg-gray-50 dark:bg-[#17191E] dark:border-gray-700">
+        <div className="max-w-3xl mx-auto p-10 bg-gray-50 dark:bg-[#030712]">
           <h1 className="md:text-5xl text-2xl text-center mb-14 dark:text-white ">
             Add a Pet
           </h1>
@@ -87,7 +87,7 @@ const AddPet = () => {
               {...register("name", { required: true })}
               placeholder="Pet Name*"
               type="text"
-              className="w-full border outline-none p-2 dark:bg-[#17191E] dark:text-white "
+              className="w-full border outline-none p-2 dark:bg-[#17191E] dark:text-white dark:bg-transparent"
             />
             {errors.name && (
               <p className="text-red-500">Pet name is required</p>
@@ -97,7 +97,7 @@ const AddPet = () => {
               {...register("age", { required: true })}
               placeholder="Pet Age*"
               type="number"
-              className="w-full border outline-none p-2 dark:bg-[#17191E] dark:text-white "
+              className="w-full border outline-none p-2 dark:bg-[#17191E] dark:text-white dark:bg-transparent"
             />
             {errors.age && <p className="text-red-500">Pet age is required</p>}
             {/* location */}
@@ -105,7 +105,7 @@ const AddPet = () => {
               {...register("location", { required: true })}
               placeholder="Pet Location*"
               type="text"
-              className="w-full border outline-none p-2 dark:bg-[#17191E] dark:text-white "
+              className="w-full border outline-none p-2 dark:bg-[#17191E] dark:text-white dark:bg-transparent"
             />
             {errors.location && (
               <p className="text-red-500">Pet location is required</p>
@@ -114,7 +114,7 @@ const AddPet = () => {
             <textarea
               {...register("pet_owner_description", { required: true })}
               placeholder="Pet owner sort description*"
-              className="w-full border outline-none p-2 dark:bg-[#17191E] dark:text-white  h-20"
+              className="w-full border outline-none p-2 dark:bg-[#17191E] dark:text-white dark:bg-transparent h-20"
             ></textarea>
             {errors.pet_owner_description && (
               <p className="text-red-500">Owner sort description is required</p>
@@ -187,7 +187,10 @@ const AddPet = () => {
             )}
             {/* Submit Button */}
             <div>
-              <Button type="submit" className="bg-[#E16F52] dark:bg-gray-400 ">
+              <Button
+                type="submit"
+                className="bg-[#5A52BC] py-3 hover:bg-[#554DB2] rounded"
+              >
                 <span className="flex gap-1 items-center">
                   Add Pet{loading && <LuFan className="animate-spin" />}
                 </span>

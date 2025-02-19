@@ -63,7 +63,7 @@ const MyAddedPet = () => {
         cell: (info) => (
           <span
             className={
-              info.getValue() === "true" ? "text-black" : "text-red-500"
+              info.getValue() === "true" ? "text-black" : "text-[#5F56C6]"
             }
           >
             {info.getValue() === "true" ? "Adopted" : "Not Adopted"}
@@ -79,20 +79,20 @@ const MyAddedPet = () => {
               onClick={() =>
                 navigate(`/dashboard/my-added-pet/${info.row.original._id}`)
               }
-              className="text-[#F69585] px-2 py-1 text-lg rounded"
+              className="text-[#5F56C6] px-2 py-1 text-lg rounded"
             >
               <FaEdit></FaEdit>
             </button>
             <button
               onClick={() => handleDelete(info.row.original._id)}
-              className="text-[#F69585] px-2 py-1 text-lg rounded"
+              className="text-[#5F56C6] px-2 py-1 text-lg rounded"
             >
               <FaTrashAlt></FaTrashAlt>
             </button>
 
             <button
               onClick={() => handleAdoptedChange(info.row.original)}
-              className="bg-[#F69585] text-white px-2 py-1 text-xs rounded"
+              className="bg-[#5F56C6] text-white px-2 py-1 text-xs rounded"
             >
               {info.row.original.adopted === "true" ? "Adopted" : "Adopt"}
             </button>
@@ -178,12 +178,12 @@ const MyAddedPet = () => {
         <title>My Pet - PetCare</title>
       </Helmet>
       <div className="px-2">
-        <h1 className="text-2xl md:text-5xl text-center mb-5 font-bold dark:text-white">
+        <h1 className="text-2xl md:text-4xl text-center mb-8 font-bold dark:text-white">
           My Added Pets
         </h1>
-        <div className="overflow-x-auto shadow-lg rounded-lg">
-          <table className="min-w-full border border-gray-300 text-[10px] md:text-xs">
-            <thead className="bg-gray-200 dark:bg-[#17191E] dark:text-white text-[11px] md:text-sm uppercase">
+        <div className="overflow-x-auto shadow-lg rounded">
+          <table className="min-w-full  text-[10px] md:text-xs">
+            <thead className="bg-[#5F56C6] text-white dark:bg-[#17191E] dark:text-white text-[11px] md:text-sm uppercase">
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (
@@ -233,7 +233,7 @@ const MyAddedPet = () => {
             <button
               onClick={() => table.setPageIndex(0)}
               disabled={!table.getCanPreviousPage()}
-              className="px-3 py-1 bg-gray-700 text-white rounded disabled:opacity-50"
+              className="px-3 py-1 bg-[#5F56C6] text-white rounded disabled:opacity-50"
             >
               First
             </button>
@@ -241,12 +241,12 @@ const MyAddedPet = () => {
             <button
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
-              className="px-3 py-1 bg-gray-700 text-white rounded disabled:opacity-50"
+              className="px-3 py-1 bg-[#5F56C6] text-white rounded disabled:opacity-50"
             >
               Previous
             </button>
             {/* Page display */}
-            <span>
+            <span className="dark:text-white">
               Page {table.getState().pagination.pageIndex + 1} of{" "}
               {table.getPageCount()}
             </span>
@@ -254,7 +254,7 @@ const MyAddedPet = () => {
             <button
               onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
-              className="px-3 py-1 bg-gray-700 text-white rounded disabled:opacity-50"
+              className="px-3 py-1 bg-[#5F56C6] text-white rounded disabled:opacity-50"
             >
               Next
             </button>
@@ -262,7 +262,7 @@ const MyAddedPet = () => {
             <button
               onClick={() => table.setPageIndex(table.getPageCount() - 1)}
               disabled={!table.getCanNextPage()}
-              className="px-3 py-1 bg-gray-700 text-white rounded disabled:opacity-50"
+              className="px-3 py-1 bg-[#5F56C6] text-white rounded disabled:opacity-50"
             >
               Last
             </button>

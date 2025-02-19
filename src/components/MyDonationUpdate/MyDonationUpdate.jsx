@@ -70,7 +70,7 @@ const MyDonationUpdate = () => {
         <title>Update Donation - PetCare</title>
       </Helmet>
       <div>
-        <div className="border max-w-3xl mx-auto p-10 bg-gray-50 dark:bg-[#17191E]">
+        <div className="max-w-3xl mx-auto p-10 bg-gray-50 dark:bg-[#030712]">
           <h1 className="md:text-5xl text-2xl text-center mb-14 dark:text-white">
             Update a Donation
           </h1>

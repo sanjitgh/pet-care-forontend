@@ -26,10 +26,16 @@ const AllPets = () => {
         <title>All Pet - PetCare</title>
       </Helmet>
       <div>
-        <h1 className="text-2xl md:text-5xl text-center my-5 dark:text-white">All Pets</h1>
-        <TableContainer className="dark:bg-[#17191E]" sx={{ maxHeight: "600px" }} component={Paper}>
+        <h1 className="text-2xl md:text-4xl text-center mb-8 dark:text-white">
+          All Pets
+        </h1>
+        <TableContainer
+          className="dark:bg-[#17191E]"
+          sx={{ maxHeight: "600px" }}
+          component={Paper}
+        >
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead className="bg-[#F69585] dark:bg-[#17191E]">
+            <TableHead className="bg-[#5F56C6] dark:bg-[#030712]">
               <TableRow>
                 <TableCell align="center">
                   <span className="text-white">Image</span>
@@ -50,10 +56,10 @@ const AllPets = () => {
                   <span className="text-white">Adoption Status</span>
                 </TableCell>
                 <TableCell align="center">
-                  <span className="text-white">Delete</span>
+                  <span className="text-white">Action</span>
                 </TableCell>
                 <TableCell align="center">
-                  <span className="text-white">Action</span>
+                  <span className="text-white">Delete</span>
                 </TableCell>
               </TableRow>
             </TableHead>

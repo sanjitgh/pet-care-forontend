@@ -79,31 +79,43 @@ const AllPetsCard = ({ item, refetch }) => {
       <TableCell align="center">
         <Avatar src={image}></Avatar>
       </TableCell>
-      <TableCell className="dark:text-white" align="center">{name}</TableCell>
-      <TableCell className="dark:text-white" align="center">{age}Y</TableCell>
-      <TableCell className="dark:text-white" align="center">{category}</TableCell>
-      <TableCell className="dark:text-white" align="center">{location}</TableCell>
+      <TableCell className="dark:text-white" align="center">
+        {name}
+      </TableCell>
+      <TableCell className="dark:text-white" align="center">
+        {age}Y
+      </TableCell>
+      <TableCell className="dark:text-white" align="center">
+        {category}
+      </TableCell>
+      <TableCell className="dark:text-white" align="center">
+        {location}
+      </TableCell>
       <TableCell className="dark:text-white" align="center">
         {adopted === "false" ? (
-          <span className="bg-red-400 text-white rounded p-1">Unadopted</span>
+          <span className="bg-[#5F56C6] text-white rounded p-1">Unadopted</span>
         ) : (
-          <span className="bg-green-400 text-white rounded p-1">Adopted</span>
+          <span className="bg-black text-white rounded p-1">Adopted</span>
         )}
+      </TableCell>
+      <TableCell align="center">
+        <Button
+          variant="contained"
+          className={
+            adopted === "false"
+              ? "bg-[#5F56C6] p-2 rounded"
+              : "bg-[#5F56C6] p-2 rounded"
+          }
+          onClick={() => handleAdoptedChange(item)}
+        >
+          {adopted === "false" ? "Mark Adopted" : "Mark Unadopted"}
+        </Button>
       </TableCell>
       <TableCell align="center">
         <FaTrash
           onClick={() => handleDelete(item)}
           className="mx-auto text-red-500 text-xl cursor-pointer"
         ></FaTrash>
-      </TableCell>
-      <TableCell align="center">
-        <Button
-          variant="contained"
-          className={adopted === "false" ? "bg-red-500 p-3" : "bg-green-500 p-3"}
-          onClick={() => handleAdoptedChange(item)}
-        >
-          {adopted === "false" ? "Mark Adopted" : "Mark Unadopted"}
-        </Button>
       </TableCell>
     </TableRow>
   );

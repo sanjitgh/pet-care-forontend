@@ -84,13 +84,13 @@ const AllDonationCard = ({ item, refetch }) => {
       <TableCell className="dark:text-white" align="center">${maxDonationAmount}</TableCell>
       <TableCell className="dark:text-white" align="center">
         <Link to={`/dashboard/all-donations/${_id}`}>
-          <FaEdit className="text-[#F69585] text-xl mx-auto"></FaEdit>
+          <FaEdit className="text-[#5F56C6] text-xl mx-auto"></FaEdit>
         </Link>
       </TableCell>
       <TableCell align="center">
         <Button
           onClick={() => handleStatus(_id)}
-          className={pause ? "bg-green-500" : "bg-[#F69585]"}
+          className={pause ? "bg-black py-2 rounded" : "bg-[#5F56C6] py-2 rounded"}
         >
           {pause ? "Resume" : "Pause"}
         </Button>

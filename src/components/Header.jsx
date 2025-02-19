@@ -13,6 +13,7 @@ import { GiJumpingDog } from "react-icons/gi";
 import useAuth from "../hook/useAuth";
 import { ThemeContext } from "../ThemeProvaider/ThemeProvaider";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { Button, Divider } from "@mui/material";
 
 const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -23,7 +24,7 @@ const Header = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "text-white md:text-orange-700 dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
+            ? "text-white md:text-black dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
             : "uppercase text-[14px] font-medium text-white dark:text-white"
         }
         to={"/"}
@@ -33,7 +34,7 @@ const Header = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "text-white md:text-orange-700 dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
+            ? "text-white md:text-black dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
             : "uppercase text-[14px] font-medium text-white dark:text-white"
         }
         to={"/pet-listing"}
@@ -43,7 +44,7 @@ const Header = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "text-white md:text-orange-700 dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
+            ? "text-white md:text-black dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
             : "uppercase text-[14px] font-medium text-white dark:text-white"
         }
         to={"/donation-campaign"}
@@ -53,7 +54,7 @@ const Header = () => {
       <NavLink
         className={({ isActive }) =>
           isActive
-            ? "text-white md:text-orange-700 dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
+            ? "text-white md:text-black dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
             : "uppercase text-[14px] font-medium text-white dark:text-white"
         }
         to={"/about-us"}
@@ -64,7 +65,7 @@ const Header = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "text-white md:text-orange-700 dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
+              ? "text-white md:text-black dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
               : "uppercase text-[14px] font-medium text-white dark:text-white"
           }
           to={"/login"}
@@ -76,7 +77,7 @@ const Header = () => {
         <NavLink
           className={({ isActive }) =>
             isActive
-              ? "text-white md:text-orange-700 dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
+              ? "text-white md:text-black dark:md:text-[#5F56C6] uppercase text-[14px] font-medium"
               : "uppercase text-[14px] font-medium text-white dark:text-white"
           }
           to={"/dashboard"}
@@ -225,7 +226,7 @@ const Header = () => {
                 className="mt-[57px] md:mt-14 xl:mt-16"
                 PaperProps={{
                   sx: {
-                    width: "200px",
+                    width: "150px",
                     backgroundColor: theme === "dark" ? "#0D1323" : "#5F56C6",
                     padding: "10px",
                   },
@@ -246,16 +247,25 @@ const Header = () => {
               >
                 {user ? (
                   <>
-                    <ul className="text-center text-white flex flex-col gap-3">
+                    <ul className="text-white flex flex-col gap-3 pl-3">
                       <li>
-                        <button onClick={logOut} className="cursor-pointer">
-                          Logout
-                        </button>
+                        {" "}
+                        <Link to={"/dashboard/profile"}>Profile</Link>
                       </li>
                       <li>
                         <button onClick={toggleTheme}>
-                          Toggle {theme === "dark" ? "Light" : "Dark"} Mode
+                          {theme === "dark" ? "Light" : "Dark"} Mode
                         </button>
+                      </li>
+                      <Divider className="!bg-white"></Divider>
+                      <li>
+                        <Button
+                          onClick={logOut}
+                          className="cursor-pointer !bg-white w-full !py-1 dark:text-white dark:!bg-[#030712]"
+                          size="sm"
+                        >
+                          Logout
+                        </Button>
                       </li>
                     </ul>
                   </>

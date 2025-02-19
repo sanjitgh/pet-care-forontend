@@ -26,6 +26,7 @@ import MyDonation from "../Pages/Deashboard/MyDonation/MyDonation";
 import RecommendDonation from "../Pages/RecommendDonation/RecommendDonation";
 import MyAddedPetUpdate from "../Pages/Deashboard/MyAddedPetUpdate/MyAddedPetUpdate";
 import AboutUs from "../Pages/AboutUs/AboutUs";
+import UserProfile from "../Pages/Deashboard/UserProfile/UserProfile";
 
 const router = createBrowserRouter([
   {
@@ -47,11 +48,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/pet-listing/:id",
-        element: (
-          <PrivetRoute>
-            <PetDetails></PetDetails>
-          </PrivetRoute>
-        ),
+        element: <PetDetails></PetDetails>,
       },
       {
         path: "/donation-campaign",
@@ -59,11 +56,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/donation-campaign/:id",
-        element: (
-          <PrivetRoute>
-            <DonationDetails></DonationDetails>
-          </PrivetRoute>
-        ),
+        element: <DonationDetails></DonationDetails>,
       },
       {
         path: "/login",
@@ -75,7 +68,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/about-us",
-        element: <AboutUs></AboutUs>
+        element: <AboutUs></AboutUs>,
       },
     ],
   },
@@ -94,6 +87,14 @@ const router = createBrowserRouter([
         element: (
           <PrivetRoute>
             <DashboardHome></DashboardHome>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/dashboard/profile",
+        element: (
+          <PrivetRoute>
+            <UserProfile></UserProfile>
           </PrivetRoute>
         ),
       },

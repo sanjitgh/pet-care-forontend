@@ -34,29 +34,29 @@ const AdoptionRequest = () => {
       <h1 className="text-2xl md:text-5xl text-center my-5 dark:text-white">
         Adoption Request
       </h1>
-      <TableContainer className="dark:bg-[#17191E]" component={Paper}>
+      <TableContainer className="dark:bg-[#030712] !rounded" component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
+          <TableHead className="bg-[#5F56C6]">
             <TableRow>
-              <TableCell className="dark:text-white" align="center">
+              <TableCell className="!text-white" align="center">
                 Pet Name
               </TableCell>
-              <TableCell className="dark:text-white" align="center">
+              <TableCell className="!text-white" align="center">
                 Requester Name
               </TableCell>
-              <TableCell className="dark:text-white" align="center">
+              <TableCell className="!text-white" align="center">
                 Email
               </TableCell>
-              <TableCell className="dark:text-white" align="center">
+              <TableCell className="!text-white" align="center">
                 Phone
               </TableCell>
-              <TableCell className="dark:text-white" align="center">
+              <TableCell className="!text-white" align="center">
                 Location
               </TableCell>
-              <TableCell className="dark:text-white" align="center">
+              <TableCell className="!text-white" align="center">
                 Status
               </TableCell>
-              <TableCell className="dark:text-white" align="center">
+              <TableCell className="!text-white" align="center">
                 Action
               </TableCell>
             </TableRow>

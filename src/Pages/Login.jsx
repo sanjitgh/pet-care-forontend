@@ -81,8 +81,8 @@ const Login = () => {
       <Helmet>
         <title>Login - PetCare</title>
       </Helmet>
-      <div className="py-20 min-h-[calc(100vh-80px)] flex justify-center items-center bg-gray-50 dark:bg-[#030712] ">
-        <div className="bg-[#5F56C6] dark:bg-[#0D1323] w-[600px] p-16">
+      <div className="py-14 md:py-20 sm:min-h-[calc(100vh-80px)] flex justify-center items-center bg-gray-50 dark:bg-[#030712]">
+        <div className="bg-[#5F56C6] dark:bg-[#0D1323] max-w-[600px] p-0 py-10 md:p-16">
           <h1 className="text-white text-center font-semibold text-2xl md:text-5xl mb-8">
             Join PetCare
           </h1>

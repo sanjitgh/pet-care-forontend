@@ -23,7 +23,7 @@ const AboutUs = () => {
           </div>
 
           {/* Mission Section */}
-          <div className="flex flex-col md:flex-row items-center gap-5 bg-[#5F56C6] dark:bg-[#0D1323] p-10 rounded-lg shadow-lg">
+          <div className="flex flex-col md:flex-row items-center gap-5 bg-[#5F56C6] dark:bg-[#0D1323] p-10 rounded shadow-lg">
             <div className="md:w-1/2 text-center md:text-left">
               <h2 className="text-3xl md:text-5xl font-semibold text-white flex items-center gap-3">
                 <FaPaw className="text-white" /> Our Mission
@@ -36,7 +36,7 @@ const AboutUs = () => {
             <img
               src={img2}
               alt="Mission"
-              className="md:w-1/2 mt-6 md:mt-0 rounded-lg shadow-md"
+              className="md:w-1/2 mt-6 md:mt-0 rounded shadow-md"
             />
           </div>
 
@@ -45,7 +45,7 @@ const AboutUs = () => {
             <img
               src={img1}
               alt="Team"
-              className="md:w-1/2 rounded-lg shadow-md"
+              className="md:w-1/2 rounded shadow-md"
             />
             <div className="md:w-1/2 text-center md:text-left md:pl-10">
               <h2 className="text-3xl md:text-5xl font-semibold text-[#5F56C6] flex items-center gap-3 dark:text-white">
@@ -60,7 +60,7 @@ const AboutUs = () => {
           </div>
 
           {/* Community Section */}
-          <div className="mt-16 flex flex-col md:flex-row items-center gap-5 bg-[#5F56C6] dark:bg-[#0D1323] p-10 rounded-lg shadow-lg">
+          <div className="mt-16 flex flex-col md:flex-row items-center gap-5 bg-[#5F56C6] dark:bg-[#0D1323] p-10 rounded shadow-lg">
             <div className="md:w-1/2 text-center md:text-left">
               <h2 className="text-3xl md:text-5xl font-semibold text-white flex items-center gap-3">
                 <FaHeart className="text-white" /> Join Our Community
@@ -73,7 +73,7 @@ const AboutUs = () => {
             <img
               src={img1}
               alt="Community"
-              className="md:w-1/2 mt-6 md:mt-0 rounded-lg shadow-md"
+              className="md:w-1/2 mt-6 md:mt-0 rounded shadow-md"
             />
           </div>
         </div>

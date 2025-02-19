@@ -14,6 +14,7 @@ import { Tooltip } from "@mui/material";
 import useAxiosSecure from "../../hook/UseAxiosSecure";
 import Swal from "sweetalert2";
 import { Button } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -28,7 +29,9 @@ const PetDetailsCard = ({ item }) => {
   const { user } = useAuth();
   const [open, setOpen] = useState(false);
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
   const handleClickOpen = () => {
+    if (!user) navigate("/login");
     setOpen(true);
   };
   const handleClose = () => {
@@ -134,42 +137,39 @@ const PetDetailsCard = ({ item }) => {
           {category} Information
         </h3>
         <div className="w-full h-[2px] bg-[#5F56C6] my-4"></div>
-        <div className="">
-          <div className="grid grid-cols-4 gap-8">
-            <div className="flex flex-col gap-2">
-              <span className="text-lg font-semibold text-[#333333] dark:text-white">
-                Location:
-              </span>
-              <span className="capitalize text-base text-[#5F56C6]">
-                {location}
-              </span>
-            </div>
-            <div className="flex flex-col gap-2">
-              <span className="text-lg font-semibold text-[#333333] dark:text-white">
-                Category:
-              </span>
-              <span className="capitalize text-base text-[#5F56C6]">
-                {category}
-              </span>
-            </div>
 
-            <div className="flex flex-col gap-2">
-              <span className="text-lg font-semibold text-[#333333] dark:text-white">
-                Age:
-              </span>
-              <span className="capitalize text-base text-[#5F56C6]">
-                {age}Y
-              </span>
-            </div>
+        <div className="grid grid-cols-4 gap-8">
+          <div className="flex flex-col gap-2">
+            <span className="text-lg font-semibold text-[#333333] dark:text-white">
+              Location:
+            </span>
+            <span className="capitalize text-base text-[#5F56C6]">
+              {location}
+            </span>
+          </div>
+          <div className="flex flex-col gap-2">
+            <span className="text-lg font-semibold text-[#333333] dark:text-white">
+              Category:
+            </span>
+            <span className="capitalize text-base text-[#5F56C6]">
+              {category}
+            </span>
+          </div>
 
-            <div className="flex flex-col gap-2">
-              <span className="text-lg font-semibold text-[#333333] dark:text-white">
-                Date:
-              </span>
-              <span className="capitalize text-base text-[#5F56C6]">
-                {format(new Date(date), "P")}
-              </span>
-            </div>
+          <div className="flex flex-col gap-2">
+            <span className="text-lg font-semibold text-[#333333] dark:text-white">
+              Age:
+            </span>
+            <span className="capitalize text-base text-[#5F56C6]">{age}Y</span>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <span className="text-lg font-semibold text-[#333333] dark:text-white">
+              Date:
+            </span>
+            <span className="capitalize text-base text-[#5F56C6]">
+              {format(new Date(date), "P")}
+            </span>
           </div>
 
           <Button

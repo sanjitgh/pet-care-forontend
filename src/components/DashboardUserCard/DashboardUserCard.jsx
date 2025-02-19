@@ -41,11 +41,11 @@ const DashboardUserCard = ({ item, refetch }) => {
       <TableCell className="dark:text-white" align="center">{email}</TableCell>
       <TableCell className="dark:text-white" align="center">
         {role === "admin" ? (
-          <Button disabled className="capitalize bg-[#F69585] dark:bg-gray-400">
+          <Button disabled className="capitalize bg-[#5F56C6] dark:bg-gray-600 rounded">
             {role}
           </Button>
         ) : (
-          <Button onClick={() => handleRole(_id)} className="bg-[#3c3c3c]">
+          <Button onClick={() => handleRole(_id)} className="bg-[#030712] rounded">
             User
           </Button>
         )}

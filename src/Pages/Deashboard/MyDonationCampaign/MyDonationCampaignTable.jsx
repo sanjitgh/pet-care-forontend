@@ -101,9 +101,9 @@ const MyDonationCampaignTable = ({ item, refetch }) => {
           ${maxDonationAmount}
         </TableCell>
         <TableCell className="dark:text-white" align="center">
-          <div className="w-full h-2 bg-gray-700 rounded relative">
+          <div className="w-full h-2 bg-gray-300 rounded relative">
             <div
-              className="h-2 rounded bg-[#F69585] absolute top-0 left-0"
+              className="h-2 rounded bg-[#5F56C6] absolute top-0 left-0"
               style={{
                 width: `${(donatedAmount / maxDonationAmount) * 100}%`,
                 transition: "width 0.5s ease",
@@ -113,13 +113,13 @@ const MyDonationCampaignTable = ({ item, refetch }) => {
         </TableCell>
         <TableCell align="center">
           <Link to={`/dashboard/my-donation-campaign/${_id}`}>
-            <FaEdit className="text-[#F69585] text-xl mx-auto"></FaEdit>
+            <FaEdit className="text-[#5F56C6] text-xl mx-auto"></FaEdit>
           </Link>
         </TableCell>
         <TableCell align="center">
           <Button
             onClick={handleClickOpen}
-            className="bg-[#F69585] p-2"
+            className="bg-[#5F56C6] p-2 rounded"
           >
             Donator{" "}
           </Button>
@@ -127,7 +127,7 @@ const MyDonationCampaignTable = ({ item, refetch }) => {
         <TableCell align="center">
           <Button
             onClick={() => handleStatus(_id)}
-            className="bg-[#F69585] p-2"
+            className="bg-[#5F56C6] p-2 rounded"
           >
             {pause ? "Resume" : "Pause"}
           </Button>
@@ -163,7 +163,7 @@ const MyDonationCampaignTable = ({ item, refetch }) => {
             <div className="overflow-x-auto">
               <table className="min-w-full bg-white border border-gray-200">
                 <thead>
-                  <tr className="bg-[#F69585] border-b border-gray-200">
+                  <tr className="bg-[#5F56C6] border-b border-gray-200">
                     <th className="py-3 px-4 text-center text-white font-semibold">
                       Serial
                     </th>

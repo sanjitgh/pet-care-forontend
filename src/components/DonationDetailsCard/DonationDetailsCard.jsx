@@ -11,6 +11,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import { Button } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../../hook/useAuth";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -25,6 +27,8 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_KEY);
 
 const DonationDetailsCard = ({ item, refetch }) => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
   const {
     petName,
     petImage,
@@ -33,11 +37,12 @@ const DonationDetailsCard = ({ item, refetch }) => {
     donatedAmount,
     donationLastDate,
     postedDate,
-    maxDonationAmount
+    maxDonationAmount,
   } = item;
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
+    if (!user) navigate("/login");
     setOpen(true);
   };
   const handleClose = () => {
@@ -52,8 +57,9 @@ const DonationDetailsCard = ({ item, refetch }) => {
       <div>
         <div className="flex flex-col gap-4 text-center mb-10">
           <h1 className="text-2xl md:text-5xl">{petName}</h1>
-          <p>{sortDescription}</p>
+          <p className="dark:text-gray-200">{sortDescription}</p>
         </div>
+
         <div>
           <img
             src={petImage}
@@ -61,36 +67,71 @@ const DonationDetailsCard = ({ item, refetch }) => {
             className="w-full max-h-[600px] object-cover"
           />
         </div>
+
         <div className="my-5">
-          <p>{longDescription}</p>
-        </div>
-        <div>
-          <p>
-            <b> Total Donation: </b>
-            <span>${donatedAmount}</span>
-          </p>
-          <p>
-            <b> Need Money: </b>
-            <span>${maxDonationAmount}</span>
-          </p>
-          <p>
-            <b> Posted Date: </b>
-            <span>{format(new Date(postedDate), "P")}</span>
-          </p>
-          <p>
-            <b> Donation Last Date: </b>
-            <span>{format(new Date(donationLastDate), "P")}</span>
+          <p className="my-5 text-[#676666] dark:text-gray-200 text-lg flex flex-col gap-2">
+            <strong className="text-[#333333] text-xl dark:text-white">
+              About Pet:{" "}
+            </strong>{" "}
+            {longDescription}
           </p>
         </div>
-        {/* donate button */}
-        <Button
-          onClick={handleClickOpen}
-          type="button"
-          className="bg-[#E16F52] dark:bg-gray-400 px-6 py-3 mt-4 "
-        >
-          Donate Now
-        </Button>
+
+        <h3 className="capitalize text-xl font-semibold text-[#333333] dark:text-white">
+          Information
+        </h3>
+        <div className="w-full h-[2px] bg-[#5F56C6] my-4"></div>
+
+        {/* info */}
+        <div className="grid grid-cols-4 gap-8">
+          <div className="flex flex-col gap-2">
+            <span className="text-lg font-semibold text-[#333333] dark:text-white">
+              Todal Donation:
+            </span>
+            <span className="capitalize text-base text-[#5F56C6]">
+              {donatedAmount}$
+            </span>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <span className="text-lg font-semibold text-[#333333] dark:text-white">
+              Need Money:
+            </span>
+            <span className="capitalize text-base text-[#5F56C6]">
+              {maxDonationAmount}$
+            </span>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <span className="text-lg font-semibold text-[#333333] dark:text-white">
+              Posted Date:
+            </span>
+            <span className="capitalize text-base text-[#5F56C6]">
+              {" "}
+              <span>{format(new Date(postedDate), "PPP")}</span>
+            </span>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <span className="text-lg font-semibold text-[#333333] dark:text-white">
+              Donation Last Date:
+            </span>
+            <span className="capitalize text-base text-[#5F56C6]">
+              <span>{format(new Date(donationLastDate), "Pp")}</span>
+            </span>
+          </div>
+
+          {/* donate button */}
+          <Button
+            onClick={handleClickOpen}
+            type="button"
+            className="bg-[#5A52BC] py-3 hover:bg-[#554DB2] rounded w-fit"
+          >
+            Donate Now
+          </Button>
+        </div>
       </div>
+
       {/* payment modal */}
       <BootstrapDialog
         onClose={handleClose}
@@ -103,7 +144,11 @@ const DonationDetailsCard = ({ item, refetch }) => {
           },
         }}
       >
-        <DialogTitle className="dark:bg-[#17191E] dark:text-white" sx={{ m: 0, p: 2 }} id="customized-dialog-title">
+        <DialogTitle
+          className="dark:bg-[#17191E] dark:text-white"
+          sx={{ m: 0, p: 2 }}
+          id="customized-dialog-title"
+        >
           Payment
         </DialogTitle>
         <IconButton
@@ -121,7 +166,12 @@ const DonationDetailsCard = ({ item, refetch }) => {
         <DialogContent dividers className="dark:bg-[#262A33]">
           <div>
             <Elements stripe={stripePromise}>
-              <CheckoutForm handleClose={handleClose} item={item} setOpen={setOpen} refetch={refetch}></CheckoutForm>
+              <CheckoutForm
+                handleClose={handleClose}
+                item={item}
+                setOpen={setOpen}
+                refetch={refetch}
+              ></CheckoutForm>
             </Elements>
           </div>
         </DialogContent>

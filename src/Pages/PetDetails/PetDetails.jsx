@@ -1,17 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
-import useAxiosSecure from "../../hook/UseAxiosSecure";
 import PetDetailsCard from "../../components/PetDetailsCard/PetDetailsCard";
 import { useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../hook/useAxiosPublic";
 
 const PetDetails = () => {
   const { id } = useParams();
-  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const { data: pet = [] } = useQuery({
     queryKey: ["pet"],
     queryFn: async () => {
-      const { data } = await axiosSecure.get(`/pet/${id}`);
+      const { data } = await axiosPublic.get(`/pet/${id}`);
       return data;
     },
   });

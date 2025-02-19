@@ -38,7 +38,7 @@ const MyDonationCampaign = () => {
         component={Paper}
       >
         <Table>
-          <TableHead className="bg-[#F69585] dark:bg-[#17191E]">
+          <TableHead className="bg-[#5F56C6] dark:bg-[#17191E]">
             <TableRow>
               <TableCell align="center">
                 <span className="text-white">Pet Name</span>
@@ -47,7 +47,7 @@ const MyDonationCampaign = () => {
                 <span className="text-white">Maximum donation amount</span>
               </TableCell>
               <TableCell align="center">
-                <span className="text-white">Donation progress bar</span>
+                <span className="text-white">Donation Target bar</span>
               </TableCell>
               <TableCell align="center">
                 <span className="text-white">Edit</span>

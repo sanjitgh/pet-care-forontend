@@ -179,7 +179,7 @@ const PetListing = () => {
                   <CardActions>
                     <Link to={`/pet-listing/${item._id}`}>
                       <Button
-                        className="dark:text-gray-400 !text-[#5F56C6]"
+                        className="dark:text-gray-400 !text-[#5F56C6] rounded"
                         size="small"
                       >
                         View Details <FaArrowRight />

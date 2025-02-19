@@ -73,7 +73,7 @@ const AdoptionRequestCard = ({ item, refetch }) => {
       <TableCell className="dark:text-white" align="center">
         <Button
           onClick={() => handleStatus(_id, "Accepted")}
-          className="bg-green-500 mx-1 p-2"
+          className="bg-[#5F56C6] mx-1 p-2"
         >
           Accept
         </Button>
