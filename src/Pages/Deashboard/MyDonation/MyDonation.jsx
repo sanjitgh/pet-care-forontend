@@ -31,10 +31,10 @@ const MyDonation = () => {
       <Helmet>
         <title>My Donation - PetCare</title>
       </Helmet>
-      <h1 className="text-center mb-5 text-2xl md:text-5xl dark:text-white">My Donations</h1>
-      <TableContainer className="dark:bg-[#17191E]" sx={{ maxHeight: "500px" }} component={Paper}>
+      <h1 className="text-center mb-5 text-2xl md:text-4xl dark:text-white">My Donations</h1>
+      <TableContainer className="dark:bg-[#030711]" sx={{ maxHeight: "500px" }} component={Paper}>
         <Table>
-          <TableHead className="bg-[#5F56C6] dark:bg-[#17191E]">
+          <TableHead className="bg-[#5F56C6] dark:bg-[#030711]">
             <TableRow>
               <TableCell align="center">
                 <span className="text-white">Image</span>

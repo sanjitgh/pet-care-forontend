@@ -8,37 +8,20 @@ const SkeletonGrid = () => {
   const { theme } = useContext(ThemeContext);
   return (
     <>
-      {theme === "dark" ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-          {[...Array(6)].map((_, i) => (
-            <div key={i}>
-              {skeletons.map((height, j) => (
-                <Skeleton
-                  key={j}
-                  baseColor="#0D1323"
-                  highlightColor="#161e33"
-                  height={height}
-                />
-              ))}
-            </div>
-          ))}
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-          {[...Array(6)].map((_, i) => (
-            <div key={i}>
-              {skeletons.map((height, j) => (
-                <Skeleton
-                  key={j}
-                  baseColor="#ebebeb"
-                  highlightColor="#f5f5f5"
-                  height={height}
-                />
-              ))}
-            </div>
-          ))}
-        </div>
-      )}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+        {[...Array(6)].map((_, i) => (
+          <div key={i}>
+            {skeletons.map((height, j) => (
+              <Skeleton
+                key={j}
+                baseColor={theme === "dark" ? "#0D1323" : "#E2E8F0"}
+                highlightColor={theme === "dark" ? "#161e33" : "#CBD5E1"}
+                height={height}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
     </>
   );
 };

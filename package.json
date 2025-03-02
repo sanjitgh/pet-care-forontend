@@ -45,6 +45,7 @@
     "react-router-dom": "^7.0.2",
     "react-select": "^5.9.0",
     "react-spinners": "^0.15.0",
+    "recharts": "^2.15.1",
     "sort-by": "^1.2.0",
     "styled-components": "^6.1.14",
     "sweetalert2": "^11.14.5"

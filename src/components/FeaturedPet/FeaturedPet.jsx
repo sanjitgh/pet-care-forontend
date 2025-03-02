@@ -29,7 +29,7 @@ const FeaturedPet = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 container mx-auto">
           {allPets.slice(0, 3).map((item) => (
             <Card className="rounded dark:bg-[#0D1323]" key={item._id}>
-              <CardHeader color="blue-gray" className="relative rounded">
+              <CardHeader color="blue-gray" className="relative rounded dark:shadow-none">
                 <img className="w-full" src={item.image} alt="card-image" />
               </CardHeader>
               <CardBody>

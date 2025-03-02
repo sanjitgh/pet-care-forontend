@@ -22,7 +22,7 @@ const DashboardHeader = () => {
     navigate("/");
   };
   return (
-    <header className="mb-7 hidden md:block text-[#5F56C6] dark:text-white">
+    <header className="mb-7 hidden lg:block text-[#5F56C6] dark:text-white">
       <div className="flex gap-10 item-center justify-between">
         <ul className="flex items-center justify-end gap-8">
           <li>

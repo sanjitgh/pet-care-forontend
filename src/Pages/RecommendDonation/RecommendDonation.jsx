@@ -26,9 +26,9 @@ const RecommendDonation = () => {
       <Helmet>
         <title>Recommend Campaign - PetCare</title>
       </Helmet>
-      <div className="pb-16 dark:bg-[#272B35] min-h-[95vh]">
-        <div className="bg-gray-100 py-20 mb-10 dark:bg-[#181A20]">
-          <h1 className="text-center text-[#E16F52] dark:text-white text-2xl md:text-5xl">
+      <div className="pb-16 dark:bg-[#030712] min-h-[95vh]">
+        <div className="bg-gray-100 py-20 mb-10 dark:bg-[#0D1323]">
+          <h1 className="text-center text-[#5F56C6] dark:text-white text-2xl md:text-5xl">
             Recommended Donation Campaign!
           </h1>
         </div>
@@ -36,7 +36,7 @@ const RecommendDonation = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {donationsRecommend.map((item) => (
               <Card
-                className="dark:bg-[#181A20] dark:text-white"
+                className="dark:bg-[#0D1323] dark:text-white"
                 key={item._id}
               >
                 <CardMedia sx={{ height: 250 }} image={item.petImage} />
@@ -61,8 +61,11 @@ const RecommendDonation = () => {
                 </CardContent>
                 <CardActions>
                   <Link to={`/donation-campaign/${item._id}`}>
-                    <Button size="small" className="text-[#E16F52] flex gap-1 items-center bg-transparent dark:text-gray-400 p-2 shadow-none">
-                      View Details <FaArrowRight></FaArrowRight>
+                    <Button
+                      className="dark:text-gray-400 !text-[#5F56C6] flex items-center gap-2 rounded bg-transparent shadow-none"
+                      size="sm"
+                    >
+                      View Details <FaArrowRight />
                     </Button>
                   </Link>
                 </CardActions>

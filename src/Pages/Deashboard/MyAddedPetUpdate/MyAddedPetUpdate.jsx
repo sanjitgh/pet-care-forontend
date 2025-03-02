@@ -217,9 +217,9 @@ const MyAddedPetUpdate = () => {
             )}
             {/* Submit Button */}
             <div>
-              <Button className="bg-[#E16F52] dark:bg-gray-400">
+              <Button className="bg-[#5A52BC] py-4 hover:bg-[#554DB2] rounded">
                 <span className="flex gap-1 items-center">
-                  Add Pet{loading && <LuFan className="animate-spin" />}
+                  Update Pet{loading && <LuFan className="animate-spin" />}
                 </span>
               </Button>
             </div>

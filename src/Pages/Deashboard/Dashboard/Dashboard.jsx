@@ -20,7 +20,7 @@ import { ThemeContext } from "../../../ThemeProvaider/ThemeProvaider";
 
 const Deashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [role, isLoading] = useRole();
+  const [role] = useRole();
   const { theme, toggleTheme } = useContext(ThemeContext);
   const toggleSidebar = () => {
     setIsSidebarOpen((prev) => !prev);
@@ -237,7 +237,7 @@ const Deashboard = () => {
           className={`${
             isSidebarOpen
               ? "fixed inset-0 w-full bg-gray-200 dark:bg-[#17191E] z-20 overflow-y-scroll"
-              : "hidden md:hidden lg:block w-[20%] bg-gray-200 dark:bg-[#030712]"
+              : "hidden lg:block w-[20%] bg-gray-200 dark:bg-[#030712]"
           } p-4 transition-all duration-300`}
         >
           <h1 className="text-xl dark:text-white md:text-3xl font-bold mb-6 text-[#5F56C6]">
@@ -255,8 +255,8 @@ const Deashboard = () => {
         {/* Main content */}
         <main className="w-full lg:w-[80%] md:p-10 p-4 dark:bg-[#0D1323]">
           {/* Toggle Button */}
-          <div className="flex items-center justify-between mb-5 md:hidden">
-            <h1 className="font-bold text-xl text-[#5F56C6] ">Dashboard</h1>
+          <div className="flex items-center justify-between mb-5 lg:hidden">
+            <h1 className="font-bold text-xl text-[#5F56C6]">Dashboard</h1>
             <RxHamburgerMenu
               onClick={toggleSidebar}
               className="text-lg dark:text-white"

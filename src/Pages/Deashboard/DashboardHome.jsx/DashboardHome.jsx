@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import useRole from "../../../hook/useRole";
 import DashboardDynamicData from "../DahboardDynamicData/DahboardDynamicData";
+import DonationChart from "../DonationChart/DonationChart";
 
 const DashboardHome = () => {
   const [role] = useRole();
@@ -12,14 +13,17 @@ const DashboardHome = () => {
       </Helmet>
       <div>
         {role === "admin" ? (
-          <span className="text-center text-2xl dark:text-white">
+          <span className="text-center text-2xl text-[#5F56C6] dark:text-white">
             Admin Dashboard
           </span>
         ) : (
-          <span className="text-2xl dark:text-white">User Dashboard</span>
+          <span className="text-2xl text-[#5F56C6] dark:text-white">
+            User Dashboard
+          </span>
         )}
       </div>
       <DashboardDynamicData></DashboardDynamicData>
+      <DonationChart></DonationChart>
     </>
   );
 };

@@ -71,8 +71,8 @@ const CreateDonation = () => {
         <title>Create Donation - PetCare</title>
       </Helmet>
       <div>
-        <div className="border max-w-3xl mx-auto p-10 bg-gray-50 dark:bg-[#17191E]">
-          <h1 className="md:text-5xl text-2xl text-center mb-14 dark:text-white">
+        <div className="max-w-3xl mx-auto p-10  dark:bg-[#030711]">
+          <h1 className="md:text-4xl text-2xl text-center mb-14 dark:text-white">
             Add a Donation
           </h1>
           <form
@@ -81,13 +81,13 @@ const CreateDonation = () => {
           >
             {/* last Date */}
             <div className="flex flex-col">
-              <label htmlFor="date" className="dark:text-white">
+              <label htmlFor="date" className="dark:text-white mb-2">
                 Donation Last Date
               </label>
               <DatePicker
                 selected={startDate}
                 onChange={(date) => setStartDate(date)}
-                className="w-full dark:text-gray-400 border outline-none p-2 dark:bg-[#262A34]"
+                className="w-full dark:text-gray-400 border outline-none p-2 dark:bg-[#0D1222]"
               />
             </div>
 
@@ -96,7 +96,7 @@ const CreateDonation = () => {
               {...register("name", { required: true })}
               placeholder="Pet Name*"
               type="text"
-              className="w-full border outline-none p-2 dark:bg-[#262A34]"
+              className="w-full border outline-none p-2 dark:bg-[#0D1222]"
             />
             {errors.name && <p className="text-red-500">Name is required</p>}
 
@@ -105,7 +105,7 @@ const CreateDonation = () => {
               {...register("maxDonationAmount", { required: true })}
               placeholder="Max donation amount*"
               type="number"
-              className="w-full border outline-none p-2 dark:bg-[#262A34]"
+              className="w-full border outline-none p-2 dark:bg-[#0D1222]"
             />
             {errors.maxDonationAmount && (
               <p className="text-red-500">Max donation amount is required</p>
@@ -115,7 +115,7 @@ const CreateDonation = () => {
             <textarea
               {...register("sortDescription", { required: true })}
               placeholder="Sort description*"
-              className="w-full border outline-none p-2 dark:bg-[#262A34] h-20"
+              className="w-full border outline-none p-2 dark:bg-[#0D1222] h-20"
             ></textarea>
             {errors.sortDescription && (
               <p className="text-red-500">Sort description is required</p>
@@ -124,7 +124,7 @@ const CreateDonation = () => {
             <textarea
               {...register("longDescription", { required: true })}
               placeholder="Long description*"
-              className="w-full border outline-none p-2 dark:bg-[#262A34] h-28"
+              className="w-full border outline-none p-2 dark:bg-[#0D1222] h-28"
             ></textarea>
             {errors.longDescription && (
               <p className="text-red-500">Long description is required</p>

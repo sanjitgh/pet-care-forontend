@@ -184,7 +184,7 @@ const CheckoutForm = ({ handleClose, item, setOpen, refetch }) => {
       <Button
         type="submit"
         disabled={!stripe || !clientSecret || price <= 0}
-        className="bg-[#5A52BC] py-3 hover:bg-[#554DB2] rounded mt-8"
+        className="bg-[#5A52BC] py-3 hover:bg-[#554DB2] rounded mt-8 flex items-center gap-2"
       >
         Pay ${price || 0} {loading && <LuFan className="animate-spin" />}
       </Button>

@@ -183,7 +183,7 @@ const MyAddedPet = () => {
         </h1>
         <div className="overflow-x-auto shadow-lg rounded">
           <table className="min-w-full  text-[10px] md:text-xs">
-            <thead className="bg-[#5F56C6] text-white dark:bg-[#17191E] dark:text-white text-[11px] md:text-sm uppercase">
+            <thead className="bg-[#5F56C6] text-white dark:bg-[#030711] dark:text-white text-[11px] md:text-sm uppercase">
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) => (
@@ -211,7 +211,7 @@ const MyAddedPet = () => {
               {table.getRowModel().rows.map((row) => (
                 <tr
                   key={row.id}
-                  className="odd:bg-white even:bg-gray-100 hover:bg-gray-200 dark:bg-[#17191E] dark:text-white"
+                  className="odd:bg-white even:bg-gray-100 hover:bg-gray-200 dark:bg-[#030711] dark:text-white"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <td key={cell.id} className="border border-gray-300 p-2">

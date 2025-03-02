@@ -144,9 +144,9 @@ const MyDonationUpdate = () => {
             )}
             {/* Submit Button */}
             <div>
-              <Button type="submit" className="bg-[#E16F52] dark:bg-gray-400">
+              <Button type="submit" className="bg-[#5A52BC] py-4 hover:bg-[#554DB2] rounded">
                 <span className="flex gap-1 items-center">
-                  Create Donation
+                  Update Donation
                   {loading && <LuFan className="animate-spin" />}
                 </span>
               </Button>

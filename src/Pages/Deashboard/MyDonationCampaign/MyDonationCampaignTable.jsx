@@ -90,7 +90,7 @@ const MyDonationCampaignTable = ({ item, refetch }) => {
       return data;
     },
   });
-  console.log(item);
+
   return (
     <>
       <TableRow key={item._id} sx={{ borderBottom: "1px solid #ddd" }}>
@@ -143,7 +143,7 @@ const MyDonationCampaignTable = ({ item, refetch }) => {
         fullWidth
         maxWidth="md"
       >
-        <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
+        <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title" className="bg-[#030710] dark:text-white">
           All Donor
         </DialogTitle>
         <IconButton
@@ -158,12 +158,12 @@ const MyDonationCampaignTable = ({ item, refetch }) => {
         >
           <CloseIcon />
         </IconButton>
-        <DialogContent dividers>
-          <Typography gutterBottom>
-            <div className="overflow-x-auto">
-              <table className="min-w-full bg-white border border-gray-200">
+        <DialogContent dividers className="!p-0 dark:bg-[#0D1222]">
+          <Typography gutterBottom >
+            <div className="overflow-x-auto max-h-[500px]">
+              <table className="min-w-full bg-white ">
                 <thead>
-                  <tr className="bg-[#5F56C6] border-b border-gray-200">
+                  <tr className="bg-[#5F56C6] dark:bg-[#0D1222] border-b border-gray-200">
                     <th className="py-3 px-4 text-center text-white font-semibold">
                       Serial
                     </th>
@@ -178,9 +178,9 @@ const MyDonationCampaignTable = ({ item, refetch }) => {
                     </th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="dark:bg-[#0D1222] dark:text-white">
                   {donners.map((item, idx) => (
-                    <tr key={idx} className="border-b hover:bg-gray-50">
+                    <tr key={idx} className="border-b">
                       <td className="text-center py-3 px-4">{idx + 1}</td>
                       <td className="text-center py-3 px-4">{item.petName}</td>
                       <td className="text-center py-3 px-4">
